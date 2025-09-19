@@ -1,0 +1,15 @@
+*{
+    margin: 0;
+    padding: 0;
+    background-image: url(./Backdround/back1.jpg);
+}
+.container{
+    background-color: bisque;
+}
+.container1{
+    background-color: rgb(123, 68, 2);
+    color: black;
+    height: 40px;
+    width: 50%;
+    display: flex;
+}
