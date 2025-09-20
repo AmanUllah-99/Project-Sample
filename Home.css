@@ -4,7 +4,7 @@
     background-image: url(./Backdround/back1.jpg);
 }
 .container{
-    background-color: bisque;
+    background-color: rgb(72, 61, 47);
 }
 .container1{
     background-color: rgb(123, 68, 2);
@@ -12,4 +12,12 @@
     height: 40px;
     width: 50%;
     display: flex;
+}
+nav{
+    display: flex;
+    justify-content: space-around;
+    text-align: left;
+    height: 40px;
+    width: 100%;
+    background:#000;
 }
