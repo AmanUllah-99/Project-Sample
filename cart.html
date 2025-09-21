@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dry Fruit Store - Cart</title>
+  <link rel="stylesheet" href="cart.css">
+</head>
+<body>
+
+  <header>
+    <h1>🛒 Dry Fruit Store</h1>
+  </header>
+
+  <!-- Product List -->
+  <section class="products">
+    <div class="product">
+      <h3>Almonds</h3>
+      <p>Price: Rs. 800 / kg</p>
+      <button onclick="addToCart('Almonds', 800)">Add to Cart</button>
+    </div>
+    <div class="product">
+      <h3>Cashews</h3>
+      <p>Price: Rs. 1200 / kg</p>
+      <button onclick="addToCart('Cashews', 1200)">Add to Cart</button>
+    </div>
+    <div class="product">
+      <h3>Dates</h3>
+      <p>Price: Rs. 600 / kg</p>
+      <button onclick="addToCart('Dates', 600)">Add to Cart</button>
+    </div>
+    <div class="product">
+      <h3>Walnuts</h3>
+      <p>Price: Rs. 1500 / kg</p>
+      <button onclick="addToCart('Walnuts', 1500)">Add to Cart</button>
+    </div>
+  </section>
+
+  <!-- Cart Section -->
+  <section class="cart">
+    <h2>Your Cart</h2>
+    <table id="cart-table">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Price (Rs.)</th>
+          <th>Quantity</th>
+          <th>Total (Rs.)</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="cart-body">
+        <!-- Items will be added here dynamically -->
+      </tbody>
+    </table>
+    <div class="cart-footer">
+      <h3 id="grand-total">Grand Total: Rs. 0</h3>
+      <button class="checkout">Checkout</button>
+    </div>
+  </section>
+
+  <script src="cart.js"></script>
+</body>
+</html>
