@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DryFruitHub Blog</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="blog.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="navbar navbar-expand-lg navbar-light py-3">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#"><i class="fa-solid fa-seedling me-2"></i>DryFruitHub Blog</a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+        data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Products</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+          <li class="nav-item ms-2">
+            <a class="btn btn-success rounded-pill" href="#">Shop</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero py-6">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-7 text-white">
+          <h1 class="display-5 fw-bold">Healthy snacks, happy life — stories from DryFruitHub</h1>
+          <p class="lead mt-3">Recipes, nutrition guides, harvesting stories and helpful tips — all about dry fruits.</p>
+
+          <div class="mt-4 d-flex gap-2">
+            <a class="btn btn-light btn-lg rounded-pill" href="#posts">Read Posts</a>
+            <a class="btn btn-outline-light btn-lg rounded-pill" href="#newsletter">Subscribe</a>
+          </div>
+        </div>
+
+        <div class="col-lg-5 d-none d-lg-block">
+          <div class="hero-card p-4 rounded-4 shadow-lg">
+            <img src="Backdround/hero-nuts.jpg" alt="nuts" class="img-fluid rounded-3">
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="py-5" id="posts">
+    <div class="container">
+      <div class="row g-4">
+        <!-- POSTS LIST -->
+        <section class="col-lg-8">
+          <!-- Search + filter -->
+          <div class="d-flex justify-content-between align-items-center mb-3 gap-2 flex-column flex-sm-row">
+            <div class="input-group w-100 w-sm-75">
+              <input id="postSearch" type="search" class="form-control rounded-pill" placeholder="Search blog posts...">
+              <button id="clearSearch" class="btn btn-outline-secondary rounded-pill">Clear</button>
+            </div>
+
+            <div class="d-flex gap-2">
+              <select id="categoryFilter" class="form-select rounded-pill">
+                <option value="">All categories</option>
+                <option>Nutrition</option>
+                <option>Recipes</option>
+                <option>Harvest</option>
+                <option>Tips</option>
+              </select>
+              <button id="sortDate" class="btn btn-light rounded-pill">Newest</button>
+            </div>
+          </div>
+
+          <!-- Posts grid -->
+          <div id="postsGrid" class="row g-4">
+            <!-- single post card (data attributes used for filtering) -->
+            <article class="col-md-6" data-title="almonds-benefits" data-category="Nutrition" data-date="2025-09-01">
+              <div class="card blog-card h-100 shadow-sm">
+                <img src="Backdround/badam.png" class="card-img-top" alt="Almonds benefits">
+                <div class="card-body d-flex flex-column">
+                  <small class="text-muted mb-2">Nutrition · Sep 1, 2025</small>
+                  <h5 class="card-title">7 Science-backed Benefits of Almonds</h5>
+                  <p class="card-text text-muted">Discover why almonds are an excellent daily snack — protein, vitamins and more.</p>
+                  <div class="mt-auto d-flex justify-content-between align-items-center">
+                    <a href="#" class="stretched-link btn btn-outline-success" data-full="post1">Read more</a>
+                    <div class="d-flex gap-2 align-items-center">
+                      <span class="badge bg-light text-dark">Almonds</span>
+                      <small class="text-muted">5 min</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="col-md-6" data-title="roasted-cashews" data-category="Recipes" data-date="2025-08-20">
+              <div class="card blog-card h-100 shadow-sm">
+                <img src="Backdround/cashews.jpg" class="card-img-top" alt="roasted cashews">
+                <div class="card-body d-flex flex-column">
+                  <small class="text-muted mb-2">Recipes · Aug 20, 2025</small>
+                  <h5 class="card-title">Easy Spiced Roasted Cashews</h5>
+                  <p class="card-text text-muted">A simple recipe to make crunchy spiced cashews at home.</p>
+                  <div class="mt-auto d-flex justify-content-between align-items-center">
+                    <a href="#" class="stretched-link btn btn-outline-success" data-full="post2">Read more</a>
+                    <div class="d-flex gap-2 align-items-center">
+                      <span class="badge bg-light text-dark">Cashews</span>
+                      <small class="text-muted">8 min</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="col-md-6" data-title="pistachio-snacks" data-category="Tips" data-date="2025-07-11">
+              <div class="card blog-card h-100 shadow-sm">
+                <img src="Backdround/pistachios.jpg" class="card-img-top" alt="pistachio snacks">
+                <div class="card-body d-flex flex-column">
+                  <small class="text-muted mb-2">Tips · Jul 11, 2025</small>
+                  <h5 class="card-title">3 Creative Ways to Enjoy Pistachios</h5>
+                  <p class="card-text text-muted">Snack ideas and pairing tips to make pistachios more exciting.</p>
+                  <div class="mt-auto d-flex justify-content-between align-items-center">
+                    <a href="#" class="stretched-link btn btn-outline-success" data-full="post3">Read more</a>
+                    <div class="d-flex gap-2 align-items-center">
+                      <span class="badge bg-light text-dark">Pistachios</span>
+                      <small class="text-muted">3 min</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="col-md-6" data-title="raisins-uses" data-category="Harvest" data-date="2025-05-15">
+              <div class="card blog-card h-100 shadow-sm">
+                <img src="Backdround/raisins.jpg" class="card-img-top" alt="raisins">
+                <div class="card-body d-flex flex-column">
+                  <small class="text-muted mb-2">Harvest · May 15, 2025</small>
+                  <h5 class="card-title">From Vine to Jar: How Raisins are Made</h5>
+                  <p class="card-text text-muted">A short look into the raisin drying and packing process.</p>
+                  <div class="mt-auto d-flex justify-content-between align-items-center">
+                    <a href="#" class="stretched-link btn btn-outline-success" data-full="post4">Read more</a>
+                    <div class="d-flex gap-2 align-items-center">
+                      <span class="badge bg-light text-dark">Raisins</span>
+                      <small class="text-muted">6 min</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- Pagination (non-functional placeholder) -->
+          <nav aria-label="page nav" class="mt-4">
+            <ul class="pagination justify-content-center">
+              <li class="page-item disabled"><a class="page-link">Previous</a></li>
+              <li class="page-item active"><a class="page-link">1</a></li>
+              <li class="page-item"><a class="page-link">2</a></li>
+              <li class="page-item"><a class="page-link">Next</a></li>
+            </ul>
+          </nav>
+        </section>
+
+        <!-- SIDEBAR -->
+        <aside class="col-lg-4">
+          <div class="sticky-top" style="top:100px;">
+            <!-- About widget -->
+            <div class="card mb-4">
+              <div class="card-body text-center">
+                <img src="Backdround/author.jpg" class="rounded-circle mb-3" width="90" alt="author">
+                <h6 class="mb-1">DryFruitHub</h6>
+                <p class="text-muted small">Sharing healthy living tips and tasty dry-fruit recipes.</p>
+                <a href="#newsletter" class="btn btn-success btn-sm rounded-pill">Subscribe</a>
+              </div>
+            </div>
+
+            <!-- Categories -->
+            <div class="card mb-4">
+              <div class="card-body">
+                <h6 class="mb-3">Categories</h6>
+                <ul class="list-unstyled mb-0">
+                  <li><a href="#" class="d-block py-2 category-link" data-cat="">All</a></li>
+                  <li><a href="#" class="d-block py-2 category-link" data-cat="Nutrition">Nutrition</a></li>
+                  <li><a href="#" class="d-block py-2 category-link" data-cat="Recipes">Recipes</a></li>
+                  <li><a href="#" class="d-block py-2 category-link" data-cat="Harvest">Harvest</a></li>
+                  <li><a href="#" class="d-block py-2 category-link" data-cat="Tips">Tips</a></li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Recent posts -->
+            <div class="card mb-4">
+              <div class="card-body">
+                <h6 class="mb-3">Recent Posts</h6>
+                <ul class="list-unstyled">
+                  <li class="d-flex gap-2 mb-3">
+                    <img src="Backdround/almonds-thumb.jpg" width="60" class="rounded" alt="">
+                    <div>
+                      <a href="#" class="d-block small post-link" data-full="post1">7 Science-backed Benefits of Almonds</a>
+                      <small class="text-muted">Sep 1, 2025</small>
+                    </div>
+                  </li>
+                  <li class="d-flex gap-2 mb-3">
+                    <img src="Backdround/cashews-thumb.jpg" width="60" class="rounded" alt="">
+                    <div>
+                      <a href="#" class="d-block small post-link" data-full="post2">Easy Spiced Roasted Cashews</a>
+                      <small class="text-muted">Aug 20, 2025</small>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Newsletter -->
+            <div id="newsletter" class="card mb-4">
+              <div class="card-body">
+                <h6 class="mb-3">Newsletter</h6>
+                <p class="small text-muted">Get weekly recipes and offers.</p>
+                <form id="newsletterForm" class="d-flex gap-2">
+                  <input class="form-control rounded-pill" type="email" placeholder="Your email" required>
+                  <button class="btn btn-success rounded-pill" type="submit">Subscribe</button>
+                </form>
+              </div>
+            </div>
+
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <!-- POST MODAL (opens full post content) -->
+  <div class="modal fade" id="postModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="postModalTitle">Post Title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="postModalBody">
+          <img src="" id="postModalImg" class="img-fluid rounded mb-3" alt="">
+          <div id="postModalText"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BACK TO TOP -->
+  <button id="backTop" class="back-top btn btn-success shadow-lg"><i class="fa fa-arrow-up"></i></button>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom JS -->
+  <script src="blog.js"></script>
+</body>
+</html>

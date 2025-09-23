@@ -5,22 +5,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dry Fruit Store</title>
-   <link rel="stylesheet" href="Home.css">
+
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- FontAwesome for icons -->
+  <!-- FontAwesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="Home.css">
 </head>
 
 <body>
   <!-- TOP NAVBAR -->
   <nav class="navbar navbar-expand-lg top-navbar sticky-top">
     <div class="container-fluid">
-      <!-- Logo -->
       <a class="navbar-brand" href="#"><i class="fa-solid fa-seedling me-2"></i>DryFruitHub</a>
 
       <!-- Search -->
@@ -30,237 +29,337 @@
         <button class="btn btn-success rounded-pill" type="submit"><i class="fa fa-search"></i></button>
       </form>
 
-      <!-- Social + Login -->
+      <!-- Social + Signup -->
       <div class="d-flex align-items-center gap-3">
         <a href="#"><i class="fab fa-facebook-f"></i></a>
         <a href="#"><i class="fab fa-instagram"></i></a>
         <a href="#"><i class="fab fa-twitter"></i></a>
-        <!-- Login -->
-        <a href="signup.html" class="btn btn-success px-3 rounded-pill"> Signup</a>
+        <a href="../login/signup.html" class="btn btn-success px-3 rounded-pill">Signup</a>
       </div>
     </div>
   </nav>
 
   <!-- BOTTOM NAVBAR -->
-<nav class="navbar navbar-expand-lg bottom-navbar">
-  <div class="container-fluid">
-    <!-- Mobile Menu Button -->
-    <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse"
-      data-bs-target="#bottomNavbarContent" aria-controls="bottomNavbarContent" aria-expanded="false"
-      aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+  <nav class="navbar navbar-expand-lg bottom-navbar">
+    <div class="container-fluid">
+      <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse"
+        data-bs-target="#bottomNavbarContent" aria-controls="bottomNavbarContent" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-    <!-- Links -->
-    <div class="collapse navbar-collapse" id="bottomNavbarContent">
-      <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+      <div class="collapse navbar-collapse" id="bottomNavbarContent">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link active" href="Home.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" data-bs-toggle="product" href="product.html">Products</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Deals</a></li>
+          <li class="nav-item"><a class="nav-link" href="aboutus.html">About Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
 
-        <!-- Products Offcanvas Trigger -->
-         <li class="nav-item"><a class="nav-link" href="">HOME</a></li>
-         <li class="nav-item"><a class="nav-link" href="product.html">PRODUCT</a></li>
-        <li class="nav-item"><a class="nav-link" href="">SERVICE</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">DEAL</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">ABOUT US</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">BLOG</a></li>
-        <li class="nav-item"><a class="nav-link" href="">CONTACT</a></li>
+        </ul>
 
-       
+        <!-- ✅ Cart Fixed at End -->
+       <!-- In your bottom navbar, make sure the cart link is correct -->
+<li class="nav-item">
+    <a class="nav-link active" href="../Cart/cart.html">
+        <i class="fa fa-shopping-cart me-1"></i>Your Cart
+        <span class="cart-badge badge rounded-pill bg-danger">0</span>
+    </a>
+</li>
 
-        <li class="nav-item"><a class="nav-link" href="#">Cart</a></li>
-        
-      </ul>
+      </div>
+    </div>
+  </nav>
 
-      <!-- Hidden Search (Scroll pe show hoga) -->
-      <form class="d-flex ms-lg-3 scroll-search-in-nav" id="navSearch">
-        <input class="form-control me-2 rounded-pill" type="search" placeholder="Search dry fruits..."
-          aria-label="Search">
-        <button class="btn btn-light rounded-pill" type="submit"><i class="fa fa-search"></i></button>
+  <!-- PRODUCT OFFCANVAS -->
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasProducts">
+    <div class="offcanvas-header">
+      <h5><i class="fa fa-box-open me-2"></i>Our Products</h5>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body">
+      <form class="d-flex mb-3">
+        <input class="form-control me-2" type="search" placeholder="Search products...">
+        <button class="btn btn-success" type="submit"><i class="fa fa-search"></i></button>
       </form>
-    </div>
-  </div>
-</nav>
-
-
-
-  <!-- PRODUCT OFFCANVAS (Side Panel) -->
-
-  <!-- CONTENT -->
- <!-- SLIDER / CAROUSEL -->
-<div id="dryfruitCarousel" class="carousel slide" data-bs-ride="carousel">
-  <!-- Indicators -->
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#dryfruitCarousel" data-bs-slide-to="0" class="active"></button>
-    <button type="button" data-bs-target="#dryfruitCarousel" data-bs-slide-to="1"></button>
-    <button type="button" data-bs-target="#dryfruitCarousel" data-bs-slide-to="2"></button>
-  </div>
-
-  <!-- Slides -->
- <!-- SLIDER / CAROUSEL -->
-<div id="dryfruitCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
-  <!-- Indicators -->
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#dryfruitCarousel" data-bs-slide-to="0" class="active"></button>
-    <button type="button" data-bs-target="#dryfruitCarousel" data-bs-slide-to="1"></button>
-    <button type="button" data-bs-target="#dryfruitCarousel" data-bs-slide-to="2"></button>
-  </div>
-
-  <!-- Slides -->
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="Backdround/back3.jpg" class="d-block w-100" alt="Almonds">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Fresh Almonds</h5>
-        <p>Rich in protein and energy for your daily needs.</p>
-      </div>
-    </div>
-
-    <div class="carousel-item">
-      <img src="Backdround/Back4.jpg" class="d-block w-100" alt="Cashews">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Premium Cashews</h5>
-        <p>Crunchy and full of healthy fats.</p>
-      </div>
-    </div>
-
-    <div class="carousel-item">
-      <img src="Backdround/back1.jpg" class="d-block w-100" alt="Pistachios">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Delicious Pistachios</h5>
-        <p>Perfect snack for every occasion.</p>
+      <div class="list-group">
+        <a href="#" class="list-group-item">Almonds</a>
+        <a href="#" class="list-group-item">Cashews</a>
+        <a href="#" class="list-group-item">Walnuts</a>
+        <a href="#" class="list-group-item">Pistachios</a>
+        <a href="#" class="list-group-item">Raisins</a>
+        <a href="#" class="list-group-item">Mixed Dry Fruits</a>
       </div>
     </div>
   </div>
 
-  <!-- Controls -->
-  <button class="carousel-control-prev" type="button" data-bs-target="#dryfruitCarousel" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon"></span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#dryfruitCarousel" data-bs-slide="next">
-    <span class="carousel-control-next-icon"></span>
-  </button>
-</div>
+  <!-- SLIDER -->
+  <div id="dryfruitCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#dryfruitCarousel" data-bs-slide-to="0" class="active"></button>
+      <button type="button" data-bs-target="#dryfruitCarousel" data-bs-slide-to="1"></button>
+      <button type="button" data-bs-target="#dryfruitCarousel" data-bs-slide-to="2"></button>
+    </div>
 
-<!-- PRODUCT CARDS SECTION -->
-<section class="container my-5">
-  <h2 class="text-center mb-4 fw-bold">Our Best Sellers</h2>
-  <div class="row g-4">
-    <!-- Card 1 -->
-    <div class="col-md-4 col-sm-6">
-      <div class="product-card">
-        <img src="Backdround/badam.png" alt="Almonds">
-        <div class="card-body">
-          <h5>Almonds</h5>
-          <p>Rich in protein and energy.</p>
-          <button class="btn btn-success rounded-pill">Buy Now</button>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="Backdround/back3.jpg" class="d-block w-100" alt="Almonds">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Fresh Almonds</h5>
+          <p>Rich in protein and energy for your daily needs.</p>
         </div>
       </div>
-    </div>
-    <!-- Card 2 -->
-    <div class="col-md-4 col-sm-6">
-      <div class="product-card">
-        <img src="Backdround/kaju.png" alt="Cashews">
-        <div class="card-body">
-          <h5>Cashews</h5>
-          <p>Crispy and full of healthy fats.</p>
-          <button class="btn btn-success rounded-pill">Buy Now</button>
+      <div class="carousel-item">
+        <img src="Backdround/Back4.jpg" class="d-block w-100" alt="Cashews">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Premium Cashews</h5>
+          <p>Crunchy and full of healthy fats.</p>
         </div>
       </div>
-    </div>
-    <!-- Card 3 -->
-    <div class="col-md-4 col-sm-6">
-      <div class="product-card">
-        <img src="Backdround/targa.png" alt="Pistachios">
-        <div class="card-body">
-          <h5>Pistachios</h5>
+      <div class="carousel-item">
+        <img src="Backdround/back1.jpg" class="d-block w-100" alt="Pistachios">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Delicious Pistachios</h5>
           <p>Perfect snack for every occasion.</p>
-          <button class="btn btn-success rounded-pill">Buy Now</button>
         </div>
       </div>
     </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#dryfruitCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#dryfruitCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
   </div>
+
+<!-- PRODUCTS -->
+<section class="container my-5">
+    <h2 class="text-center mb-4 fw-bold">Our Best Sellers</h2>
+    <div class="row g-4">
+        <div class="col-md-4 col-sm-6">
+            <div class="product-card">
+                <img src="Backdround/badam.png" alt="Almonds">
+                <div class="card-body">
+                    <h5>Almonds</h5>
+                    <p>Rich in protein and energy.</p>
+                    <p><strong>Price:</strong> PKR 1200</p>
+                    <button class="btn btn-success rounded-pill add-to-cart" 
+                            data-name="Almonds" 
+                            data-price="1200" 
+                            data-image="Backdround/badam.png">
+                        Order Now
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-6">
+            <div class="product-card">
+                <img src="../Backdround/kaju.png" alt="Cashews">
+                <div class="card-body">
+                    <h5>Cashews</h5>
+                    <p>Crispy and full of healthy fats.</p>
+                    <p><strong>Price:</strong> PKR 1500</p>
+                    <button class="btn btn-success rounded-pill add-to-cart" 
+                            data-name="Cashews" 
+                            data-price="1500" 
+                            data-image="Backdround/kaju.png">
+                        Order Now
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-6">
+            <div class="product-card">
+                <img src="Backdround/targa.png" alt="Pistachios">
+                <div class="card-body">
+                    <h5>Pistachios</h5>
+                    <p>Perfect snack for every occasion.</p>
+                    <p><strong>Price:</strong> PKR 1800</p>
+                    <button class="btn btn-success rounded-pill add-to-cart" 
+                            data-name="Pistachios" 
+                            data-price="1800" 
+                            data-image="../Backdround/targa.png">
+                        Order Now
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Add more products with same structure -->
+    </div>
 </section>
 
-<!-- FOOTER -->
-<footer class="footer mt-5">
-  <div class="container">
-    <div class="row gy-4">
-      
-      <!-- Logo & About -->
-      <div class="col-md-4 col-sm-6">
-        <h4 class="logo-text"><i class="fa-solid fa-seedling me-2"></i>DryFruitHub</h4>
-        <p>Premium quality dry fruits delivered fresh to your doorstep. Healthy snacks, trusted by thousands of customers.</p>
-        <div class="social-icons">
-          <a href="#"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-twitter"></i></a>
+  <!-- FOOTER -->
+  <footer class="footer mt-5">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-md-4 col-sm-6">
+          <h4 class="logo-text"><i class="fa-solid fa-seedling me-2"></i>DryFruitHub</h4>
+          <p>Premium quality dry fruits delivered fresh to your doorstep.</p>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+        <div class="col-md-2 col-sm-6">
+          <h5>Quick Links</h5>
+          <ul class="list-unstyled">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Products</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">About Us</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <h5>Customer Service</h5>
+          <ul class="list-unstyled">
+            <li><a href="#">FAQs</a></li>
+            <li><a href="#">Shipping & Returns</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <h5>Newsletter</h5>
+          <p>Subscribe to get updates on discounts and new arrivals.</p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Enter your email" required>
+            <button type="submit"><i class="fa fa-paper-plane"></i></button>
+          </form>
         </div>
       </div>
-
-      <!-- Quick Links -->
-      <div class="col-md-2 col-sm-6">
-        <h5>Quick Links</h5>
-        <ul class="list-unstyled">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Products</a></li>
-          <li><a href="#">Services</a></li>
-          <li><a href="#">About Us</a></li>
-        </ul>
-      </div>
-
-      <!-- Customer Service -->
-      <div class="col-md-3 col-sm-6">
-        <h5>Customer Service</h5>
-        <ul class="list-unstyled">
-          <li><a href="#">FAQs</a></li>
-          <li><a href="#">Shipping & Returns</a></li>
-          <li><a href="#">Privacy Policy</a></li>
-          <li><a href="#">Contact Us</a></li>
-        </ul>
-      </div>
-
-      <!-- Newsletter -->
-      <div class="col-md-3 col-sm-6">
-        <h5>Newsletter</h5>
-        <p>Subscribe to get updates on discounts and new arrivals.</p>
-        <form class="newsletter-form">
-          <input type="email" placeholder="Enter your email" required>
-          <button type="submit"><i class="fa fa-paper-plane"></i></button>
-        </form>
+      <hr class="my-4">
+      <div class="text-center">
+        <p class="mb-0">&copy; 2025 DryFruitHub. All Rights Reserved.</p>
       </div>
     </div>
-
-    <hr class="my-4">
-
-    <!-- Bottom Bar -->
-    <div class="text-center">
-      <p class="mb-0">&copy; 2025 DryFruitHub. All Rights Reserved.</p>
-    </div>
-  </div>
-</footer>
-
-
-
-
-
+  </footer>
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-<script>
-  const navSearch = document.getElementById("#navSearch");
-  const bottomNavbar = document.querySelector(".bottom-navbar");
 
-  window.addEventListener("scroll", function () {
-    if (window.scrollY > 150) {
-      bottomNavbar.classList.add("fixed-top");
-      navSearch.style.display = "flex";
-    } else {
-      bottomNavbar.classList.remove("fixed-top");
-      navSearch.style.display = "none";
+  <!-- Custom Script -->
+  <script>
+    const navSearch = document.getElementById("navSearch");
+    const bottomNavbar = document.querySelector(".bottom-navbar");
+
+    window.addEventListener("scroll", function () {
+      if (window.scrollY > 150) {
+        bottomNavbar.classList.add("fixed-top");
+        navSearch.style.display = "flex";
+      } else {
+        bottomNavbar.classList.remove("fixed-top");
+        navSearch.style.display = "none";
+      }
+    });
+
+
+    <!-- Add this right before closing body tag in Home.html -->
+    // Home Page Cart Functionality
+// Home Page Cart Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize cart manager
+    if (typeof cartManager === 'undefined') {
+        window.cartManager = new CartManager();
     }
-  });
-</script>
+    
+    // Update cart counter on page load
+    cartManager.updateCartCounter();
+    
+    // Add to cart functionality
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('add-to-cart')) {
+            const button = e.target;
+            const name = button.getAttribute('data-name');
+            const price = button.getAttribute('data-price');
+            const image = button.getAttribute('data-image');
+            
+            // Add to cart
+            cartManager.addItem(name, price, image);
+            
+            // Visual feedback
+            button.innerHTML = '<i class="fa fa-check me-1"></i>Added!';
+            button.classList.add('btn-success');
+            
+            setTimeout(() => {
+                button.innerHTML = 'Order Now';
+                button.classList.remove('btn-success');
+            }, 2000);
+        }
+    });
+    
+    // Cart link functionality
+    const cartLink = document.querySelector('a[href="Cart/cart.html"]');
+    if (cartLink) {
+        cartLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.location.href = 'Cart/cart.html';
+        });
+    }
+});
+
+// Simple Cart Manager for Home Page (fallback)
+class CartManager {
+    constructor() {
+        this.cart = this.loadCart();
+    }
+    
+    loadCart() {
+        try {
+            return JSON.parse(localStorage.getItem('dryfruitCart')) || [];
+        } catch (error) {
+            return [];
+        }
+    }
+    
+    saveCart() {
+        try {
+            localStorage.setItem('dryfruitCart', JSON.stringify(this.cart));
+            this.updateCartCounter();
+        } catch (error) {
+            console.error('Error saving cart:', error);
+        }
+    }
+    
+    addItem(name, price, image) {
+        const existingItem = this.cart.find(item => item.name === name);
+        
+        if (existingItem) {
+            existingItem.quantity += 1;
+        } else {
+            this.cart.push({
+                name: name,
+                price: parseInt(price),
+                image: image,
+                quantity: 1
+            });
+        }
+        
+        this.saveCart();
+        this.showNotification(`${name} added to cart!`);
+    }
+    
+    updateCartCounter() {
+        const totalItems = this.cart.reduce((total, item) => total + item.quantity, 0);
+        const badges = document.querySelectorAll('.cart-badge');
+        
+        badges.forEach(badge => {
+            badge.textContent = totalItems;
+        });
+    }
+    
+    showNotification(message) {
+        // Simple notification - you can enhance this later
+        console.log(message);
+    }
+}
 
 
+    </script>
+   <script src="../Cart/cartManager.js"></script>
+</body>
 
 </html>

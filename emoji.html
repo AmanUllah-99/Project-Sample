@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Epic Social Icons</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #1e1e2f, #111);
+      color: white;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 30px;
+    }
+
+    .social-icons a {
+      font-size: 2.5rem;
+      text-decoration: none;
+      color: white;
+      cursor: pointer;
+      position: relative;
+      transition: transform 0.2s;
+    }
+
+    .social-icons a:hover {
+      transform: scale(1.2);
+    }
+
+    /* Ripple effect */
+    .ripple {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      transform: scale(0);
+      animation: rippleAnim 0.6s linear forwards;
+      pointer-events: none;
+    }
+
+    @keyframes rippleAnim {
+      to {
+        transform: scale(3);
+        opacity: 0;
+      }
+    }
+
+    /* Particle style */
+    .particle {
+      position: absolute;
+      font-size: 1.2rem;
+      animation: fly 1s ease-out forwards;
+      pointer-events: none;
+    }
+
+    @keyframes fly {
+      to {
+        transform: translate(var(--x), var(--y)) scale(0.5);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="social-icons">
+    <a href="https://facebook.com" target="_blank" onclick="effect(event, this, '✨')">👍</a>
+    <a href="https://twitter.com" target="_blank" onclick="effect(event, this, '💫')">🐦</a>
+    <a href="https://instagram.com" target="_blank" onclick="effect(event, this, '🔥')">📸</a>
+    <a href="https://linkedin.com" target="_blank" onclick="effect(event, this, '🌟')">💼</a>
+  </div>
+
+  <script>
+    function effect(e, element, particleEmoji) {
+      // Ripple
+      const ripple = document.createElement("span");
+      ripple.classList.add("ripple");
+      ripple.style.width = ripple.style.height = "60px";
+      ripple.style.left = "-15px";
+      ripple.style.top = "-15px";
+      element.appendChild(ripple);
+
+      setTimeout(() => ripple.remove(), 600);
+
+      // Particles
+      for (let i = 0; i < 10; i++) {
+        const particle = document.createElement("span");
+        particle.classList.add("particle");
+        particle.textContent = particleEmoji;
+
+        // Random spread
+        const x = `${Math.random() * 150 - 75}px`;
+        const y = `${Math.random() * -150}px`;
+
+        particle.style.setProperty("--x", x);
+        particle.style.setProperty("--y", y);
+
+        element.appendChild(particle);
+
+        setTimeout(() => particle.remove(), 1000);
+      }
+
+      // Page open delay (effect visible + new tab open)
+      setTimeout(() => {
+        window.open(element.href, "_blank");
+      }, 200); 
+      
+      e.preventDefault(); // normal instant navigation stop
+    }
+  </script>
+
+</body>
+</html>
