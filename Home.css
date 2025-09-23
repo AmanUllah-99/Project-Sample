@@ -53,7 +53,7 @@
 .btn-login {
   background: linear-gradient(135deg, #198754, #28a745);
   border: none;
-  color: #fff;
+  color: #0a0a0a;
   font-weight: 600;
   padding: 8px 18px;
   border-radius: 50px;
@@ -70,7 +70,8 @@
 /* Bottom Navbar */
 .bottom-navbar {
   background: #198754;
-  transition: all 0.3s ease-in-out;
+  border-top: 1px solid #198754;
+  padding: 0.6rem 1rem;
 }
 
 .bottom-navbar .nav-link {
@@ -96,34 +97,42 @@
 }
 
 
-/* Scroll Search Styling */
-.scroll-search {
-  display: none;
-  position: fixed;
-  top: 60px;
-  left: 0;
-  right: 0;
-  background: linear-gradient(135deg, #198754, #28a745);
-  padding: 10px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-  z-index: 1030;
-  animation: slideDown 0.4s ease;
+/* Cart at the End */
+.cart-end {
+  margin-left: auto; /* pushes cart to extreme right */
+  color: rgb(15, 12, 12);
+  background-color: #e9ecea;
+  border-radius: 10%;
 }
 
-.scroll-search form {
-  max-width: 600px;
-  margin: auto;
+/* Cart Button */
+.cart-btn {
+  font-weight: 500;
+  position: relative;
+  padding-right: 35px; /* space for badge */
 }
 
-@keyframes slideDown {
-  from { transform: translateY(-20px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
+.cart-btn i {
+  margin-right: 6px;
 }
 
-#navSearch {
-  display: none;
-  animation: fadeIn 0.4s ease-in-out;
+/* Badge Always Visible */
+.cart-badge {
+  position: absolute;
+  top: 2px;
+  right: 100px;
+  font-size: 12px;
+  padding: 5px 7px;
+  background: #dc3545;
+  color: #fff;
+  border-radius: 50%;
+  display: inline-block;
+  min-width: 20px;
+  text-align: center;
 }
+
+
+
 
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(-5px); }
