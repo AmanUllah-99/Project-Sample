@@ -1,4 +1,12 @@
-/* General Reset */
+/* ===== TOP NAVBAR ===== */
+:root {
+  --primary: #198754;
+  --primary-dark: #146c43;
+  --light: #f8f9fa;
+  --dark: #212529;
+  --gray: #6c757d;
+}
+
 * {
   transition: all 0.3s ease;
   box-sizing: border-box;
