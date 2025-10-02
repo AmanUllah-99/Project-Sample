@@ -1,119 +1,784 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Order Details - Dry Fruit Store</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    body { background: #fafafa; }
-    .order-card { border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-    .status-badge { font-size: 0.9rem; }
-    .progress { height: 10px; border-radius: 10px; }
-    .footer { background: #222; color: #fff; padding: 30px 0; }
-    .footer a { color: #fff; text-decoration: none; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Dry Fruit Subscription | Nature's Best</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2d5016;
+            --secondary: #ffd700;
+            --accent: #ff6b35;
+            --dark: #1a2d0c;
+            --light: #f9f5e8;
+            --gray: #6b7280;
+            --white: #ffffff;
+            --shadow: 0 20px 40px rgba(0,0,0,0.1);
+            --radius: 12px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* Advanced Header with Mega Menu */
+        .advanced-header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: var(--transition);
+        }
+
+        .header-scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo i {
+            color: var(--accent);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary);
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: var(--accent);
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: var(--radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #e55a2b;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 107, 53, 0.3);
+        }
+
+        /* Advanced Hero with Parallax */
+        .advanced-hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+            color: white;
+            padding: 160px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            background: url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover;
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 8px 20px;
+            border-radius: 50px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, #fff, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            opacity: 0.9;
+        }
+
+        /* Interactive Pricing Cards */
+        .pricing-section {
+            padding: 100px 0;
+            background: var(--light);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            color: var(--gray);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .pricing-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 2rem;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 3rem 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .pricing-card.featured {
+            transform: scale(1.05);
+            border: 2px solid var(--accent);
+            box-shadow: 0 25px 50px rgba(255, 107, 53, 0.15);
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .plan-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        .plan-price {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .plan-price span {
+            font-size: 1rem;
+            color: var(--gray);
+        }
+
+        .plan-description {
+            color: var(--gray);
+            margin-bottom: 2rem;
+        }
+
+        .plan-features {
+            list-style: none;
+            margin-bottom: 3rem;
+        }
+
+        .plan-features li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .plan-features li i {
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+
+        /* Customization Panel */
+        .customization-panel {
+            background: white;
+            border-radius: var(--radius);
+            padding: 2rem;
+            margin-top: 3rem;
+            box-shadow: var(--shadow);
+        }
+
+        .customization-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+
+        .customization-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .option-group {
+            margin-bottom: 1rem;
+        }
+
+        .option-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        .option-select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: var(--radius);
+            background: white;
+            transition: var(--transition);
+        }
+
+        .option-select:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+        }
+
+        /* Interactive Calendar */
+        .delivery-calendar {
+            background: var(--white);
+            padding: 4rem 2rem;
+            border-radius: var(--radius);
+            margin-top: 3rem;
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+        }
+
+        .calendar-day {
+            padding: 15px;
+            text-align: center;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .calendar-day:hover {
+            background: var(--light);
+        }
+
+        .calendar-day.selected {
+            background: var(--accent);
+            color: white;
+        }
+
+        /* Advanced Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .floating-element {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .pricing-card.featured {
+                transform: none;
+            }
+            
+            .hero-title {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .pricing-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- Advanced Header -->
+    <header class="advanced-header" id="header">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-seedling"></i>
+                Nature's Best
+            </div>
+            
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+            </nav>
+            
+            <div class="nav-actions">
+                <a href="#" class="btn btn-primary">
+                    <i class="fas fa-user"></i>
+                    My Account
+                </a>
+            </div>
+        </div>
+    </header>
 
-<!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container">
-    <a class="navbar-brand fw-bold" href="#">DryFruit Store</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Shop</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Deals</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Cart</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Profile</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
+    <!-- Advanced Hero Section -->
+    <section class="advanced-hero" id="home">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i class="fas fa-star"></i>
+                Premium Dry Fruit Subscription
+            </div>
+            <h1 class="hero-title">Elevate Your Health Journey</h1>
+            <p class="hero-subtitle">Experience the finest selection of organic dry fruits delivered monthly. Customize your box, track your delivery, and enjoy premium quality.</p>
+            <a href="#pricing" class="btn btn-primary">
+                <i class="fas fa-gem"></i>
+                View Premium Plans
+            </a>
+        </div>
+    </section>
 
-<!-- ORDER DETAILS -->
-<div class="container my-5">
-  <div class="order-card bg-white p-4">
-    <h3 class="fw-bold mb-3">Order Details</h3>
+    <!-- Advanced Pricing Section -->
+    <section class="pricing-section" id="pricing">
+        <div class="section-header">
+            <h2 class="section-title">Choose Your Premium Plan</h2>
+            <p class="section-subtitle">Flexible subscription plans tailored to your lifestyle and preferences</p>
+        </div>
 
-    <!-- Order Summary -->
-    <div class="row mb-4">
-      <div class="col-md-6">
-        <p><strong>Order ID:</strong> #DF12345</p>
-        <p><strong>Date:</strong> Sept 23, 2025</p>
-        <p><strong>Payment:</strong> Cash on Delivery</p>
-      </div>
-      <div class="col-md-6 text-md-end">
-        <span class="badge bg-success status-badge">Shipped</span>
-        <p><strong>Shipping Address:</strong><br> Amaan Ullah<br>Street 123, Rawalpindi, Pakistan</p>
-      </div>
-    </div>
+        <div class="pricing-container">
+            <!-- Basic Plan -->
+            <div class="pricing-card floating-element">
+                <div class="pricing-header">
+                    <h3 class="plan-name">Essentials</h3>
+                    <div class="plan-price">₹1,299<span>/month</span></div>
+                    <p class="plan-description">Perfect for individuals</p>
+                </div>
+                <ul class="plan-features">
+                    <li><i class="fas fa-check"></i> 5 Premium Dry Fruits (600g)</li>
+                    <li><i class="fas fa-check"></i> Free Standard Delivery</li>
+                    <li><i class="fas fa-check"></i> Basic Customization</li>
+                    <li><i class="fas fa-check"></i> Monthly Health Tips</li>
+                    <li><i class="fas fa-check"></i> Digital Recipe Book</li>
+                </ul>
+                <button class="btn btn-primary" onclick="selectPlan('essentials')">
+                    <i class="fas fa-shopping-cart"></i>
+                    Select Plan
+                </button>
+            </div>
 
-    <!-- Tracking -->
-    <h5 class="fw-bold mb-2">Order Tracking</h5>
-    <div class="progress mb-3">
-      <div class="progress-bar bg-success" style="width: 70%"></div>
-    </div>
-    <div class="d-flex justify-content-between small text-muted mb-4">
-      <span>Placed</span>
-      <span>Packed</span>
-      <span>Shipped</span>
-      <span>Delivered</span>
-    </div>
+            <!-- Featured Plan -->
+            <div class="pricing-card featured">
+                <div class="pricing-badge">MOST POPULAR</div>
+                <div class="pricing-header">
+                    <h3 class="plan-name">Premium</h3>
+                    <div class="plan-price">₹2,499<span>/month</span></div>
+                    <p class="plan-description">Ideal for health enthusiasts</p>
+                </div>
+                <ul class="plan-features">
+                    <li><i class="fas fa-check"></i> 8 Premium Dry Fruits (1kg)</li>
+                    <li><i class="fas fa-check"></i> Express Delivery</li>
+                    <li><i class="fas fa-check"></i> Full Customization</li>
+                    <li><i class="fas fa-check"></i> Priority Support</li>
+                    <li><i class="fas fa-check"></i> Seasonal Surprises</li>
+                    <li><i class="fas fa-check"></i> Health Consultation</li>
+                    <li><i class="fas fa-check"></i> 20% Discount on Shop</li>
+                </ul>
+                <button class="btn btn-primary" onclick="selectPlan('premium')">
+                    <i class="fas fa-crown"></i>
+                    Select Premium
+                </button>
+            </div>
 
-    <!-- Ordered Items -->
-    <h5 class="fw-bold mb-3">Ordered Items</h5>
-    <div class="table-responsive">
-      <table class="table align-middle">
-        <thead class="table-light">
-          <tr>
-            <th>Product</th>
-            <th>Qty</th>
-            <th>Price</th>
-            <th>Subtotal</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><img src="https://via.placeholder.com/60" class="rounded me-2"> Almonds 1kg</td>
-            <td>2</td>
-            <td>Rs. 1200</td>
-            <td>Rs. 2400</td>
-          </tr>
-          <tr>
-            <td><img src="https://via.placeholder.com/60" class="rounded me-2"> Cashews 500g</td>
-            <td>1</td>
-            <td>Rs. 950</td>
-            <td>Rs. 950</td>
-          </tr>
-        </tbody>
-        <tfoot>
-          <tr>
-            <td colspan="3" class="text-end fw-bold">Total</td>
-            <td class="fw-bold">Rs. 3350</td>
-          </tr>
-        </tfoot>
-      </table>
-    </div>
+            <!-- Family Plan -->
+            <div class="pricing-card floating-element" style="animation-delay: 0.5s;">
+                <div class="pricing-header">
+                    <h3 class="plan-name">Family Elite</h3>
+                    <div class="plan-price">₹3,999<span>/month</span></div>
+                    <p class="plan-description">For the whole family</p>
+                </div>
+                <ul class="plan-features">
+                    <li><i class="fas fa-check"></i> 12 Premium Dry Fruits (2kg)</li>
+                    <li><i class="fas fa-check"></i> Free Express Delivery</li>
+                    <li><i class="fas fa-check"></i> Ultimate Customization</li>
+                    <li><i class="fas fa-check"></i> 24/7 Premium Support</li>
+                    <li><i class="fas fa-check"></i> Monthly Gourmet Add-ons</li>
+                    <li><i class="fas fa-check"></i> Family Nutrition Plan</li>
+                    <li><i class="fas fa-check"></i> 30% Discount on Shop</li>
+                </ul>
+                <button class="btn btn-primary" onclick="selectPlan('family')">
+                    <i class="fas fa-users"></i>
+                    Select Family
+                </button>
+            </div>
+        </div>
 
-    <!-- Support -->
-    <div class="mt-4">
-      <p>Need help with your order?</p>
-      <a href="#" class="btn btn-outline-dark">Contact Support</a>
-    </div>
-  </div>
-</div>
+        <!-- Customization Panel -->
+        <div class="customization-panel">
+            <h3 class="customization-title">Customize Your Subscription</h3>
+            <div class="customization-options">
+                <div class="option-group">
+                    <label class="option-label">Delivery Frequency</label>
+                    <select class="option-select" id="frequency">
+                        <option value="monthly">Monthly</option>
+                        <option value="biweekly">Every 2 Weeks</option>
+                        <option value="weekly">Weekly</option>
+                    </select>
+                </div>
+                
+                <div class="option-group">
+                    <label class="option-label">Box Size</label>
+                    <select class="option-select" id="boxSize">
+                        <option value="small">Small (500g)</option>
+                        <option value="medium" selected>Medium (1kg)</option>
+                        <option value="large">Large (2kg)</option>
+                    </select>
+                </div>
+                
+                <div class="option-group">
+                    <label class="option-label">Preferred Fruits</label>
+                    <select class="option-select" id="preferences">
+                        <option value="mixed">Mixed Selection</option>
+                        <option value="nuts">Nuts Only</option>
+                        <option value="dryfruits">Dry Fruits Only</option>
+                        <option value="seeds">Seeds & Nuts</option>
+                    </select>
+                </div>
+            </div>
+        </div>
 
-<!-- FOOTER -->
-<div class="footer text-center">
-  <p class="mb-1">&copy; 2025 DryFruit Store. All rights reserved.</p>
-  <a href="#">Privacy Policy</a> | <a href="#">Terms & Conditions</a>
-</div>
+        <!-- Delivery Calendar -->
+        <div class="delivery-calendar">
+            <div class="calendar-header">
+                <h3>Select Your Delivery Date</h3>
+                <div class="calendar-nav">
+                    <button id="prevMonth"><i class="fas fa-chevron-left"></i></button>
+                    <span id="currentMonth">September 2024</span>
+                    <button id="nextMonth"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+            <div class="calendar-grid" id="calendar">
+                <!-- Calendar will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Advanced JavaScript for interactive features
+        class AdvancedSubscription {
+            constructor() {
+                this.selectedPlan = null;
+                this.selectedDate = null;
+                this.currentMonth = new Date().getMonth();
+                this.currentYear = new Date().getFullYear();
+                this.init();
+            }
+
+            init() {
+                this.setupHeaderScroll();
+                this.setupCalendar();
+                this.setupCustomization();
+                this.setupAnimations();
+            }
+
+            setupHeaderScroll() {
+                const header = document.getElementById('header');
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 100) {
+                        header.classList.add('header-scrolled');
+                    } else {
+                        header.classList.remove('header-scrolled');
+                    }
+                });
+            }
+
+            setupCalendar() {
+                this.renderCalendar();
+                document.getElementById('prevMonth').addEventListener('click', () => this.changeMonth(-1));
+                document.getElementById('nextMonth').addEventListener('click', () => this.changeMonth(1));
+            }
+
+            renderCalendar() {
+                const calendar = document.getElementById('calendar');
+                const monthNames = ["January", "February", "March", "April", "May", "June",
+                    "July", "August", "September", "October", "November", "December"];
+                
+                document.getElementById('currentMonth').textContent = 
+                    `${monthNames[this.currentMonth]} ${this.currentYear}`;
+
+                // Simplified calendar rendering
+                calendar.innerHTML = '';
+                const daysInMonth = new Date(this.currentYear, this.currentMonth + 1, 0).getDate();
+                
+                for (let i = 1; i <= daysInMonth; i++) {
+                    const dayElement = document.createElement('div');
+                    dayElement.className = 'calendar-day';
+                    dayElement.textContent = i;
+                    dayElement.addEventListener('click', () => this.selectDate(i));
+                    calendar.appendChild(dayElement);
+                }
+            }
+
+            changeMonth(direction) {
+                this.currentMonth += direction;
+                if (this.currentMonth < 0) {
+                    this.currentMonth = 11;
+                    this.currentYear--;
+                } else if (this.currentMonth > 11) {
+                    this.currentMonth = 0;
+                    this.currentYear++;
+                }
+                this.renderCalendar();
+            }
+
+            selectDate(day) {
+                document.querySelectorAll('.calendar-day').forEach(d => d.classList.remove('selected'));
+                event.target.classList.add('selected');
+                this.selectedDate = new Date(this.currentYear, this.currentMonth, day);
+                
+                // Show confirmation modal
+                this.showDateConfirmation();
+            }
+
+            showDateConfirmation() {
+                const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                const formattedDate = this.selectedDate.toLocaleDateString('en-US', options);
+                
+                if (confirm(`Schedule delivery for ${formattedDate}?`)) {
+                    this.showNotification('Delivery date scheduled successfully!', 'success');
+                }
+            }
+
+            setupCustomization() {
+                const options = document.querySelectorAll('.option-select');
+                options.forEach(option => {
+                    option.addEventListener('change', (e) => {
+                        this.updatePricing();
+                    });
+                });
+            }
+
+            updatePricing() {
+                // Advanced pricing calculation based on customization
+                const frequency = document.getElementById('frequency').value;
+                const boxSize = document.getElementById('boxSize').value;
+                
+                // Simulate price updates
+                this.showNotification('Plan updated with your preferences!', 'info');
+            }
+
+            setupAnimations() {
+                // Intersection Observer for scroll animations
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                        }
+                    });
+                }, { threshold: 0.1 });
+
+                document.querySelectorAll('.pricing-card').forEach(card => {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(30px)';
+                    card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                    observer.observe(card);
+                });
+            }
+
+            showNotification(message, type) {
+                // Create advanced notification
+                const notification = document.createElement('div');
+                notification.style.cssText = `
+                    position: fixed;
+                    top: 100px;
+                    right: 20px;
+                    padding: 15px 20px;
+                    background: ${type === 'success' ? '#10b981' : type === 'error' ? '#ef4444' : '#3b82f6'};
+                    color: white;
+                    border-radius: 8px;
+                    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+                    z-index: 10000;
+                    transform: translateX(100%);
+                    transition: transform 0.3s ease;
+                `;
+                notification.textContent = message;
+                document.body.appendChild(notification);
+
+                setTimeout(() => notification.style.transform = 'translateX(0)', 100);
+                setTimeout(() => {
+                    notification.style.transform = 'translateX(100%)';
+                    setTimeout(() => notification.remove(), 300);
+                }, 3000);
+            }
+        }
+
+        // Plan selection function
+        function selectPlan(plan) {
+            const subscription = new AdvancedSubscription();
+            const planNames = {
+                'essentials': 'Essentials Plan (₹1,299/month)',
+                'premium': 'Premium Plan (₹2,499/month)',
+                'family': 'Family Elite Plan (₹3,999/month)'
+            };
+
+            subscription.showNotification(`Selected ${planNames[plan]}! Customize your delivery preferences.`, 'success');
+            
+            // Smooth scroll to customization
+            document.querySelector('.customization-panel').scrollIntoView({
+                behavior: 'smooth',
+                block: 'center'
+            });
+        }
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            new AdvancedSubscription();
+            
+            // Add floating animation to elements
+            const floatingElements = document.querySelectorAll('.floating-element');
+            floatingElements.forEach((el, index) => {
+                el.style.animationDelay = `${index * 0.2}s`;
+            });
+        });
+
+        // Advanced error handling and performance monitoring
+        window.addEventListener('error', (e) => {
+            console.error('Application error:', e.error);
+        });
+
+        // Service Worker registration for PWA capabilities
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js').catch(console.error);
+        }
+    </script>
 </body>
 </html>

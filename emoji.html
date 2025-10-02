@@ -1,119 +1,252 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Epic Social Icons</title>
-  <style>
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      background: linear-gradient(135deg, #1e1e2f, #111);
-      color: white;
-      font-family: Arial, sans-serif;
-      overflow: hidden;
-    }
-
-    .social-icons {
-      display: flex;
-      gap: 30px;
-    }
-
-    .social-icons a {
-      font-size: 2.5rem;
-      text-decoration: none;
-      color: white;
-      cursor: pointer;
-      position: relative;
-      transition: transform 0.2s;
-    }
-
-    .social-icons a:hover {
-      transform: scale(1.2);
-    }
-
-    /* Ripple effect */
-    .ripple {
-      position: absolute;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.3);
-      transform: scale(0);
-      animation: rippleAnim 0.6s linear forwards;
-      pointer-events: none;
-    }
-
-    @keyframes rippleAnim {
-      to {
-        transform: scale(3);
-        opacity: 0;
-      }
-    }
-
-    /* Particle style */
-    .particle {
-      position: absolute;
-      font-size: 1.2rem;
-      animation: fly 1s ease-out forwards;
-      pointer-events: none;
-    }
-
-    @keyframes fly {
-      to {
-        transform: translate(var(--x), var(--y)) scale(0.5);
-        opacity: 0;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Cards with Favorite Icon</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .product-card {
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+            height: 100%;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .card-body {
+            padding: 1.5rem;
+        }
+        
+        .card-body h5 {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .card-body p {
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+        
+        .favorite-icon {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: white;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            opacity: 0;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .product-card:hover .favorite-icon {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .favorite-icon i {
+            color: #dc3545;
+            font-size: 1.2rem;
+        }
+        
+        .favorite-icon.active i {
+            color: #dc3545;
+        }
+        
+        .favorite-icon:hover {
+            transform: scale(1.1);
+        }
+        
+        .btn-success {
+            background-color: #28a745;
+            border-color: #28a745;
+            padding: 0.5rem 1.5rem;
+            font-weight: 500;
+        }
+        
+        .btn-success:hover {
+            background-color: #218838;
+            border-color: #1e7e34;
+        }
+    </style>
 </head>
 <body>
+    <section class="container my-5">
+        <h2 class="text-center mb-4 fw-bold">Our Best Sellers</h2>
+        <div class="row g-4">
+            <div class="col-md-4 col-sm-6">
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/300x200/FFD700/000000?text=Almonds" alt="Almonds">
+                    <div class="card-body">
+                        <h5>Almonds</h5>
+                        <p>Rich in protein and energy.</p>
+                        <p><strong>Price:</strong> PKR 1200</p>
+                        <button class="btn btn-success rounded-pill add-to-cart" 
+                                data-name="Almonds" 
+                                data-price="1200" 
+                                data-image="Backdround/badam.png">
+                            Order Now
+                        </button>
+                    </div>
+                    <div class="favorite-icon" data-product="Almonds">
+                        <i class="far fa-heart"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/300x200/FFA500/000000?text=Cashews" alt="Cashews">
+                    <div class="card-body">
+                        <h5>Cashews</h5>
+                        <p>Crispy and full of healthy fats.</p>
+                        <p><strong>Price:</strong> PKR 1500</p>
+                        <button class="btn btn-success rounded-pill add-to-cart" 
+                                data-name="Cashews" 
+                                data-price="1500" 
+                                data-image="Backdround/kaju.png">
+                            Order Now
+                        </button>
+                    </div>
+                    <div class="favorite-icon" data-product="Cashews">
+                        <i class="far fa-heart"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/300x200/90EE90/000000?text=Pistachios" alt="Pistachios">
+                    <div class="card-body">
+                        <h5>Pistachios</h5>
+                        <p>Perfect snack for every occasion.</p>
+                        <p><strong>Price:</strong> PKR 1800</p>
+                        <button class="btn btn-success rounded-pill add-to-cart" 
+                                data-name="Pistachios" 
+                                data-price="1800" 
+                                data-image="../Backdround/targa.png">
+                            Order Now
+                        </button>
+                    </div>
+                    <div class="favorite-icon" data-product="Pistachios">
+                        <i class="far fa-heart"></i>
+                    </div>
+                </div>
+            </div>
+            <!-- Additional products -->
+            <div class="col-md-4 col-sm-6">
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/300x200/FFB6C1/000000?text=Walnuts" alt="Walnuts">
+                    <div class="card-body">
+                        <h5>Walnuts</h5>
+                        <p>Rich in omega-3 fatty acids.</p>
+                        <p><strong>Price:</strong> PKR 1000</p>
+                        <button class="btn btn-success rounded-pill add-to-cart" 
+                                data-name="Walnuts" 
+                                data-price="1000" 
+                                data-image="Backdround/walnuts.png">
+                            Order Now
+                        </button>
+                    </div>
+                    <div class="favorite-icon" data-product="Walnuts">
+                        <i class="far fa-heart"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/300x200/DDA0DD/000000?text=Raisins" alt="Raisins">
+                    <div class="card-body">
+                        <h5>Raisins</h5>
+                        <p>Natural sweetness for your snacks.</p>
+                        <p><strong>Price:</strong> PKR 800</p>
+                        <button class="btn btn-success rounded-pill add-to-cart" 
+                                data-name="Raisins" 
+                                data-price="800" 
+                                data-image="Backdround/raisins.png">
+                            Order Now
+                        </button>
+                    </div>
+                    <div class="favorite-icon" data-product="Raisins">
+                        <i class="far fa-heart"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="product-card">
+                    <img src="../Backdround/badam.png" alt="Dates">
+                    <div class="card-body">
+                        <h5>Dates</h5>
+                        <p>Energy-packed natural sweetener.</p>
+                        <p><strong>Price:</strong> PKR 900</p>
+                        <button class="btn btn-success rounded-pill add-to-cart" 
+                                data-name="Dates" 
+                                data-price="900" 
+                                data-image="Backdround/dates.png">
+                            Order Now
+                        </button>
+                    </div>
+                    <div class="favorite-icon" data-product="Dates">
+                        <i class="far fa-heart"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <div class="social-icons">
-    <a href="https://facebook.com" target="_blank" onclick="effect(event, this, '✨')">👍</a>
-    <a href="https://twitter.com" target="_blank" onclick="effect(event, this, '💫')">🐦</a>
-    <a href="https://instagram.com" target="_blank" onclick="effect(event, this, '🔥')">📸</a>
-    <a href="https://linkedin.com" target="_blank" onclick="effect(event, this, '🌟')">💼</a>
-  </div>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Favorite icon functionality
+        document.querySelectorAll('.favorite-icon').forEach(icon => {
+            icon.addEventListener('click', function() {
+                this.classList.toggle('active');
+                const heartIcon = this.querySelector('i');
+                
+                if (this.classList.contains('active')) {
+                    heartIcon.classList.remove('far');
+                    heartIcon.classList.add('fas');
+                    // Here you could save to localStorage or send to server
+                    console.log(`Added ${this.dataset.product} to favorites`);
+                } else {
+                    heartIcon.classList.remove('fas');
+                    heartIcon.classList.add('far');
+                    // Here you could remove from favorites
+                    console.log(`Removed ${this.dataset.product} from favorites`);
+                }
+            });
+        });
 
-  <script>
-    function effect(e, element, particleEmoji) {
-      // Ripple
-      const ripple = document.createElement("span");
-      ripple.classList.add("ripple");
-      ripple.style.width = ripple.style.height = "60px";
-      ripple.style.left = "-15px";
-      ripple.style.top = "-15px";
-      element.appendChild(ripple);
-
-      setTimeout(() => ripple.remove(), 600);
-
-      // Particles
-      for (let i = 0; i < 10; i++) {
-        const particle = document.createElement("span");
-        particle.classList.add("particle");
-        particle.textContent = particleEmoji;
-
-        // Random spread
-        const x = `${Math.random() * 150 - 75}px`;
-        const y = `${Math.random() * -150}px`;
-
-        particle.style.setProperty("--x", x);
-        particle.style.setProperty("--y", y);
-
-        element.appendChild(particle);
-
-        setTimeout(() => particle.remove(), 1000);
-      }
-
-      // Page open delay (effect visible + new tab open)
-      setTimeout(() => {
-        window.open(element.href, "_blank");
-      }, 200); 
-      
-      e.preventDefault(); // normal instant navigation stop
-    }
-  </script>
-
+        // Add to cart functionality (basic example)
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function() {
+                const productName = this.dataset.name;
+                const productPrice = this.dataset.price;
+                
+                // Here you would normally add to cart
+                alert(`Added ${productName} to cart! Price: PKR ${productPrice}`);
+            });
+        });
+    </script>
 </body>
 </html>
