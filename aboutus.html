@@ -1,80 +1,826 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us - Dry Fruits</title>
-  <link rel="stylesheet" href="about.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Organic Apricots</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="Home.css">
+    
+    <style>
+        :root {
+            --primary: #135E4B;
+            --primary-dark: #0c3d30;
+            --primary-light: #4CB572;
+            --light: #A1D8B5;
+            --dark: #CCDCDB;
+            --white: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* ===== TOP HEADER ===== */
+        .top-header {
+            background: var(--primary);
+            color: var(--white);
+            padding: 8px 0;
+            font-size: 0.9rem;
+        }
+        
+        /* ===== MAIN HEADER ===== */
+        .main-header {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.8rem;
+        }
+        
+        .logo-icon {
+            background: var(--primary);
+            color: var(--white);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            font-size: 1.5rem;
+        }
+        
+        /* ===== BOTTOM NAVBAR ===== */
+        .bottom-navbar {
+            background: var(--primary);
+            padding: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .bottom-navbar .navbar-nav .nav-link {
+            color: var(--white) !important;
+            font-weight: 500;
+            padding: 15px 20px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        /* Diagonal Border Hover Effect */
+        .bottom-navbar .nav-link::before,
+        .bottom-navbar .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            transition: all 0.4s ease;
+            z-index: -1;
+        }
+        
+        .bottom-navbar .nav-link::before {
+            top: 0;
+            left: 0;
+            border-top: 2px solid transparent;
+            border-left: 2px solid transparent;
+        }
+        
+        .bottom-navbar .nav-link::after {
+            bottom: 0;
+            right: 0;
+            border-bottom: 2px solid transparent;
+            border-right: 2px solid transparent;
+        }
+        
+        .bottom-navbar .nav-link:hover::before {
+            width: 100%;
+            height: 100%;
+            border-top-color: var(--light);
+            border-left-color: var(--light);
+        }
+        
+        .bottom-navbar .nav-link:hover::after {
+            width: 100%;
+            height: 100%;
+            border-bottom-color: var(--light);
+            border-right-color: var(--light);
+        }
+        
+        .bottom-navbar .nav-link:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        /* ===== ABOUT US HERO SECTION ===== */
+        .about-hero {
+            background: linear-gradient(rgba(19, 94, 75, 0.8), rgba(19, 94, 75, 0.9)), url('https://images.unsplash.com/photo-1615485500606-f6d0e5de3045?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .about-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .about-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* ===== ABOUT CONTENT SECTION ===== */
+        .about-content {
+            padding: 80px 0;
+        }
+        
+        .about-text h2 {
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .about-text h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: var(--primary-light);
+            border-radius: 2px;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .about-image img {
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* ===== TEAM SECTION ===== */
+        .team-section {
+            padding: 80px 0;
+            background: #f1f8f5;
+        }
+        
+        .team-section h2 {
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 50px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .team-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary-light);
+            border-radius: 2px;
+        }
+        
+        /* Rotating Team Circle */
+        .team-circle-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 0;
+        }
+        
+        .team-circle-container {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            margin: 0 auto;
+        }
+        
+        .team-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 150px;
+            height: 150px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 700;
+            font-size: 1.2rem;
+            z-index: 10;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .team-member {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.5s ease;
+            cursor: pointer;
+            z-index: 5;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .team-member img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .team-member:hover img {
+            transform: scale(1.1);
+        }
+        
+        .team-member-info {
+            position: absolute;
+            bottom: -80px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--white);
+            padding: 10px 15px;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            width: 180px;
+            text-align: center;
+            z-index: 20;
+        }
+        
+        .team-member:hover .team-member-info {
+            opacity: 1;
+            visibility: visible;
+            bottom: -70px;
+        }
+        
+        .team-member-info h5 {
+            margin: 0;
+            font-size: 1rem;
+            color: var(--primary);
+        }
+        
+        .team-member-info p {
+            margin: 0;
+            font-size: 0.8rem;
+            color: var(--gray);
+        }
+        
+        /* Auto rotation indicator */
+        .auto-rotation-indicator {
+            text-align: center;
+            margin-top: 20px;
+            color: var(--primary);
+            font-weight: 500;
+        }
+        
+        .auto-rotation-indicator i {
+            margin-right: 8px;
+            color: var(--primary-light);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 0.6; }
+            50% { opacity: 1; }
+            100% { opacity: 0.6; }
+        }
+        
+        /* ===== VALUES SECTION ===== */
+        .values-section {
+            padding: 80px 0;
+        }
+        
+        .value-card {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--primary-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+            color: var(--white);
+        }
+        
+        .value-card h4 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--primary);
+            color: var(--white);
+            padding: 50px 0 20px;
+            margin-top: 50px;
+        }
+        
+        .footer h4.logo-text {
+            font-weight: bold;
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+        
+        .footer h5 {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .footer p, 
+        .footer a {
+            font-size: 14px;
+            color: #e2e2e2;
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            color: var(--white);
+            padding-left: 5px;
+            transition: 0.3s ease;
+        }
+        
+        .footer .social-icons a {
+            display: inline-block;
+            margin-right: 10px;
+            font-size: 18px;
+            background: var(--primary-light);
+            color: var(--white);
+            padding: 8px;
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+        
+        .footer .social-icons a:hover {
+            background: var(--primary-dark);
+            transform: scale(1.1);
+        }
+        
+        /* ===== RESPONSIVE STYLING ===== */
+        @media (max-width: 992px) {
+            .team-circle-container {
+                width: 400px;
+                height: 400px;
+            }
+            
+            .team-member {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .team-center {
+                width: 120px;
+                height: 120px;
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .about-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .team-circle-container {
+                width: 300px;
+                height: 300px;
+            }
+            
+            .team-member {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .team-center {
+                width: 100px;
+                height: 100px;
+                font-size: 0.9rem;
+            }
+            
+            .team-member-info {
+                width: 150px;
+                padding: 8px 12px;
+            }
+            
+            .team-member-info h5 {
+                font-size: 0.9rem;
+            }
+            
+            .team-member-info p {
+                font-size: 0.7rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .about-hero {
+                padding: 60px 0;
+            }
+            
+            .about-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .team-circle-container {
+                width: 250px;
+                height: 250px;
+            }
+            
+            .team-member {
+                width: 70px;
+                height: 70px;
+            }
+            
+            .team-center {
+                width: 80px;
+                height: 80px;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
 </head>
 <body>
-
-  <!-- Header -->
-  <header class="about-header text-center">
-    <div class="overlay">
-      <h1>About Us</h1>
-      <p>Discover our journey, our passion, and the people behind Dry Fruits</p>
-    </div>
-  </header>
-
-  <!-- Mission Section -->
-  <section class="mission-section container py-5 text-center">
-    <h2 class="mb-4">Our Mission</h2>
-    <p class="lead">
-      To deliver the finest quality dry fruits with love, care, and freshness, ensuring healthy choices
-      for our customers worldwide.
-    </p>
-  </section>
-
-  <!-- Team Section -->
-  <section class="team-section py-5">
-    <div class="container">
-      <h2 class="text-center mb-5">Meet Our Team</h2>
-      <div class="row g-4 justify-content-center">
-
-        <!-- Founder -->
-        <div class="col-md-5">
-          <div class="team-card text-center p-4">
-            <img src="https://via.placeholder.com/200" class="team-img rounded-circle mb-3" alt="Founder">
-            <h4>Zeeshan Haider</h4>
-            <p class="role">Founder & CEO</p>
-            <p class="text-muted">
-              Zeeshan started Dry Fruits with a vision to promote healthy living through natural, premium-quality dry fruits.
-            </p>
-            <div class="social-links">
-              <a href="#"><i class="fab fa-facebook"></i></a>
-              <a href="#"><i class="fab fa-twitter"></i></a>
-              <a href="#"><i class="fab fa-linkedin"></i></a>
+    <!-- Top Header -->
+    <div class="top-header">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <i class="fas fa-phone me-2"></i> +1 234 567 8900
+                    <i class="fas fa-envelope ms-3 me-2"></i> info@organicapricots.com
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <i class="fas fa-truck me-2"></i> Free Shipping on Orders Over 250 PKR
+                </div>
             </div>
-          </div>
         </div>
-
-        <!-- Co-Founder -->
-        <div class="col-md-5">
-          <div class="team-card text-center p-4">
-            <img src="https://via.placeholder.com/200" class="team-img rounded-circle mb-3" alt="Co-Founder">
-            <h4>Amaan Ullah</h4>
-            <p class="role">Co-Founder & COO</p>
-            <p class="text-muted">
-              Amaan focuses on operations, customer experience, and ensuring every order is delivered with care.
-            </p>
-            <div class="social-links">
-              <a href="#"><i class="fab fa-instagram"></i></a>
-              <a href="#"><i class="fab fa-linkedin"></i></a>
-              <a href="#"><i class="fab fa-youtube"></i></a>
-            </div>
-          </div>
-        </div>
-
-      </div>
     </div>
-  </section>
+    
+    <!-- Main Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-4">
+                    <a href="index.html" class="logo">
+                        <div class="logo-icon">OA</div>
+                        <span>Organic Apricots</span>
+                    </a>
+                </div>
+                <div class="col-md-5">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search products...">
+                        <button class="btn btn-outline-success" type="button">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-3 text-end">
+                    <div class="account-section">
+                        <a id="profile" href="login.html" class="account-btn">
+                            <i class="fas fa-user me-1"></i> 
+                            <span>Sign Up / Login</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Bottom Navbar -->
+    <nav class="navbar navbar-expand-lg bottom-navbar">
+        <div class="container-fluid">
+            <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse"
+                data-bs-target="#bottomNavbarContent" aria-controls="bottomNavbarContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-  <!-- Footer -->
-  <footer class="about-footer text-center py-4">
-    <p>&copy; 2025 Dry Fruits. All rights reserved.</p>
-  </footer>
+            <div class="collapse navbar-collapse" id="bottomNavbarContent">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="Home.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="product.html">Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="deal.html">Deals</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="aboutus.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contuctUs.html">Contact</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" 
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Categories
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Almonds</a></li>
+                            <li><a class="dropdown-item" href="#">Cashews</a></li>
+                            <li><a class="dropdown-item" href="#">Walnuts</a></li>
+                            <li><a class="dropdown-item" href="#">Pistachios</a></li>
+                            <li><a class="dropdown-item" href="#">Raisins</a></li>
+                        </ul>
+                    </li>
+                </ul>
 
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="cart.html">
+                            <i class="fas fa-shopping-cart me-1"></i>Your Cart
+                            <span class="cart-badge badge rounded-pill bg-danger">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- About Us Hero Section -->
+    <section class="about-hero">
+        <div class="container">
+            <h1>About Organic Apricots</h1>
+            <p>We are passionate about providing the highest quality organic dry fruits to health-conscious consumers around the world.</p>
+        </div>
+    </section>
+
+    <!-- About Content Section -->
+    <section class="about-content">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <div class="about-text">
+                        <h2>Our Story</h2>
+                        <p>Founded in 2010, Organic Apricots began as a small family business with a simple mission: to provide fresh, organic, and sustainably sourced dry fruits to our local community.</p>
+                        <p>Over the years, we've grown into a trusted supplier of premium dry fruits, but our commitment to quality and ethical sourcing remains unchanged.</p>
+                        <p>We work directly with farmers who share our values, ensuring fair prices for their produce while maintaining the highest standards of organic farming.</p>
+                        <p>Today, we serve customers across the country, delivering nature's finest nutrition directly to your doorstep.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="about-image">
+                        <img src="image/sarkar.jpg" alt="Our Story" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <h2>Meet Our Team</h2>
+            
+            <div class="team-circle-wrapper">
+                <div class="team-circle-container">
+                    <div class="team-center">Our Team</div>
+                    
+                    <!-- Team Members will be positioned by JavaScript -->
+                    <div class="team-member" data-index="0">
+                        <img src="image/amaan.jpg" alt="Team Member">
+                        <div class="team-member-info">
+                            <h5>John Smith</h5>
+                            <p>Founder & CEO</p>
+                        </div>
+                    </div>
+                    
+                    <div class="team-member" data-index="1">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Team Member">
+                        <div class="team-member-info">
+                            <h5>Sarah Johnson</h5>
+                            <p>Head of Operations</p>
+                        </div>
+                    </div>
+                    
+                    <div class="team-member" data-index="2">
+                        <img src="image/bashu.jpg" alt="Team Member">
+                        <div class="team-member-info">
+                            <h5>Michael Brown</h5>
+                            <p>Marketing Director</p>
+                        </div>
+                    </div>
+                    
+                    <div class="team-member" data-index="3">
+                        <img src="image/uk.jpg" alt="Team Member">
+                        <div class="team-member-info">
+                            <h5>Emily Davis</h5>
+                            <p>Quality Control Manager</p>
+                        </div>
+                    </div>
+                    
+                    <div class="team-member" data-index="4">
+                        <img src="image/sarkar.jpg" alt="Team Member">
+                        <div class="team-member-info">
+                            <h5>Robert Wilson</h5>
+                            <p>Supply Chain Manager</p>
+                        </div>
+                    </div>
+                    
+                    <div class="team-member" data-index="5">
+                        <img src="https://randomuser.me/api/portraits/women/26.jpg" alt="Team Member">
+                        <div class="team-member-info">
+                            <h5>Lisa Anderson</h5>
+                            <p>Customer Relations</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- <div class="auto-rotation-indicator">
+                <i class="fas fa-sync-alt"></i> Team members rotate automatically
+            </div> -->
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section">
+        <div class="container">
+            <h2 class="text-center mb-5" style="color: var(--primary);">Our Values</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h4>Organic Quality</h4>
+                        <p>We source only 100% organic dry fruits, free from pesticides and harmful chemicals.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h4>Fair Trade</h4>
+                        <p>We believe in fair compensation for farmers and ethical business practices.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-truck"></i>
+                        </div>
+                        <h4>Fresh Delivery</h4>
+                        <p>We ensure fast delivery to maintain the freshness and quality of our products.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row gy-4">
+                <div class="col-md-4 col-sm-6">
+                    <h4 class="logo-text"><i class="fa-solid fa-seedling me-2"></i>Organic Apricots</h4>
+                    <p>Premium quality dry fruits delivered fresh to your doorstep.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-6">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="Home.html">Home</a></li>
+                        <li><a href="product.html">Products</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="aboutus.html">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <h5>Customer Service</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Shipping & Returns</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <h5>Newsletter</h5>
+                    <p>Subscribe to get updates on discounts and new arrivals.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Enter your email" required>
+                        <button type="submit"><i class="fa fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center">
+                <p class="mb-0">&copy; 2025 Organic Apricots. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Team Rotation Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const teamMembers = document.querySelectorAll('.team-member');
+            const teamCenter = document.querySelector('.team-center');
+            
+            let rotationAngle = 0;
+            let autoRotateInterval = null;
+            
+            // Position team members in a circle
+            function positionTeamMembers() {
+                const radius = 180; // Distance from center
+                const totalMembers = teamMembers.length;
+                
+                teamMembers.forEach((member, index) => {
+                    const angle = (index * (360 / totalMembers) + rotationAngle) * (Math.PI / 180);
+                    const x = radius * Math.cos(angle);
+                    const y = radius * Math.sin(angle);
+                    
+                    member.style.transform = `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`;
+                });
+            }
+            
+            // Start auto rotation
+            function startAutoRotation() {
+                autoRotateInterval = setInterval(() => {
+                    rotationAngle += 0.5; // Slower rotation for better visibility
+                    positionTeamMembers();
+                }, 50);
+            }
+            
+            // Initialize team member positions and start auto rotation
+            positionTeamMembers();
+            startAutoRotation();
+            
+            // Add click effect to team center
+            teamCenter.addEventListener('click', () => {
+                teamCenter.style.transform = 'translate(-50%, -50%) scale(0.9)';
+                setTimeout(() => {
+                    teamCenter.style.transform = 'translate(-50%, -50%) scale(1)';
+                }, 200);
+            });
+            
+            // Pause rotation on hover for better user experience
+            teamMembers.forEach(member => {
+                member.addEventListener('mouseenter', () => {
+                    clearInterval(autoRotateInterval);
+                });
+                
+                member.addEventListener('mouseleave', () => {
+                    startAutoRotation();
+                });
+            });
+        });
+    </script>
 </body>
 </html>

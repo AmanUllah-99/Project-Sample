@@ -1,0 +1,472 @@
+/* Color Palette based on Organic Apricots theme */
+:root {
+    --organic-green: #2E7D32;       /* Primary Dark Green */
+    --organic-light-green: #4CAF50; /* Light Green/Success */
+    --organic-brown: #795548;       /* Earth Tone - Accent for text/links */
+    --organic-yellow: #FF9800;      /* Orange/Yellow - Highlight/Price */
+    --body-bg: #f8f9fa;
+    --text-dark: #2c3e50;
+    --text-muted: #7f8c8d;
+    --card-bg: #ffffff;
+}
+
+/* Base Styles */
+body {
+    font-family: 'Inter', sans-serif; /* A modern, clean font */
+    background-color: var(--body-bg);
+    color: var(--text-dark);
+}
+
+a {
+    color: var(--organic-brown);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+a:hover {
+    color: var(--organic-green);
+}
+
+/* ===================================== */
+/* ===== TOP HEADER (Info Bar) ===== */
+/* ===================================== */
+
+.top-header {
+    background: var(--organic-green);
+    color: white;
+    font-size: 0.85rem;
+    padding: 8px 0;
+}
+
+.top-header i {
+    color: var(--organic-yellow);
+}
+
+/* ===================================== */
+/* ===== MAIN HEADER (Logo, Search, Account) ===== */
+/* ===================================== */
+
+.main-header {
+    background: var(--card-bg);
+    padding: 15px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+/* Logo Styling */
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--organic-green);
+    text-decoration: none;
+}
+
+.logo-icon {
+    background: var(--organic-yellow);
+    color: var(--text-dark);
+    width: 35px;
+    height: 35px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 8px;
+    font-size: 1rem;
+}
+
+/* Search Bar */
+.input-group input.form-control {
+    border: 1px solid var(--organic-green);
+    border-right: none;
+    box-shadow: none !important;
+}
+
+.input-group button {
+    background-color: var(--organic-green);
+    color: white;
+    border-color: var(--organic-green);
+    transition: background-color 0.3s;
+}
+
+.input-group button:hover {
+    background-color: var(--organic-light-green);
+    border-color: var(--organic-light-green);
+}
+
+/* Account/Dropdown Section */
+.account-section {
+    position: relative;
+    display: inline-block;
+}
+
+.account-btn {
+    color: var(--text-dark);
+    font-weight: 600;
+    padding: 10px 15px;
+    border-radius: 5px;
+    display: inline-flex;
+    align-items: center;
+    transition: background-color 0.3s;
+}
+
+.account-btn:hover {
+    background-color: #f1f1f1;
+}
+
+.account-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: var(--card-bg);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    min-width: 200px;
+    z-index: 1050;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity 0.3s, transform 0.3s;
+    padding: 10px 0;
+}
+
+.account-section:hover .account-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.account-dropdown a {
+    display: block;
+    padding: 8px 15px;
+    color: var(--text-dark);
+}
+
+.account-dropdown a:hover {
+    background-color: var(--body-bg);
+    color: var(--organic-green);
+}
+
+.dropdown-divider {
+    height: 1px;
+    margin: 5px 0;
+    overflow: hidden;
+    background-color: #e9ecef;
+}
+
+/* ===================================== */
+/* ===== BOTTOM NAVBAR (Navigation) ===== */
+/* ===================================== */
+
+.bottom-navbar {
+    background: var(--organic-green);
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.bottom-navbar.fixed-top {
+    /* Optional: Add a subtle shadow when fixed */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.bottom-navbar .nav-link {
+    color: white !important;
+    font-weight: 500;
+    margin: 0 5px;
+    padding: 12px 15px;
+    position: relative;
+    transition: color 0.3s;
+}
+
+.bottom-navbar .nav-link:hover {
+    color: var(--organic-yellow) !important;
+}
+
+/* Underline Effect for Nav Links */
+.bottom-navbar .nav-link::after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 3px;
+    background: var(--organic-yellow);
+    transition: width 0.3s;
+    margin: 3px auto 0;
+    border-radius: 2px;
+}
+
+.bottom-navbar .nav-link:hover::after,
+.bottom-navbar .nav-link.active::after {
+    width: 100%;
+}
+
+.bottom-navbar .dropdown-menu {
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 0; /* Align dropdown to navbar edge */
+}
+
+/* Cart Badge */
+.cart-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    font-size: 0.75rem;
+    padding: 0.35em 0.6em;
+}
+
+/* ===================================== */
+/* ===== HERO CAROUSEL ===== */
+/* ===================================== */
+
+.carousel-item img {
+    height: 500px;
+    object-fit: cover;
+    filter: brightness(0.7); /* Darken image for better text contrast */
+}
+
+.carousel-caption {
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    padding: 15px;
+    bottom: 20%;
+}
+
+.carousel-caption h5 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--organic-yellow);
+}
+
+.carousel-caption p {
+    font-size: 1.2rem;
+}
+
+/* ===================================== */
+/* ===== PRODUCT SECTION ===== */
+/* ===================================== */
+
+.product-card {
+    background: var(--card-bg);
+    border: 1px solid #f1f1f1;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+    height: 100%;
+    position: relative; /* For favorite icon */
+    text-align: center;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.product-card img {
+    height: 200px;
+    width: 100%;
+    object-fit: contain; /* Keep product images contained */
+    background-color: #fcfcfc;
+    padding: 15px;
+}
+
+.product-card .card-body {
+    padding: 20px;
+}
+
+.product-card h5 {
+    font-weight: 600;
+    color: var(--organic-green);
+    margin-bottom: 5px;
+}
+
+.product-card p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+.product-card strong {
+    color: var(--organic-yellow);
+    font-size: 1.1rem;
+}
+
+.product-card .btn-success {
+    background-color: var(--organic-green) !important;
+    border-color: var(--organic-green) !important;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.product-card .btn-success:hover {
+    background-color: var(--organic-light-green) !important;
+    border-color: var(--organic-light-green) !important;
+}
+
+/* Favorite Icon (NEW FEATURE STYLING) */
+.favorite-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: var(--text-muted);
+    font-size: 1.4rem;
+    cursor: pointer;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.favorite-icon:hover {
+    color: var(--error-color);
+    transform: scale(1.1);
+}
+
+.favorite-icon.active i {
+    color: #e74c3c; /* Red heart when favorited */
+    font-weight: 900;
+}
+
+/* ===================================== */
+/* ===== FOOTER ===== */
+/* ===================================== */
+
+.footer {
+    background-color: var(--text-dark);
+    color: white;
+    padding: 50px 0 20px;
+    font-size: 0.95rem;
+}
+
+.footer h4, .footer h5 {
+    color: var(--organic-yellow);
+    margin-bottom: 20px;
+}
+
+.footer .logo-text i {
+    color: var(--organic-light-green);
+}
+
+.footer ul {
+    padding-left: 0;
+}
+
+.footer a {
+    color: #ccc;
+    display: block;
+    padding: 3px 0;
+}
+
+.footer a:hover {
+    color: white;
+}
+
+/* Social Icons */
+.social-icons a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    margin-right: 10px;
+    color: white;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.social-icons a:hover {
+    background-color: var(--organic-light-green);
+}
+
+/* Newsletter Form */
+.newsletter-form {
+    display: flex;
+    margin-top: 10px;
+}
+
+.newsletter-form input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+}
+
+.newsletter-form button {
+    background: var(--organic-yellow);
+    color: var(--text-dark);
+    border: none;
+    padding: 10px 15px;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.newsletter-form button:hover {
+    background: var(--organic-light-green);
+    color: white;
+}
+
+/* ===================================== */
+/* ===== RESPONSIVE MEDIA QUERIES ===== */
+/* ===================================== */
+
+@media (max-width: 992px) {
+    .main-header .col-md-5 {
+        margin-top: 15px;
+        order: 3;
+    }
+    .main-header .col-md-3.text-end {
+        order: 2;
+    }
+    .main-header .col-md-4 {
+        order: 1;
+    }
+    .carousel-item img {
+        height: 400px;
+    }
+    .carousel-caption {
+        bottom: 10%;
+    }
+}
+
+@media (max-width: 768px) {
+    .top-header .row > div {
+        text-align: center !important;
+        margin-bottom: 5px;
+    }
+    .top-header .col-md-6:last-child {
+        margin-bottom: 0;
+    }
+
+    .bottom-navbar .nav-link {
+        text-align: center;
+    }
+
+    .carousel-item img {
+        height: 300px;
+    }
+
+    .carousel-caption h5 {
+        font-size: 1.8rem;
+    }
+    .carousel-caption p {
+        font-size: 1rem;
+    }
+    
+    .logo {
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+
+    .account-section {
+        display: block;
+        text-align: center;
+    }
+
+    .account-dropdown {
+        position: static;
+        margin-top: 10px;
+        box-shadow: none;
+        border: none;
+        background: #f1f1f1;
+    }
+}

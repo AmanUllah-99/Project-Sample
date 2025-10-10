@@ -1,270 +1,1297 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>DryFruitHub Blog</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog - Organic Apricots</title>
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- Font Awesome -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="blog.css">
+  <!-- Animate.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+ <link rel="stylesheet" href="Home.css">
+  <style>
+    :root {
+      --primary: #135E4B;
+      --primary-dark: #0c3d30;
+      --primary-light: #4CB572;
+      --light: #A1D8B5;
+      --dark: #CCDCDB;
+      --white: #ffffff;
+      --gray-light: #f8f9fa;
+      --gray: #6c757d;
+      --danger: #dc3545;
+      --warning: #ffc107;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #f8f9fa;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* ===== TOP HEADER ===== */
+    .top-header {
+      background: var(--primary);
+      color: var(--white);
+      padding: 8px 0;
+      font-size: 0.9rem;
+    }
+
+    /* ===== MAIN HEADER ===== */
+    .main-header {
+      background: var(--white);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      padding: 15px 0;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 1.8rem;
+    }
+
+    .logo-icon {
+      background: var(--primary);
+      color: var(--white);
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 10px;
+      font-size: 1.5rem;
+    }
+
+    /* ===== BOTTOM NAVBAR ===== */
+    .bottom-navbar {
+      background: var(--primary);
+      padding: 0;
+      transition: all 0.3s ease;
+    }
+
+    .bottom-navbar .navbar-nav .nav-link {
+      color: var(--white) !important;
+      font-weight: 500;
+      padding: 15px 20px;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    /* Diagonal Border Hover Effect */
+    .bottom-navbar .nav-link::before,
+    .bottom-navbar .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 0;
+      transition: all 0.4s ease;
+      z-index: -1;
+    }
+
+    .bottom-navbar .nav-link::before {
+      top: 0;
+      left: 0;
+      border-top: 2px solid transparent;
+      border-left: 2px solid transparent;
+    }
+
+    .bottom-navbar .nav-link::after {
+      bottom: 0;
+      right: 0;
+      border-bottom: 2px solid transparent;
+      border-right: 2px solid transparent;
+    }
+
+    .bottom-navbar .nav-link:hover::before {
+      width: 100%;
+      height: 100%;
+      border-top-color: var(--light);
+      border-left-color: var(--light);
+    }
+
+    .bottom-navbar .nav-link:hover::after {
+      width: 100%;
+      height: 100%;
+      border-bottom-color: var(--light);
+      border-right-color: var(--light);
+    }
+
+    .bottom-navbar .nav-link:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    /* ===== BLOG HERO SECTION ===== */
+    .blog-hero {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: var(--white);
+      padding: 100px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .blog-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" opacity="0.1"><polygon fill="white" points="0,1000 1000,0 1000,1000"/></svg>');
+      background-size: cover;
+    }
+
+    .blog-hero h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .blog-hero p {
+      font-size: 1.3rem;
+      max-width: 700px;
+      margin: 0 auto 30px;
+      position: relative;
+    }
+
+    /* ===== BLOG CONTENT ===== */
+    .blog-content {
+      padding: 80px 0;
+    }
+
+    .section-title {
+      color: var(--primary);
+      font-weight: 700;
+      margin-bottom: 40px;
+      position: relative;
+      text-align: center;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--primary-light);
+      border-radius: 2px;
+    }
+
+    /* Blog Cards */
+    .blog-card {
+      background: var(--white);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      position: relative;
+      height: 100%;
+      margin-bottom: 30px;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .blog-badge {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: var(--primary);
+      color: var(--white);
+      padding: 8px 15px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      z-index: 2;
+    }
+
+    .blog-image {
+      position: relative;
+      overflow: hidden;
+      height: 250px;
+    }
+
+    .blog-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .blog-card:hover .blog-image img {
+      transform: scale(1.1);
+    }
+
+    .blog-info {
+      padding: 25px;
+    }
+
+    .blog-meta {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+      font-size: 0.9rem;
+      color: var(--gray);
+    }
+
+    .blog-meta span {
+      margin-right: 15px;
+      display: flex;
+      align-items: center;
+    }
+
+    .blog-meta i {
+      margin-right: 5px;
+      color: var(--primary-light);
+    }
+
+    .blog-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 15px;
+      color: var(--primary-dark);
+      line-height: 1.4;
+    }
+
+    .blog-excerpt {
+      color: var(--gray);
+      font-size: 1rem;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .btn-blog {
+      background: var(--primary);
+      color: var(--white);
+      border: none;
+      padding: 10px 25px;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+    }
+
+    .btn-blog:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Featured Post */
+    .featured-post {
+      background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+      color: var(--white);
+      border-radius: 20px;
+      overflow: hidden;
+      margin-bottom: 50px;
+      position: relative;
+    }
+
+    .featured-content {
+      padding: 50px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .featured-badge {
+      background: var(--warning);
+      color: var(--primary-dark);
+      padding: 8px 20px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+
+    .featured-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      line-height: 1.3;
+    }
+
+    .featured-excerpt {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      opacity: 0.9;
+    }
+
+    .btn-featured {
+      background: var(--warning);
+      color: var(--primary-dark);
+      border: none;
+      padding: 12px 30px;
+      border-radius: 50px;
+      font-weight: 700;
+      transition: all 0.3s ease;
+    }
+
+    .btn-featured:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Sidebar */
+    .sidebar {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      margin-bottom: 30px;
+    }
+
+    .sidebar-title {
+      color: var(--primary);
+      font-weight: 700;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid var(--light);
+    }
+
+    .categories-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .categories-list li {
+      padding: 12px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .categories-list li:last-child {
+      border-bottom: none;
+    }
+
+    .categories-list a {
+      color: var(--gray);
+      text-decoration: none;
+      display: flex;
+      justify-content: space-between;
+      transition: all 0.3s ease;
+    }
+
+    .categories-list a:hover {
+      color: var(--primary);
+      padding-left: 5px;
+    }
+
+    .categories-list .count {
+      background: var(--light);
+      color: var(--primary);
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-size: 0.8rem;
+    }
+
+    .recent-post {
+      display: flex;
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .recent-post:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .recent-post-image {
+      width: 80px;
+      height: 80px;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-right: 15px;
+      flex-shrink: 0;
+    }
+
+    .recent-post-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .recent-post-content h4 {
+      font-size: 1rem;
+      margin-bottom: 5px;
+      line-height: 1.4;
+    }
+
+    .recent-post-content .date {
+      font-size: 0.8rem;
+      color: var(--gray);
+    }
+
+    .tags-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tag {
+      background: var(--light);
+      color: var(--primary);
+      padding: 8px 15px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .tag:hover {
+      background: var(--primary);
+      color: var(--white);
+    }
+
+    /* Newsletter Section */
+    .newsletter-section {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: var(--white);
+      padding: 60px 0;
+      border-radius: 20px;
+      text-align: center;
+      margin: 50px 0;
+    }
+
+    .newsletter-content {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .newsletter-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 10px;
+      margin-top: 30px;
+    }
+
+    .newsletter-input {
+      flex: 1;
+      padding: 15px 20px;
+      border: none;
+      border-radius: 50px;
+      font-size: 1rem;
+    }
+
+    .newsletter-btn {
+      background: var(--warning);
+      color: var(--primary-dark);
+      border: none;
+      padding: 15px 30px;
+      border-radius: 50px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .newsletter-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Pagination */
+    .blog-pagination {
+      display: flex;
+      justify-content: center;
+      margin-top: 50px;
+    }
+
+    .page-link {
+      color: var(--primary);
+      border: none;
+      padding: 10px 20px;
+      margin: 0 5px;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .page-link:hover {
+      background: var(--primary);
+      color: var(--white);
+    }
+
+    .page-item.active .page-link {
+      background: var(--primary);
+      color: var(--white);
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      background: var(--primary);
+      color: var(--white);
+      padding: 50px 0 20px;
+      margin-top: 50px;
+    }
+
+    .footer h4.logo-text {
+      font-weight: bold;
+      font-size: 22px;
+      margin-bottom: 15px;
+    }
+
+    .footer h5 {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .footer p,
+    .footer a {
+      font-size: 14px;
+      color: #e2e2e2;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      color: var(--white);
+      padding-left: 5px;
+      transition: 0.3s ease;
+    }
+
+    .footer .social-icons a {
+      display: inline-block;
+      margin-right: 10px;
+      font-size: 18px;
+      background: var(--primary-light);
+      color: var(--white);
+      padding: 8px;
+      border-radius: 50%;
+      transition: 0.3s;
+    }
+
+    .footer .social-icons a:hover {
+      background: var(--primary-dark);
+      transform: scale(1.1);
+    }
+
+    /* ===== RESPONSIVE STYLING ===== */
+    @media (max-width: 992px) {
+      .blog-hero h1 {
+        font-size: 3rem;
+      }
+
+      .featured-title {
+        font-size: 2rem;
+      }
+
+      .newsletter-title {
+        font-size: 2rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .blog-hero {
+        padding: 80px 0;
+      }
+
+      .blog-hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .blog-content {
+        padding: 60px 0;
+      }
+
+      .newsletter-form {
+        flex-direction: column;
+      }
+
+      .featured-content {
+        padding: 30px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .blog-hero {
+        padding: 60px 0;
+      }
+
+      .blog-hero h1 {
+        font-size: 2rem;
+      }
+
+      .blog-content {
+        padding: 40px 0;
+      }
+
+      .featured-title {
+        font-size: 1.8rem;
+      }
+    }
+
+    /* Reading Progress Bar */
+    .reading-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 4px;
+      background: var(--primary-light);
+      z-index: 9999;
+      transition: width 0.3s ease;
+    }
+
+    /* Share Buttons */
+    .share-buttons {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .share-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .share-btn.facebook {
+      background: #3b5998;
+    }
+
+    .share-btn.twitter {
+      background: #1da1f2;
+    }
+
+    .share-btn.linkedin {
+      background: #0077b5;
+    }
+
+    .share-btn.whatsapp {
+      background: #25d366;
+    }
+
+    .share-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    /* Animation Classes */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
 </head>
+
 <body>
+  <!-- Reading Progress Bar -->
+  <div class="reading-progress" id="readingProgress"></div>
 
-  <!-- NAV -->
-  <nav class="navbar navbar-expand-lg navbar-light py-3">
-    <div class="container">
-      <a class="navbar-brand fw-bold" href="#"><i class="fa-solid fa-seedling me-2"></i>DryFruitHub Blog</a>
-
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-        data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="mainNav">
-        <ul class="navbar-nav ms-auto align-items-lg-center">
-          <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Products</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">About</a></li>
-          <li class="nav-item ms-2">
-            <a class="btn btn-success rounded-pill" href="#">Shop</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <!-- HERO -->
-  <header class="hero py-6">
+  <!-- Top Header -->
+  <div class="top-header">
     <div class="container">
       <div class="row align-items-center">
-        <div class="col-lg-7 text-white">
-          <h1 class="display-5 fw-bold">Healthy snacks, happy life — stories from DryFruitHub</h1>
-          <p class="lead mt-3">Recipes, nutrition guides, harvesting stories and helpful tips — all about dry fruits.</p>
+        <div class="col-md-6">
+          <i class="fas fa-phone me-2"></i> +923 3900 00001
+          <i class="fas fa-envelope ms-3 me-2"></i> info@organicapricots.com
+        </div>
+        <div class="col-md-6 text-md-end">
+          <i class="fas fa-truck me-2"></i> Free Shipping on Orders Over 250 PKR
+        </div>
+      </div>
+    </div>
+  </div>
 
-          <div class="mt-4 d-flex gap-2">
-            <a class="btn btn-light btn-lg rounded-pill" href="#posts">Read Posts</a>
-            <a class="btn btn-outline-light btn-lg rounded-pill" href="#newsletter">Subscribe</a>
+  <!-- Main Header -->
+  <header class="main-header">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-4">
+          <a href="Home.html" class="logo">
+            <div class="logo-icon">OA</div>
+            <span>Organic Apricots</span>
+          </a>
+        </div>
+        <div class="col-md-5">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search blog posts...">
+            <button class="btn btn-outline-success" type="button">
+              <i class="fas fa-search"></i>
+            </button>
           </div>
         </div>
-
-        <div class="col-lg-5 d-none d-lg-block">
-          <div class="hero-card p-4 rounded-4 shadow-lg">
-            <img src="Backdround/hero-nuts.jpg" alt="nuts" class="img-fluid rounded-3">
+        <div class="col-md-3 text-end">
+          <div class="account-section">
+            <a id="profile" href="login/signup.html" class="account-btn">
+              <i class="fas fa-user me-1"></i>
+              <span>Sign Up / Login</span>
+            </a>
           </div>
         </div>
       </div>
     </div>
   </header>
 
-  <!-- MAIN CONTENT -->
-  <main class="py-5" id="posts">
-    <div class="container">
-      <div class="row g-4">
-        <!-- POSTS LIST -->
-        <section class="col-lg-8">
-          <!-- Search + filter -->
-          <div class="d-flex justify-content-between align-items-center mb-3 gap-2 flex-column flex-sm-row">
-            <div class="input-group w-100 w-sm-75">
-              <input id="postSearch" type="search" class="form-control rounded-pill" placeholder="Search blog posts...">
-              <button id="clearSearch" class="btn btn-outline-secondary rounded-pill">Clear</button>
-            </div>
+  <!-- Bottom Navbar -->
+  <nav class="navbar navbar-expand-lg bottom-navbar">
+    <div class="container-fluid">
+      <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse"
+        data-bs-target="#bottomNavbarContent" aria-controls="bottomNavbarContent" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-            <div class="d-flex gap-2">
-              <select id="categoryFilter" class="form-select rounded-pill">
-                <option value="">All categories</option>
-                <option>Nutrition</option>
-                <option>Recipes</option>
-                <option>Harvest</option>
-                <option>Tips</option>
-              </select>
-              <button id="sortDate" class="btn btn-light rounded-pill">Newest</button>
-            </div>
-          </div>
-
-          <!-- Posts grid -->
-          <div id="postsGrid" class="row g-4">
-            <!-- single post card (data attributes used for filtering) -->
-            <article class="col-md-6" data-title="almonds-benefits" data-category="Nutrition" data-date="2025-09-01">
-              <div class="card blog-card h-100 shadow-sm">
-                <img src="Backdround/badam.png" class="card-img-top" alt="Almonds benefits">
-                <div class="card-body d-flex flex-column">
-                  <small class="text-muted mb-2">Nutrition · Sep 1, 2025</small>
-                  <h5 class="card-title">7 Science-backed Benefits of Almonds</h5>
-                  <p class="card-text text-muted">Discover why almonds are an excellent daily snack — protein, vitamins and more.</p>
-                  <div class="mt-auto d-flex justify-content-between align-items-center">
-                    <a href="#" class="stretched-link btn btn-outline-success" data-full="post1">Read more</a>
-                    <div class="d-flex gap-2 align-items-center">
-                      <span class="badge bg-light text-dark">Almonds</span>
-                      <small class="text-muted">5 min</small>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </article>
-
-            <article class="col-md-6" data-title="roasted-cashews" data-category="Recipes" data-date="2025-08-20">
-              <div class="card blog-card h-100 shadow-sm">
-                <img src="Backdround/cashews.jpg" class="card-img-top" alt="roasted cashews">
-                <div class="card-body d-flex flex-column">
-                  <small class="text-muted mb-2">Recipes · Aug 20, 2025</small>
-                  <h5 class="card-title">Easy Spiced Roasted Cashews</h5>
-                  <p class="card-text text-muted">A simple recipe to make crunchy spiced cashews at home.</p>
-                  <div class="mt-auto d-flex justify-content-between align-items-center">
-                    <a href="#" class="stretched-link btn btn-outline-success" data-full="post2">Read more</a>
-                    <div class="d-flex gap-2 align-items-center">
-                      <span class="badge bg-light text-dark">Cashews</span>
-                      <small class="text-muted">8 min</small>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </article>
-
-            <article class="col-md-6" data-title="pistachio-snacks" data-category="Tips" data-date="2025-07-11">
-              <div class="card blog-card h-100 shadow-sm">
-                <img src="Backdround/pistachios.jpg" class="card-img-top" alt="pistachio snacks">
-                <div class="card-body d-flex flex-column">
-                  <small class="text-muted mb-2">Tips · Jul 11, 2025</small>
-                  <h5 class="card-title">3 Creative Ways to Enjoy Pistachios</h5>
-                  <p class="card-text text-muted">Snack ideas and pairing tips to make pistachios more exciting.</p>
-                  <div class="mt-auto d-flex justify-content-between align-items-center">
-                    <a href="#" class="stretched-link btn btn-outline-success" data-full="post3">Read more</a>
-                    <div class="d-flex gap-2 align-items-center">
-                      <span class="badge bg-light text-dark">Pistachios</span>
-                      <small class="text-muted">3 min</small>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </article>
-
-            <article class="col-md-6" data-title="raisins-uses" data-category="Harvest" data-date="2025-05-15">
-              <div class="card blog-card h-100 shadow-sm">
-                <img src="Backdround/raisins.jpg" class="card-img-top" alt="raisins">
-                <div class="card-body d-flex flex-column">
-                  <small class="text-muted mb-2">Harvest · May 15, 2025</small>
-                  <h5 class="card-title">From Vine to Jar: How Raisins are Made</h5>
-                  <p class="card-text text-muted">A short look into the raisin drying and packing process.</p>
-                  <div class="mt-auto d-flex justify-content-between align-items-center">
-                    <a href="#" class="stretched-link btn btn-outline-success" data-full="post4">Read more</a>
-                    <div class="d-flex gap-2 align-items-center">
-                      <span class="badge bg-light text-dark">Raisins</span>
-                      <small class="text-muted">6 min</small>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </article>
-          </div>
-
-          <!-- Pagination (non-functional placeholder) -->
-          <nav aria-label="page nav" class="mt-4">
-            <ul class="pagination justify-content-center">
-              <li class="page-item disabled"><a class="page-link">Previous</a></li>
-              <li class="page-item active"><a class="page-link">1</a></li>
-              <li class="page-item"><a class="page-link">2</a></li>
-              <li class="page-item"><a class="page-link">Next</a></li>
+      <div class="collapse navbar-collapse" id="bottomNavbarContent">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="Home.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="product.html">Products</a></li>
+          <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="deal.html">Deals</a></li>
+          <li class="nav-item"><a class="nav-link" href="aboutus.html">About Us</a></li>
+          <li class="nav-item"><a class="nav-link active" href="blog.html">Blog</a></li>
+          <li class="nav-item"><a class="nav-link" href="contactUs.html">Contact</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Categories
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="#">Almonds</a></li>
+              <li><a class="dropdown-item" href="#">Cashews</a></li>
+              <li><a class="dropdown-item" href="#">Walnuts</a></li>
+              <li><a class="dropdown-item" href="#">Pistachios</a></li>
+              <li><a class="dropdown-item" href="#">Raisins</a></li>
             </ul>
-          </nav>
-        </section>
+          </li>
+        </ul>
 
-        <!-- SIDEBAR -->
-        <aside class="col-lg-4">
-          <div class="sticky-top" style="top:100px;">
-            <!-- About widget -->
-            <div class="card mb-4">
-              <div class="card-body text-center">
-                <img src="Backdround/author.jpg" class="rounded-circle mb-3" width="90" alt="author">
-                <h6 class="mb-1">DryFruitHub</h6>
-                <p class="text-muted small">Sharing healthy living tips and tasty dry-fruit recipes.</p>
-                <a href="#newsletter" class="btn btn-success btn-sm rounded-pill">Subscribe</a>
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="Cart/cart.html">
+              <i class="fas fa-shopping-cart me-1"></i>Your Cart
+              <span class="cart-badge badge rounded-pill bg-danger">0</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Blog Hero Section -->
+  <section class="blog-hero">
+    <div class="container">
+      <h1>Organic Apricots Blog</h1>
+      <p>Discover the latest insights, recipes, and health benefits of organic dry fruits and nuts.</p>
+      <button class="btn-blog">
+        <i class="fas fa-book me-2"></i> Explore Articles
+      </button>
+    </div>
+  </section>
+
+  <!-- Blog Content -->
+  <section class="blog-content">
+    <div class="container">
+      <!-- Featured Post -->
+      <div class="featured-post">
+        <div class="row align-items-center">
+          <div class="col-lg-7">
+            <div class="featured-content">
+              <span class="featured-badge">Featured Post</span>
+              <h2 class="featured-title">The Ultimate Guide to Health Benefits of Organic Dry Fruits</h2>
+              <p class="featured-excerpt">Discover how incorporating organic dry fruits into your daily diet can
+                transform your health, boost immunity, and provide essential nutrients.</p>
+              <div class="blog-meta text-white">
+                <span><i class="fas fa-user"></i> Dr. Sarah Johnson</span>
+                <span><i class="fas fa-calendar"></i> March 15, 2024</span>
+                <span><i class="fas fa-clock"></i> 8 min read</span>
               </div>
+              <button class="btn-featured mt-3">
+                <i class="fas fa-book-open me-2"></i> Read Full Article
+              </button>
             </div>
-
-            <!-- Categories -->
-            <div class="card mb-4">
-              <div class="card-body">
-                <h6 class="mb-3">Categories</h6>
-                <ul class="list-unstyled mb-0">
-                  <li><a href="#" class="d-block py-2 category-link" data-cat="">All</a></li>
-                  <li><a href="#" class="d-block py-2 category-link" data-cat="Nutrition">Nutrition</a></li>
-                  <li><a href="#" class="d-block py-2 category-link" data-cat="Recipes">Recipes</a></li>
-                  <li><a href="#" class="d-block py-2 category-link" data-cat="Harvest">Harvest</a></li>
-                  <li><a href="#" class="d-block py-2 category-link" data-cat="Tips">Tips</a></li>
-                </ul>
-              </div>
-            </div>
-
-            <!-- Recent posts -->
-            <div class="card mb-4">
-              <div class="card-body">
-                <h6 class="mb-3">Recent Posts</h6>
-                <ul class="list-unstyled">
-                  <li class="d-flex gap-2 mb-3">
-                    <img src="Backdround/almonds-thumb.jpg" width="60" class="rounded" alt="">
-                    <div>
-                      <a href="#" class="d-block small post-link" data-full="post1">7 Science-backed Benefits of Almonds</a>
-                      <small class="text-muted">Sep 1, 2025</small>
-                    </div>
-                  </li>
-                  <li class="d-flex gap-2 mb-3">
-                    <img src="Backdround/cashews-thumb.jpg" width="60" class="rounded" alt="">
-                    <div>
-                      <a href="#" class="d-block small post-link" data-full="post2">Easy Spiced Roasted Cashews</a>
-                      <small class="text-muted">Aug 20, 2025</small>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <!-- Newsletter -->
-            <div id="newsletter" class="card mb-4">
-              <div class="card-body">
-                <h6 class="mb-3">Newsletter</h6>
-                <p class="small text-muted">Get weekly recipes and offers.</p>
-                <form id="newsletterForm" class="d-flex gap-2">
-                  <input class="form-control rounded-pill" type="email" placeholder="Your email" required>
-                  <button class="btn btn-success rounded-pill" type="submit">Subscribe</button>
-                </form>
-              </div>
-            </div>
-
           </div>
-        </aside>
-      </div>
-    </div>
-  </main>
-
-  <!-- POST MODAL (opens full post content) -->
-  <div class="modal fade" id="postModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="postModalTitle">Post Title</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body" id="postModalBody">
-          <img src="" id="postModalImg" class="img-fluid rounded mb-3" alt="">
-          <div id="postModalText"></div>
+          <div class="col-lg-5">
+            <div class="featured-image">
+              <div class="blog-image">
+                <img src="Backdround/health-benefits.jpg" alt="Dry Fruits Health Benefits">
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
 
-  <!-- BACK TO TOP -->
-  <button id="backTop" class="back-top btn btn-success shadow-lg"><i class="fa fa-arrow-up"></i></button>
+      <div class="row">
+        <!-- Main Blog Content -->
+        <div class="col-lg-8">
+          <h2 class="section-title">Latest Articles</h2>
+
+          <div class="row">
+            <!-- Blog Post 1 -->
+            <div class="col-md-6 fade-in">
+              <div class="blog-card">
+                <div class="blog-badge">Nutrition</div>
+                <div class="blog-image">
+                  <img src="Backdround/badam.png" alt="Almond Benefits">
+                </div>
+                <div class="blog-info">
+                  <div class="blog-meta">
+                    <span><i class="fas fa-user"></i> Nutritionist</span>
+                    <span><i class="fas fa-calendar"></i> March 10, 2024</span>
+                  </div>
+                  <h3 class="blog-title">10 Amazing Health Benefits of Almonds You Didn't Know</h3>
+                  <p class="blog-excerpt">Almonds are more than just a tasty snack. Discover the surprising health
+                    benefits that make them a superfood.</p>
+                  <div class="share-buttons">
+                    <a href="#" class="share-btn facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="share-btn twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="share-btn linkedin"><i class="fab fa-linkedin-in"></i></a>
+                  </div>
+                  <button class="btn-blog">
+                    <i class="fas fa-arrow-right me-2"></i> Read More
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Blog Post 2 -->
+            <div class="col-md-6 fade-in">
+              <div class="blog-card">
+                <div class="blog-badge">Recipes</div>
+                <div class="blog-image">
+                  <img src="Backdround/recipes.jpg" alt="Dry Fruit Recipes">
+                </div>
+                <div class="blog-info">
+                  <div class="blog-meta">
+                    <span><i class="fas fa-user"></i> Chef Michael</span>
+                    <span><i class="fas fa-calendar"></i> March 5, 2024</span>
+                  </div>
+                  <h3 class="blog-title">5 Delicious Recipes Using Dry Fruits for Healthy Snacking</h3>
+                  <p class="blog-excerpt">Transform your snacking habits with these easy and delicious recipes that
+                    incorporate nutritious dry fruits.</p>
+                  <div class="share-buttons">
+                    <a href="#" class="share-btn facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="share-btn twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="share-btn whatsapp"><i class="fab fa-whatsapp"></i></a>
+                  </div>
+                  <button class="btn-blog">
+                    <i class="fas fa-arrow-right me-2"></i> Read More
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Blog Post 3 -->
+            <div class="col-md-6 fade-in">
+              <div class="blog-card">
+                <div class="blog-badge">Organic Farming</div>
+                <div class="blog-image">
+                  <img src="Backdround/farming.jpg" alt="Organic Farming">
+                </div>
+                <div class="blog-info">
+                  <div class="blog-meta">
+                    <span><i class="fas fa-user"></i> Farm Expert</span>
+                    <span><i class="fas fa-calendar"></i> February 28, 2024</span>
+                  </div>
+                  <h3 class="blog-title">The Journey of Organic Dry Fruits: From Farm to Table</h3>
+                  <p class="blog-excerpt">Learn about our sustainable farming practices and how we ensure the highest
+                    quality organic dry fruits.</p>
+                  <div class="share-buttons">
+                    <a href="#" class="share-btn facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="share-btn twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="share-btn linkedin"><i class="fab fa-linkedin-in"></i></a>
+                  </div>
+                  <button class="btn-blog">
+                    <i class="fas fa-arrow-right me-2"></i> Read More
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Blog Post 4 -->
+            <div class="col-md-6 fade-in">
+              <div class="blog-card">
+                <div class="blog-badge">Health</div>
+                <div class="blog-image">
+                  <img src="Backdround/weight-management.jpg" alt="Weight Management">
+                </div>
+                <div class="blog-info">
+                  <div class="blog-meta">
+                    <span><i class="fas fa-user"></i> Dr. Emily Chen</span>
+                    <span><i class="fas fa-calendar"></i> February 20, 2024</span>
+                  </div>
+                  <h3 class="blog-title">How Dry Fruits Can Help in Weight Management and Diet</h3>
+                  <p class="blog-excerpt">Discover the role of dry fruits in healthy weight management and how to
+                    incorporate them into your diet plan.</p>
+                  <div class="share-buttons">
+                    <a href="#" class="share-btn facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="share-btn twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="share-btn whatsapp"><i class="fab fa-whatsapp"></i></a>
+                  </div>
+                  <button class="btn-blog">
+                    <i class="fas fa-arrow-right me-2"></i> Read More
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Blog Post 5 -->
+            <div class="col-md-6 fade-in">
+              <div class="blog-card">
+                <div class="blog-badge">Storage Tips</div>
+                <div class="blog-image">
+                  <img src="Backdround/storage-tips.jpg" alt="Storage Tips">
+                </div>
+                <div class="blog-info">
+                  <div class="blog-meta">
+                    <span><i class="fas fa-user"></i> Storage Expert</span>
+                    <span><i class="fas fa-calendar"></i> February 15, 2024</span>
+                  </div>
+                  <h3 class="blog-title">Proper Storage Techniques to Keep Your Dry Fruits Fresh</h3>
+                  <p class="blog-excerpt">Learn the best practices for storing different types of dry fruits to maintain
+                    their freshness and nutritional value.</p>
+                  <div class="share-buttons">
+                    <a href="#" class="share-btn facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="share-btn twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="share-btn linkedin"><i class="fab fa-linkedin-in"></i></a>
+                  </div>
+                  <button class="btn-blog">
+                    <i class="fas fa-arrow-right me-2"></i> Read More
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Blog Post 6 -->
+            <div class="col-md-6 fade-in">
+              <div class="blog-card">
+                <div class="blog-badge">Seasonal</div>
+                <div class="blog-image">
+                  <img src="Backdround/seasonal-fruits.jpg" alt="Seasonal Fruits">
+                </div>
+                <div class="blog-info">
+                  <div class="blog-meta">
+                    <span><i class="fas fa-user"></i> Seasonal Guide</span>
+                    <span><i class="fas fa-calendar"></i> February 10, 2024</span>
+                  </div>
+                  <h3 class="blog-title">Best Dry Fruits to Consume in Spring for Optimal Health</h3>
+                  <p class="blog-excerpt">Discover which dry fruits are most beneficial during the spring season and how
+                    they can boost your immunity.</p>
+                  <div class="share-buttons">
+                    <a href="#" class="share-btn facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="share-btn twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="share-btn whatsapp"><i class="fab fa-whatsapp"></i></a>
+                  </div>
+                  <button class="btn-blog">
+                    <i class="fas fa-arrow-right me-2"></i> Read More
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pagination -->
+          <div class="blog-pagination">
+            <nav aria-label="Blog pagination">
+              <ul class="pagination">
+                <li class="page-item disabled">
+                  <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                </li>
+                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                  <a class="page-link" href="#">Next</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="col-lg-4">
+          <!-- Categories Widget -->
+          <div class="sidebar">
+            <h3 class="sidebar-title">Categories</h3>
+            <ul class="categories-list">
+              <li>
+                <a href="#">Nutrition & Health <span class="count">12</span></a>
+              </li>
+              <li>
+                <a href="#">Recipes & Cooking <span class="count">8</span></a>
+              </li>
+              <li>
+                <a href="#">Organic Farming <span class="count">5</span></a>
+              </li>
+              <li>
+                <a href="#">Storage Tips <span class="count">4</span></a>
+              </li>
+              <li>
+                <a href="#">Seasonal Guides <span class="count">6</span></a>
+              </li>
+              <li>
+                <a href="#">Product Reviews <span class="count">3</span></a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Recent Posts Widget -->
+          <div class="sidebar">
+            <h3 class="sidebar-title">Recent Posts</h3>
+            <div class="recent-post">
+              <div class="recent-post-image">
+                <img src="Backdround/badam.png" alt="Almond Benefits">
+              </div>
+              <div class="recent-post-content">
+                <h4>10 Amazing Health Benefits of Almonds</h4>
+                <span class="date">March 10, 2024</span>
+              </div>
+            </div>
+            <div class="recent-post">
+              <div class="recent-post-image">
+                <img src="Backdround/recipes.jpg" alt="Dry Fruit Recipes">
+              </div>
+              <div class="recent-post-content">
+                <h4>5 Delicious Recipes Using Dry Fruits</h4>
+                <span class="date">March 5, 2024</span>
+              </div>
+            </div>
+            <div class="recent-post">
+              <div class="recent-post-image">
+                <img src="Backdround/farming.jpg" alt="Organic Farming">
+              </div>
+              <div class="recent-post-content">
+                <h4>The Journey of Organic Dry Fruits</h4>
+                <span class="date">February 28, 2024</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tags Widget -->
+          <div class="sidebar">
+            <h3 class="sidebar-title">Popular Tags</h3>
+            <div class="tags-cloud">
+              <a href="#" class="tag">Nutrition</a>
+              <a href="#" class="tag">Health Benefits</a>
+              <a href="#" class="tag">Recipes</a>
+              <a href="#" class="tag">Organic</a>
+              <a href="#" class="tag">Almonds</a>
+              <a href="#" class="tag">Walnuts</a>
+              <a href="#" class="tag">Cashews</a>
+              <a href="#" class="tag">Pistachios</a>
+              <a href="#" class="tag">Weight Loss</a>
+              <a href="#" class="tag">Immunity</a>
+            </div>
+          </div>
+
+          <!-- Newsletter Widget -->
+          <div class="sidebar">
+            <h3 class="sidebar-title">Stay Updated</h3>
+            <p>Get the latest articles and recipes delivered to your inbox.</p>
+            <div class="newsletter-form">
+              <input type="email" class="form-control mb-2" placeholder="Enter your email">
+              <button class="btn-blog w-100">Subscribe</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Section -->
+  <section class="newsletter-section">
+    <div class="container">
+      <div class="newsletter-content">
+        <h2 class="newsletter-title">Stay Updated</h2>
+        <p class="fs-5">Subscribe to our blog newsletter and never miss an update on health tips, recipes, and organic
+          living.</p>
+        <div class="newsletter-form">
+          <input type="email" class="newsletter-input" placeholder="Enter your email address">
+          <button class="newsletter-btn">Subscribe Now</button>
+        </div>
+        <p class="mt-3 small">By subscribing, you agree to our Privacy Policy and consent to receive blog updates.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-6 mb-4">
+          <h4 class="logo-text">Organic Apricots</h4>
+          <p>We provide the finest quality organic dry fruits, nuts, and apricots sourced directly from trusted farmers.
+          </p>
+          <div class="social-icons mt-4">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-6 mb-4">
+          <h5>Quick Links</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="Home.html">Home</a></li>
+            <li class="mb-2"><a href="product.html">Products</a></li>
+            <li class="mb-2"><a href="services.html">Services</a></li>
+            <li class="mb-2"><a href="deal.html">Deals</a></li>
+            <li class="mb-2"><a href="aboutus.html">About Us</a></li>
+            <li class="mb-2"><a href="blog.html">Blog</a></li>
+            <li class="mb-2"><a href="contactUs.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6 mb-4">
+          <h5>Customer Service</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="#">Shipping Policy</a></li>
+            <li class="mb-2"><a href="#">Return Policy</a></li>
+            <li class="mb-2"><a href="#">Privacy Policy</a></li>
+            <li class="mb-2"><a href="#">Terms & Conditions</a></li>
+            <li class="mb-2"><a href="#">FAQs</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6 mb-4">
+          <h5>Contact Info</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> 123 Organic Street, Karachi, Pakistan</li>
+            <li class="mb-2"><i class="fas fa-phone me-2"></i> +923 3900 00001</li>
+            <li class="mb-2"><i class="fas fa-envelope me-2"></i> info@organicapricots.com</li>
+            <li class="mb-2"><i class="fas fa-clock me-2"></i> Mon-Sat: 9AM - 6PM</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="text-center pt-4 mt-4 border-top">
+        <p>&copy; 2024 Organic Apricots. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Custom JS -->
-  <script src="blog.js"></script>
+  <script>
+    // Reading Progress Bar
+    window.addEventListener('scroll', function () {
+      const winHeight = window.innerHeight;
+      const docHeight = document.documentElement.scrollHeight;
+      const scrollTop = window.pageYOffset;
+      const scrollPercent = (scrollTop / (docHeight - winHeight)) * 100;
+      document.getElementById('readingProgress').style.width = scrollPercent + '%';
+    });
+
+    // Scroll Animation
+    function checkScroll() {
+      const fadeElements = document.querySelectorAll('.fade-in');
+
+      fadeElements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        const elementVisible = 150;
+
+        if (elementTop < window.innerHeight - elementVisible) {
+          element.classList.add('visible');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', checkScroll);
+    window.addEventListener('load', checkScroll);
+
+    // Blog card interaction
+    document.querySelectorAll('.btn-blog').forEach(button => {
+      button.addEventListener('click', function () {
+        const card = this.closest('.blog-card');
+        const title = card.querySelector('.blog-title').textContent;
+
+        alert(`Loading article: ${title}`);
+        // In a real implementation, this would redirect to the blog post
+        // window.location.href = 'blog-post.html';
+      });
+    });
+
+    // Featured post interaction
+    document.querySelector('.btn-featured').addEventListener('click', function () {
+      alert('Loading featured article: The Ultimate Guide to Health Benefits of Organic Dry Fruits');
+      // In a real implementation, this would redirect to the featured blog post
+      // window.location.href = 'featured-blog-post.html';
+    });
+
+    // Newsletter form submission
+    document.querySelector('.newsletter-btn').addEventListener('click', function () {
+      const email = document.querySelector('.newsletter-input').value;
+      if (email && email.includes('@')) {
+        alert('Thank you for subscribing to our blog newsletter! You will receive updates on new articles.');
+        document.querySelector('.newsletter-input').value = '';
+      } else {
+        alert('Please enter a valid email address.');
+      }
+    });
+
+    // Category links interaction
+    document.querySelectorAll('.categories-list a').forEach(link => {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        const category = this.textContent.split(' ')[0];
+        alert(`Loading articles in category: ${category}`);
+        // In a real implementation, this would filter blog posts by category
+      });
+    });
+
+    // Tag links interaction
+    document.querySelectorAll('.tag').forEach(tag => {
+      tag.addEventListener('click', function (e) {
+        e.preventDefault();
+        const tagName = this.textContent;
+        alert(`Loading articles tagged with: ${tagName}`);
+        // In a real implementation, this would filter blog posts by tag
+      });
+    });
+
+    // Share buttons functionality
+    document.querySelectorAll('.share-btn').forEach(button => {
+      button.addEventListener('click', function (e) {
+        e.preventDefault();
+        const platform = this.classList[1];
+        alert(`Sharing on ${platform}`);
+        // In a real implementation, this would open share dialogs
+      });
+    });
+  </script>
 </body>
+
 </html>

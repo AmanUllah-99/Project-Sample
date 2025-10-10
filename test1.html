@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Generate 1,000,000 Unique Random Numbers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    body { font-family: system-ui, Arial; max-width:800px; margin:36px auto; padding:12px; }
+    h1 { font-size:20px; margin-bottom:6px; }
+    p { margin-top:0; color:#444; }
+    .controls { margin:18px 0; display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
+    button { padding:10px 14px; border-radius:8px; border:0; background:#0366d6; color:white; cursor:pointer; }
+    button[disabled] { background:#999; cursor:default; }
+    .progress { width:100%; height:18px; background:#eee; border-radius:9px; overflow:hidden; margin-top:12px; }
+    .bar { height:100%; background:linear-gradient(90deg,#28a745,#0ea5e9); width:0%; transition:width .2s; }
+    .log { margin-top:12px; font-family:monospace; white-space:pre-wrap; background:#fafafa; padding:10px; border-radius:6px; border:1px solid #eee; max-height:240px; overflow:auto; }
+    label { display:flex; gap:8px; align-items:center; }
+    input[type="number"], input[type="text"] { padding:8px; border-radius:6px; border:1px solid #ccc; width:160px; }
+    small { color:#666; display:block; margin-top:4px; }
+  </style>
+</head>
+<body>
+  <h1>Generate 1,000,000 unique random numbers (10,001 → 99,999,999,900)</h1>
+  <p>Each number will be on its own line. The generator streams results in chunks to reduce memory usage.</p>
+
+  <div class="controls">
+    <label>
+      Count:
+      <input id="count" type="number" value="1000000" min="1" />
+    </label>
+
+    <label>
+      Min:
+      <input id="minVal" type="text" value="10001" />
+    </label>
+
+    <label>
+      Max:
+      <input id="maxVal" type="text" value="99999999900" />
+    </label>
+
+    <label>
+      Filename:
+      <input id="filename" type="text" value="random_numbers.txt" />
+    </label>
+
+    <button id="start">Start generating</button>
+    <button id="cancel" disabled>Cancel</button>
+  </div>
+
+  <div class="progress" aria-hidden="true"><div class="bar" id="bar"></div></div>
+  <div style="display:flex; gap:12px; margin-top:10px;">
+    <div><strong>Progress:</strong> <span id="progressText">0 / 0</span></div>
+    <div id="timeInfo"></div>
+  </div>
+
+  <div class="log" id="log"></div>
+
+<script>
+(() => {
+  const startBtn = document.getElementById('start');
+  const cancelBtn = document.getElementById('cancel');
+  const bar = document.getElementById('bar');
+  const logEl = document.getElementById('log');
+  const progressText = document.getElementById('progressText');
+  const timeInfo = document.getElementById('timeInfo');
+
+  let abort = false;
+
+  function log(...args) {
+    logEl.textContent += args.join(' ') + '\\n';
+    logEl.scrollTop = logEl.scrollHeight;
+  }
+
+  // Generate a random BigInt using crypto.getRandomValues on a 64-bit integer,
+  // then reduce modulo range length (bias is negligible given huge range).
+  function randomBigIntBelow(maxExclusiveBigInt) {
+    // maxExclusiveBigInt: BigInt
+    // Use BigUint64 if available
+    const arr = new BigUint64Array(1);
+    crypto.getRandomValues(arr);
+    const v = BigInt(arr[0]);
+    return v % maxExclusiveBigInt;
+  }
+
+  async function generate() {
+    abort = false;
+    logEl.textContent = '';
+
+    const count = Number(document.getElementById('count').value) || 1000000;
+    const min = BigInt(document.getElementById('minVal').value || '10001');
+    const max = BigInt(document.getElementById('maxVal').value || '99999999900');
+
+    if (min >= max) { alert('Min must be < Max'); return; }
+    const range = (max - min) + 1n;
+    const filename = (document.getElementById('filename').value || 'random_numbers.txt').trim() || 'random_numbers.txt';
+
+    startBtn.disabled = true;
+    cancelBtn.disabled = false;
+
+    log('Target count:', count);
+    progressText.textContent = `0 / ${count}`;
+
+    const startTime = Date.now();
+
+    // We'll maintain a Set of BigInt values to ensure uniqueness.
+    // To avoid holding all string representations at once, we will collect numbers
+    // in an array, and every CHUNK_SIZE we convert to text and append to parts array.
+    const CHUNK_SIZE = 10000; // change if needed for performance
+    const parts = []; // array of string chunks to pass to Blob
+    let buffer = [];
+    const seen = new Set(); // stores BigInt as string to be safe across browsers
+
+    let generated = 0;
+    const maxAttempts = count * 10; // safety guard (shouldn't reach)
+    let attempts = 0;
+
+    try {
+      while (generated < count) {
+        if (abort) throw new Error('Cancelled by user');
+
+        attempts++;
+        if (attempts > maxAttempts) throw new Error('Too many attempts; aborting');
+
+        // generate random value in [0, range)
+        const r = randomBigIntBelow(range);
+        const val = (r + min); // BigInt within [min, max]
+        const key = val.toString();
+        if (!seen.has(key)) {
+          seen.add(key);
+          buffer.push(key);
+          generated++;
+        }
+        // flush buffer in chunks to keep memory reasonable
+        if (buffer.length >= CHUNK_SIZE) {
+          // join with newline and add trailing newline
+          parts.push(buffer.join('\\n') + '\\n');
+          buffer = [];
+          // update UI
+          const pct = Math.round((generated / count) * 100);
+          bar.style.width = pct + '%';
+          progressText.textContent = `${generated} / ${count}`;
+          const elapsed = (Date.now() - startTime) / 1000;
+          timeInfo.textContent = `Elapsed: ${elapsed.toFixed(1)}s`;
+          // allow UI breathe
+          await new Promise(r => setTimeout(r, 0));
+        }
+      }
+
+      // push remaining buffer
+      if (buffer.length > 0) {
+        parts.push(buffer.join('\\n') + '\\n');
+        buffer = [];
+      }
+
+      // Completed: create Blob and offer download
+      bar.style.width = '100%';
+      progressText.textContent = `${generated} / ${count}`;
+      const elapsed = (Date.now() - startTime) / 1000;
+      timeInfo.textContent = `Elapsed: ${elapsed.toFixed(1)}s`;
+
+      log('Done generating. Unique numbers:', generated);
+      log('Preparing file (this may take a few seconds)...');
+
+      // Create Blob from parts. Using array of strings prevents holding a single huge string.
+      const blob = new Blob(parts, { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      a.textContent = 'Download the generated file';
+      a.style.display = 'inline-block';
+      a.style.marginTop = '12px';
+      a.style.padding = '8px 12px';
+      a.style.background = '#0b7';
+      a.style.color = '#003';
+      a.style.borderRadius = '8px';
+      a.style.textDecoration = 'none';
+      document.body.appendChild(a);
+
+      log('Download link created. Click it to save the file.');
+    } catch (err) {
+      log('Error:', err.message || err);
+      alert('Generation stopped: ' + (err.message || err));
+    } finally {
+      startBtn.disabled = false;
+      cancelBtn.disabled = true;
+    }
+  }
+
+  startBtn.addEventListener('click', () => {
+    // Quick sanity checks
+    const countVal = Number(document.getElementById('count').value) || 1000000;
+    if (countVal > 50000000) {
+      if (!confirm('You requested a very large count. Continue?')) return;
+    }
+    generate();
+  });
+
+  cancelBtn.addEventListener('click', () => {
+    abort = true;
+    cancelBtn.disabled = true;
+    log('Cancelling... please wait a moment.');
+  });
+
+})();
+</script>
+</body>
+</html>

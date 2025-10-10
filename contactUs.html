@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Organic Apricots</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="Home.css">
+    
+    <style>
+        :root {
+            --primary: #135E4B;
+            --primary-dark: #0c3d30;
+            --primary-light: #4CB572;
+            --light: #A1D8B5;
+            --dark: #CCDCDB;
+            --white: #ffffff;
+            --gray-light: #f8f9fa;
+            --gray: #6c757d;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* ===== TOP HEADER ===== */
+        .top-header {
+            background: var(--primary);
+            color: var(--white);
+            padding: 8px 0;
+            font-size: 0.9rem;
+        }
+        
+        /* ===== MAIN HEADER ===== */
+        .main-header {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.8rem;
+        }
+        
+        .logo-icon {
+            background: var(--primary);
+            color: var(--white);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            font-size: 1.5rem;
+        }
+        
+        /* ===== BOTTOM NAVBAR ===== */
+        .bottom-navbar {
+            background: var(--primary);
+            padding: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .bottom-navbar .navbar-nav .nav-link {
+            color: var(--white) !important;
+            font-weight: 500;
+            padding: 15px 20px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        /* Diagonal Border Hover Effect */
+        .bottom-navbar .nav-link::before,
+        .bottom-navbar .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            transition: all 0.4s ease;
+            z-index: -1;
+        }
+        
+        .bottom-navbar .nav-link::before {
+            top: 0;
+            left: 0;
+            border-top: 2px solid transparent;
+            border-left: 2px solid transparent;
+        }
+        
+        .bottom-navbar .nav-link::after {
+            bottom: 0;
+            right: 0;
+            border-bottom: 2px solid transparent;
+            border-right: 2px solid transparent;
+        }
+        
+        .bottom-navbar .nav-link:hover::before {
+            width: 100%;
+            height: 100%;
+            border-top-color: var(--light);
+            border-left-color: var(--light);
+        }
+        
+        .bottom-navbar .nav-link:hover::after {
+            width: 100%;
+            height: 100%;
+            border-bottom-color: var(--light);
+            border-right-color: var(--light);
+        }
+        
+        .bottom-navbar .nav-link:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        /* ===== CONTACT HERO SECTION ===== */
+        .contact-hero {
+            background: linear-gradient(rgba(19, 94, 75, 0.9), rgba(19, 94, 75, 0.95)), url('https://images.unsplash.com/photo-1556909114-4d0d853e5e25?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .contact-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .contact-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* ===== CONTACT CONTENT ===== */
+        .contact-content {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 40px;
+            position: relative;
+            text-align: center;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary-light);
+            border-radius: 2px;
+        }
+        
+        /* Contact Cards */
+        .contact-card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            height: 100%;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .contact-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--primary-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 2rem;
+            color: var(--white);
+            transition: all 0.3s ease;
+        }
+        
+        .contact-card:hover .contact-icon {
+            background: var(--primary);
+            transform: scale(1.1);
+        }
+        
+        .contact-card h3 {
+            color: var(--primary-dark);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .contact-card p {
+            color: var(--gray);
+            margin-bottom: 10px;
+        }
+        
+        .contact-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-link:hover {
+            color: var(--primary-dark);
+            text-decoration: underline;
+        }
+        
+        /* Contact Form */
+        .contact-form-container {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        .form-label {
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 8px;
+        }
+        
+        .form-control {
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 12px 15px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary-light);
+            box-shadow: 0 0 0 0.2rem rgba(76, 181, 114, 0.25);
+        }
+        
+        .form-control.is-invalid {
+            border-color: #dc3545;
+        }
+        
+        .invalid-feedback {
+            display: none;
+            color: #dc3545;
+            font-size: 0.875rem;
+            margin-top: 5px;
+        }
+        
+        .form-control.is-invalid ~ .invalid-feedback {
+            display: block;
+        }
+        
+        .submit-btn {
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .submit-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(19, 94, 75, 0.3);
+        }
+        
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+        
+        /* Map Section */
+        .map-section {
+            padding: 80px 0;
+            background: #f1f8f5;
+        }
+        
+        .map-container {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            height: 450px;
+        }
+        
+        .map-placeholder {
+            background: linear-gradient(45deg, var(--primary-light), var(--primary));
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .map-placeholder i {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+        
+        .map-placeholder h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            padding: 80px 0;
+        }
+        
+        .accordion-item {
+            border: none;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+        
+        .accordion-button {
+            background: var(--white);
+            color: var(--primary-dark);
+            font-weight: 600;
+            padding: 20px 25px;
+            border: none;
+            box-shadow: none;
+        }
+        
+        .accordion-button:not(.collapsed) {
+            background: var(--primary-light);
+            color: var(--white);
+        }
+        
+        .accordion-button::after {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23135E4B'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+        }
+        
+        .accordion-button:not(.collapsed)::after {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+        }
+        
+        .accordion-body {
+            padding: 20px 25px;
+            background: var(--white);
+            color: var(--gray);
+        }
+        
+        /* Success Message */
+        .success-message {
+            display: none;
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--primary);
+            color: var(--white);
+            padding: 50px 0 20px;
+            margin-top: 50px;
+        }
+        
+        .footer h4.logo-text {
+            font-weight: bold;
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+        
+        .footer h5 {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .footer p, 
+        .footer a {
+            font-size: 14px;
+            color: #e2e2e2;
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            color: var(--white);
+            padding-left: 5px;
+            transition: 0.3s ease;
+        }
+        
+        .footer .social-icons a {
+            display: inline-block;
+            margin-right: 10px;
+            font-size: 18px;
+            background: var(--primary-light);
+            color: var(--white);
+            padding: 8px;
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+        
+        .footer .social-icons a:hover {
+            background: var(--primary-dark);
+            transform: scale(1.1);
+        }
+        
+        /* ===== RESPONSIVE STYLING ===== */
+        @media (max-width: 992px) {
+            .contact-hero h1 {
+                font-size: 3rem;
+            }
+            
+            .contact-card {
+                padding: 30px 20px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .contact-hero {
+                padding: 80px 0;
+            }
+            
+            .contact-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .contact-form-container {
+                padding: 30px 20px;
+            }
+            
+            .map-container {
+                height: 350px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .contact-hero {
+                padding: 60px 0;
+            }
+            
+            .contact-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .contact-content {
+                padding: 60px 0;
+            }
+            
+            .contact-card {
+                padding: 25px 15px;
+            }
+            
+            .submit-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Header -->
+    <div class="top-header">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <i class="fas fa-phone me-2"></i> +1 234 567 8900
+                    <i class="fas fa-envelope ms-3 me-2"></i> info@organicapricots.com
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <i class="fas fa-truck me-2"></i> Free Shipping on Orders Over 250 PKR
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Main Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-4">
+                    <a href="index.html" class="logo">
+                        <div class="logo-icon">OA</div>
+                        <span>Organic Apricots</span>
+                    </a>
+                </div>
+                <div class="col-md-5">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search products...">
+                        <button class="btn btn-outline-success" type="button">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-3 text-end">
+                    <div class="account-section">
+                        <a id="profile" href="login.html" class="account-btn">
+                            <i class="fas fa-user me-1"></i> 
+                            <span>Sign Up / Login</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Bottom Navbar -->
+    <nav class="navbar navbar-expand-lg bottom-navbar">
+        <div class="container-fluid">
+            <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse"
+                data-bs-target="#bottomNavbarContent" aria-controls="bottomNavbarContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="bottomNavbarContent">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="Home.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="deal.html">Deals</a></li>
+                    <li class="nav-item"><a class="nav-link" href="aboutus .html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="contactUs.html">Contact</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" 
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Categories
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Almonds</a></li>
+                            <li><a class="dropdown-item" href="#">Cashews</a></li>
+                            <li><a class="dropdown-item" href="#">Walnuts</a></li>
+                            <li><a class="dropdown-item" href="#">Pistachios</a></li>
+                            <li><a class="dropdown-item" href="#">Raisins</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="cart.html">
+                            <i class="fas fa-shopping-cart me-1"></i>Your Cart
+                            <span class="cart-badge badge rounded-pill bg-danger">3</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contact Hero Section -->
+    <section class="contact-hero">
+        <div class="container">
+            <h1>Get In Touch With Us</h1>
+            <p>We're here to help you with any questions about our products, orders, or anything else. Reach out to us and we'll respond as soon as possible.</p>
+        </div>
+    </section>
+
+    <!-- Contact Content -->
+    <section class="contact-content">
+        <div class="container">
+            <h2 class="section-title">Contact Information</h2>
+            
+            <div class="row g-4 mb-5">
+                <div class="col-md-4">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h3>Our Location</h3>
+                        <p>123 Organic Street</p>
+                        <p>Health District, Karachi</p>
+                        <p>Pakistan 75500</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <h3>Phone Number</h3>
+                        <p>+1 234 567 8900</p>
+                        <p>+92 300 1234567</p>
+                        <p>Mon - Fri, 9:00 AM - 6:00 PM</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h3>Email Address</h3>
+                        <p>info@organicapricots.com</p>
+                        <p>support@organicapricots.com</p>
+                        <p>sales@organicapricots.com</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="contact-form-container">
+                        <h2 class="section-title mb-4">Send Us a Message</h2>
+                        <form id="contactForm" novalidate>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="firstName" class="form-label">First Name *</label>
+                                        <input type="text" class="form-control" id="firstName" required>
+                                        <div class="invalid-feedback">Please provide your first name.</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="lastName" class="form-label">Last Name *</label>
+                                        <input type="text" class="form-control" id="lastName" required>
+                                        <div class="invalid-feedback">Please provide your last name.</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="email" class="form-label">Email Address *</label>
+                                        <input type="email" class="form-control" id="email" required>
+                                        <div class="invalid-feedback">Please provide a valid email address.</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="phone" class="form-label">Phone Number</label>
+                                        <input type="tel" class="form-control" id="phone">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="subject" class="form-label">Subject *</label>
+                                <select class="form-control" id="subject" required>
+                                    <option value="" selected disabled>Select a subject</option>
+                                    <option value="general">General Inquiry</option>
+                                    <option value="product">Product Information</option>
+                                    <option value="order">Order Support</option>
+                                    <option value="wholesale">Wholesale Inquiry</option>
+                                    <option value="complaint">Complaint</option>
+                                    <option value="other">Other</option>
+                                </select>
+                                <div class="invalid-feedback">Please select a subject.</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message" class="form-label">Message *</label>
+                                <textarea class="form-control" id="message" rows="5" placeholder="Tell us how we can help you..." required></textarea>
+                                <div class="invalid-feedback">Please provide your message.</div>
+                            </div>
+                            
+                            <div class="form-group form-check">
+                                <input type="checkbox" class="form-check-input" id="newsletter">
+                                <label class="form-check-label" for="newsletter">Subscribe to our newsletter for updates and offers</label>
+                            </div>
+                            
+                            <div class="text-center">
+                                <button type="submit" class="submit-btn">
+                                    <i class="fas fa-paper-plane me-2"></i> Send Message
+                                </button>
+                            </div>
+                            
+                            <div class="success-message" id="successMessage">
+                                <i class="fas fa-check-circle me-2"></i> Thank you! Your message has been sent successfully. We'll get back to you soon.
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="container">
+            <h2 class="section-title">Find Us</h2>
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="map-container">
+                        <div class="map-placeholder">
+                            <i class="fas fa-map-marked-alt"></i>
+                            <h3>Our Store Location</h3>
+                            <p>123 Organic Street, Health District, Karachi, Pakistan</p>
+                            <p class="mt-3">
+                                <a href="https://maps.google.com" class="btn btn-light" target="_blank">
+                                    <i class="fas fa-directions me-2"></i> Get Directions
+                                </a>
+                            </p>
+                        </div>
+                        <!-- In a real implementation, you would embed a Google Maps iframe here -->
+                        <!--
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3618.14643498276!2d67.030107315005!3d24.9271519840205!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb33f5da300b91d%3A0xc6e1f7e03181b3e5!2sKarachi%2C%20Pakistan!5e0!3m2!1sen!2s!4v1620000000000!5m2!1sen!2s" 
+                            width="100%" 
+                            height="100%" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy">
+                        </iframe>
+                        -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    What are your delivery areas and charges?
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    We deliver across Pakistan with free shipping on orders over PKR 250. For orders below PKR 250, a delivery charge of PKR 100 applies. Delivery typically takes 2-5 business days depending on your location.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    How can I track my order?
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Once your order is shipped, you will receive a tracking number via email and SMS. You can use this tracking number on our website or the courier company's website to track your order in real-time.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    What is your return policy?
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    We offer a 7-day return policy for unopened products in their original packaging. If you receive a damaged or incorrect product, please contact us within 24 hours of delivery for a replacement or refund.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingFour">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                    Do you offer wholesale prices?
+                                </button>
+                            </h2>
+                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Yes, we offer special wholesale pricing for bulk orders. Please contact our sales team at sales@organicapricots.com or call us at +92 300 1234567 to discuss your requirements and get a customized quote.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingFive">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                    Are your products certified organic?
+                                </button>
+                            </h2>
+                            <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Yes, all our products are 100% certified organic. We work directly with certified organic farmers and our products undergo rigorous testing to ensure they meet international organic standards. Certificates are available upon request.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row gy-4">
+                <div class="col-md-4 col-sm-6">
+                    <h4 class="logo-text"><i class="fa-solid fa-seedling me-2"></i>Organic Apricots</h4>
+                    <p>Premium quality dry fruits delivered fresh to your doorstep.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-6">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <h5>Customer Service</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Shipping & Returns</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <h5>Newsletter</h5>
+                    <p>Subscribe to get updates on discounts and new arrivals.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Enter your email" required>
+                        <button type="submit"><i class="fa fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center">
+                <p class="mb-0">&copy; 2025 Organic Apricots. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Contact Form Script -->
+        <!-- Contact Form Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactForm = document.getElementById('contactForm');
+            const successMessage = document.getElementById('successMessage');
+            
+            // Form validation and submission
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Check form validity
+                if (!contactForm.checkValidity()) {
+                    e.stopPropagation();
+                    contactForm.classList.add('was-validated');
+                    return;
+                }
+                
+                // If form is valid, show success message
+                contactForm.classList.add('was-validated');
+                successMessage.style.display = 'block';
+                
+                // Simulate form submission (in real implementation, you would send data to server)
+                setTimeout(() => {
+                    // Reset form
+                    contactForm.reset();
+                    contactForm.classList.remove('was-validated');
+                    
+                    // Scroll to success message
+                    successMessage.scrollIntoView({ behavior: 'smooth' });
+                }, 1000);
+                
+                // In a real implementation, you would send the form data to your server here
+                const formData = {
+                    firstName: document.getElementById('firstName').value,
+                    lastName: document.getElementById('lastName').value,
+                    email: document.getElementById('email').value,
+                    phone: document.getElementById('phone').value,
+                    subject: document.getElementById('subject').value,
+                    message: document.getElementById('message').value,
+                    newsletter: document.getElementById('newsletter').checked
+                };
+                
+                console.log('Form submitted:', formData);
+                
+                // Here you would typically send the data to your backend
+                // Example:
+                // fetch('/api/contact', {
+                //     method: 'POST',
+                //     headers: {
+                //         'Content-Type': 'application/json',
+                //     },
+                //     body: JSON.stringify(formData)
+                // })
+                // .then(response => response.json())
+                // .then(data => {
+                //     console.log('Success:', data);
+                // })
+                // .catch((error) => {
+                //     console.error('Error:', error);
+                // });
+            });
+            
+            // Real-time validation
+            const formInputs = contactForm.querySelectorAll('input, select, textarea');
+            formInputs.forEach(input => {
+                input.addEventListener('input', function() {
+                    if (this.checkValidity()) {
+                        this.classList.remove('is-invalid');
+                        this.classList.add('is-valid');
+                    } else {
+                        this.classList.remove('is-valid');
+                        this.classList.add('is-invalid');
+                    }
+                });
+                
+                input.addEventListener('blur', function() {
+                    if (!this.checkValidity()) {
+                        this.classList.add('is-invalid');
+                    }
+                });
+            });
+            
+            // Phone number formatting
+            const phoneInput = document.getElementById('phone');
+            if (phoneInput) {
+                phoneInput.addEventListener('input', function(e) {
+                    let value = e.target.value.replace(/\D/g, '');
+                    if (value.length > 0) {
+                        value = value.match(/.{1,4}/g).join(' ');
+                    }
+                    e.target.value = value;
+                });
+            }
+            
+            // Character counter for message
+            const messageTextarea = document.getElementById('message');
+            if (messageTextarea) {
+                // Create character counter element
+                const charCounter = document.createElement('div');
+                charCounter.className = 'form-text text-end mt-1';
+                charCounter.innerHTML = '<span id="charCount">0</span>/500 characters';
+                messageTextarea.parentNode.appendChild(charCounter);
+                
+                messageTextarea.addEventListener('input', function() {
+                    const charCount = this.value.length;
+                    document.getElementById('charCount').textContent = charCount;
+                    
+                    if (charCount > 500) {
+                        charCounter.style.color = '#dc3545';
+                    } else if (charCount > 400) {
+                        charCounter.style.color = '#ffc107';
+                    } else {
+                        charCounter.style.color = '#6c757d';
+                    }
+                });
+            }
+            
+            // Auto-save form data (optional feature)
+            let autoSaveTimeout;
+            contactForm.addEventListener('input', function() {
+                clearTimeout(autoSaveTimeout);
+                autoSaveTimeout = setTimeout(() => {
+                    const formData = new FormData(contactForm);
+                    const formObject = Object.fromEntries(formData);
+                    localStorage.setItem('contactFormDraft', JSON.stringify(formObject));
+                }, 1000);
+            });
+            
+            // Load saved form data on page load
+            const savedFormData = localStorage.getItem('contactFormDraft');
+            if (savedFormData) {
+                const formData = JSON.parse(savedFormData);
+                Object.keys(formData).forEach(key => {
+                    const element = document.getElementById(key);
+                    if (element) {
+                        element.value = formData[key];
+                    }
+                });
+                
+                // Show restore draft notification
+                const restoreNotification = document.createElement('div');
+                restoreNotification.className = 'alert alert-info alert-dismissible fade show';
+                restoreNotification.innerHTML = `
+                    <i class="fas fa-info-circle me-2"></i>
+                    We found a saved draft of your message. 
+                    <button type="button" class="btn btn-sm btn-outline-info ms-2" id="restoreDraft">Restore</button>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                `;
+                contactForm.parentNode.insertBefore(restoreNotification, contactForm);
+                
+                document.getElementById('restoreDraft').addEventListener('click', function() {
+                    Object.keys(formData).forEach(key => {
+                        const element = document.getElementById(key);
+                        if (element) {
+                            element.value = formData[key];
+                        }
+                    });
+                    restoreNotification.remove();
+                });
+            }
+            
+            // Clear saved form data on successful submission
+            contactForm.addEventListener('submit', function() {
+                localStorage.removeItem('contactFormDraft');
+            });
+            
+            // Social media interaction tracking
+            const socialLinks = document.querySelectorAll('.social-icons a');
+            socialLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const platform = this.querySelector('i').className.split(' ')[1].split('-').pop();
+                    console.log(`Social media clicked: ${platform}`);
+                    // Here you would typically send this data to your analytics
+                });
+            });
+            
+            // FAQ search functionality (enhancement)
+            const faqSearch = document.createElement('div');
+            faqSearch.className = 'mb-4';
+            faqSearch.innerHTML = `
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search FAQs..." id="faqSearchInput">
+                    <button class="btn btn-outline-primary" type="button" id="faqSearchBtn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            `;
+            document.querySelector('.faq-section .section-title').parentNode.insertBefore(faqSearch, document.querySelector('#faqAccordion'));
+            
+            const faqSearchInput = document.getElementById('faqSearchInput');
+            const faqSearchBtn = document.getElementById('faqSearchBtn');
+            
+            function searchFAQs() {
+                const searchTerm = faqSearchInput.value.toLowerCase();
+                const accordionItems = document.querySelectorAll('.accordion-item');
+                
+                accordionItems.forEach(item => {
+                    const question = item.querySelector('.accordion-button').textContent.toLowerCase();
+                    const answer = item.querySelector('.accordion-body').textContent.toLowerCase();
+                    
+                    if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+                        item.style.display = 'block';
+                        // Auto-expand matching items
+                        const collapse = new bootstrap.Collapse(item.querySelector('.accordion-collapse'));
+                        collapse.show();
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+                
+                if (searchTerm === '') {
+                    accordionItems.forEach(item => {
+                        item.style.display = 'block';
+                        // Collapse all when search is cleared
+                        const collapse = new bootstrap.Collapse(item.querySelector('.accordion-collapse'));
+                        collapse.hide();
+                    });
+                    // Keep first one open
+                    const firstCollapse = new bootstrap.Collapse(document.querySelector('#collapseOne'));
+                    firstCollapse.show();
+                }
+            }
+            
+            faqSearchBtn.addEventListener('click', searchFAQs);
+            faqSearchInput.addEventListener('keyup', function(e) {
+                if (e.key === 'Enter') {
+                    searchFAQs();
+                }
+            });
+            
+            // Contact method preference
+            const contactPreference = document.createElement('div');
+            contactPreference.className = 'form-group';
+            contactPreference.innerHTML = `
+                <label class="form-label">Preferred Contact Method</label>
+                <div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="contactMethod" id="contactEmail" value="email" checked>
+                        <label class="form-check-label" for="contactEmail">Email</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="contactMethod" id="contactPhone" value="phone">
+                        <label class="form-check-label" for="contactPhone">Phone</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="contactMethod" id="contactBoth" value="both">
+                        <label class="form-check-label" for="contactBoth">Both</label>
+                    </div>
+                </div>
+            `;
+            
+            // Insert before the newsletter checkbox
+            const newsletterCheck = document.querySelector('.form-check');
+            newsletterCheck.parentNode.insertBefore(contactPreference, newsletterCheck);
+            
+            // Enhanced map functionality
+            const getDirectionsBtn = document.querySelector('.map-placeholder .btn');
+            if (getDirectionsBtn) {
+                getDirectionsBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const address = '123 Organic Street, Health District, Karachi, Pakistan';
+                    const encodedAddress = encodeURIComponent(address);
+                    window.open(`https://www.google.com/maps/dir/?api=1&destination=${encodedAddress}`, '_blank');
+                });
+            }
+            
+            // Response time indicator
+            const responseTime = document.createElement('div');
+            responseTime.className = 'alert alert-info mt-4';
+            responseTime.innerHTML = `
+                <i class="fas fa-clock me-2"></i>
+                <strong>Average Response Time:</strong> 2-4 hours during business hours
+            `;
+            contactForm.appendChild(responseTime);
+            
+            // Business hours validation
+            function isBusinessHours() {
+                const now = new Date();
+                const day = now.getDay(); // 0 = Sunday, 1 = Monday, etc.
+                const hour = now.getHours();
+                
+                // Monday to Friday, 9 AM to 6 PM
+                return day >= 1 && day <= 5 && hour >= 9 && hour < 18;
+            }
+            
+            // Update response time message based on current time
+            if (!isBusinessHours()) {
+                responseTime.innerHTML = `
+                    <i class="fas fa-clock me-2"></i>
+                    <strong>Response Time:</strong> We're currently outside business hours. We'll respond within 24 hours.
+                `;
+                responseTime.className = 'alert alert-warning mt-4';
+            }
+            
+            // Print-friendly version
+            const printBtn = document.createElement('button');
+            printBtn.type = 'button';
+            printBtn.className = 'btn btn-outline-secondary position-fixed';
+            printBtn.style.bottom = '20px';
+            printBtn.style.right = '20px';
+            printBtn.style.zIndex = '1000';
+            printBtn.innerHTML = '<i class="fas fa-print me-2"></i>Print';
+            printBtn.addEventListener('click', function() {
+                window.print();
+            });
+            document.body.appendChild(printBtn);
+            
+            // Print styles
+            const printStyles = document.createElement('style');
+            printStyles.innerHTML = `
+                @media print {
+                    .top-header, .main-header, .bottom-navbar, .footer,
+                    .btn, .social-icons, .map-placeholder .btn {
+                        display: none !important;
+                    }
+                    .contact-card, .contact-form-container, .map-container {
+                        box-shadow: none !important;
+                        border: 1px solid #ddd !important;
+                    }
+                    body {
+                        background: white !important;
+                        color: black !important;
+                    }
+                }
+            `;
+            document.head.appendChild(printStyles);
+        });
+    </script>
+</body>
+</html>

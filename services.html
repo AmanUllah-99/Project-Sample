@@ -3,16 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Services - GreenStore</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Our Services - Organic Apricots</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="../Home.css">
     <style>
         :root {
-            --primary: #198754;
-            --primary-dark: #146c43;
-            --light: #f8f9fa;
-            --dark: #212529;
+            --primary: #135E4B;
+            --primary-dark: #0c3d30;
+            --primary-light: #4CB572;
+            --light: #A1D8B5;
+            --dark: #CCDCDB;
+            --white: #ffffff;
+            --gray-light: #f8f9fa;
             --gray: #6c757d;
+            --danger: #dc3545;
+            --warning: #ffc107;
         }
         
         * {
@@ -23,22 +33,24 @@
         }
         
         body {
-            background-color: #f5f5f5;
-            color: var(--dark);
+            background-color: #f8f9fa;
+            color: #333;
             line-height: 1.6;
         }
         
-        /* Header Styles */
+        /* ===== TOP HEADER ===== */
         .top-header {
             background: var(--primary);
-            color: white;
-            padding: 10px 0;
+            color: var(--white);
+            padding: 8px 0;
             font-size: 0.9rem;
         }
         
+        /* ===== MAIN HEADER ===== */
         .main-header {
-            background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
         }
         
         .logo {
@@ -52,7 +64,7 @@
         
         .logo-icon {
             background: var(--primary);
-            color: white;
+            color: var(--white);
             width: 45px;
             height: 45px;
             border-radius: 50%;
@@ -63,147 +75,319 @@
             font-size: 1.5rem;
         }
         
-        /* Bottom Navbar */
+        /* ===== BOTTOM NAVBAR ===== */
         .bottom-navbar {
             background: var(--primary);
-            transition: all 0.3s ease-in-out;
+            padding: 0;
+            transition: all 0.3s ease;
         }
         
-        .bottom-navbar .nav-link {
-            color: #fff !important;
+        .bottom-navbar .navbar-nav .nav-link {
+            color: var(--white) !important;
             font-weight: 500;
-            margin: 0 5px;
+            padding: 15px 20px;
             position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        /* Diagonal Border Hover Effect */
+        .bottom-navbar .nav-link::before,
+        .bottom-navbar .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            transition: all 0.4s ease;
+            z-index: -1;
+        }
+        
+        .bottom-navbar .nav-link::before {
+            top: 0;
+            left: 0;
+            border-top: 2px solid transparent;
+            border-left: 2px solid transparent;
         }
         
         .bottom-navbar .nav-link::after {
-            content: "";
-            display: block;
-            width: 0;
-            height: 3px;
-            background: #fff;
-            transition: width 0.3s;
-            margin: auto;
-            border-radius: 2px;
+            bottom: 0;
+            right: 0;
+            border-bottom: 2px solid transparent;
+            border-right: 2px solid transparent;
+        }
+        
+        .bottom-navbar .nav-link:hover::before {
+            width: 100%;
+            height: 100%;
+            border-top-color: var(--light);
+            border-left-color: var(--light);
         }
         
         .bottom-navbar .nav-link:hover::after {
-            width: 80%;
+            width: 100%;
+            height: 100%;
+            border-bottom-color: var(--light);
+            border-right-color: var(--light);
         }
         
-        /* Hero Section */
+        .bottom-navbar .nav-link:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        /* ===== SERVICES HERO SECTION ===== */
         .services-hero {
-            background: linear-gradient(rgba(25, 135, 84, 0.9), rgba(25, 135, 84, 0.8)), url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
-            background-size: cover;
-            background-position: center;
-            color: white;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
             padding: 100px 0;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .services-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" opacity="0.1"><polygon fill="white" points="0,1000 1000,0 1000,1000"/></svg>');
+            background-size: cover;
         }
         
         .services-hero h1 {
             font-size: 3.5rem;
-            font-weight: 700;
+            font-weight: 800;
             margin-bottom: 20px;
+            position: relative;
         }
         
         .services-hero p {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             max-width: 700px;
             margin: 0 auto 30px;
+            position: relative;
         }
         
-        /* Services Section */
-        .services-section {
+        /* ===== SERVICES CONTENT ===== */
+        .services-content {
             padding: 80px 0;
         }
         
+        .section-title {
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 40px;
+            position: relative;
+            text-align: center;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary-light);
+            border-radius: 2px;
+        }
+        
+        /* Service Cards */
         .service-card {
-            background: white;
-            border-radius: 10px;
+            background: var(--white);
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
             height: 100%;
             margin-bottom: 30px;
         }
         
         .service-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
         }
         
         .service-icon {
             background: var(--primary);
-            color: white;
+            color: var(--white);
             width: 80px;
             height: 80px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 20px;
+            margin: 30px auto 20px;
             font-size: 2rem;
+            transition: all 0.3s ease;
         }
         
-        .service-card h3 {
-            color: var(--primary);
+        .service-card:hover .service-icon {
+            background: var(--primary-light);
+            transform: scale(1.1);
+        }
+        
+        .service-info {
+            padding: 0 25px 30px;
+            text-align: center;
+        }
+        
+        .service-title {
+            font-size: 1.5rem;
+            font-weight: 600;
             margin-bottom: 15px;
+            color: var(--primary-dark);
+        }
+        
+        .service-description {
+            color: var(--gray);
+            font-size: 1rem;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .service-features {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 25px;
+        }
+        
+        .service-features li {
+            padding: 8px 0;
+            color: var(--gray);
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .service-features li:before {
+            content: '\f00c';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--primary-light);
+        }
+        
+        .btn-service {
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-service:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
         
         /* Process Section */
         .process-section {
-            background: var(--light);
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+            color: var(--white);
             padding: 80px 0;
+            margin: 50px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .process-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        
+        .process-title {
+            color: var(--white);
+            text-align: center;
+            margin-bottom: 50px;
         }
         
         .process-step {
             text-align: center;
-            padding: 20px;
+            position: relative;
+            padding: 0 20px;
         }
         
         .step-number {
-            background: var(--primary);
-            color: white;
-            width: 50px;
-            height: 50px;
+            background: var(--white);
+            color: var(--primary);
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 15px;
             font-size: 1.5rem;
             font-weight: 700;
+            margin: 0 auto 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .step-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .step-description {
+            font-size: 0.95rem;
+            opacity: 0.9;
         }
         
         /* Testimonials */
+        .testimonial-section {
+            padding: 80px 0;
+            background: var(--gray-light);
+        }
+        
         .testimonial-card {
-            background: white;
-            border-radius: 10px;
+            background: var(--white);
+            border-radius: 20px;
             padding: 30px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
             margin-bottom: 30px;
             position: relative;
         }
         
         .testimonial-card::before {
-            content: "";
-            font-size: 100px;
-            color: var(--primary);
-            opacity: 0.1;
+            content: '\f10d';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
             position: absolute;
-            top: -20px;
-            left: 10px;
-            font-family: Georgia, serif;
+            top: 20px;
+            right: 20px;
+            color: var(--primary-light);
+            opacity: 0.3;
+            font-size: 2rem;
         }
         
-        .client-info {
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: var(--gray);
+        }
+        
+        .testimonial-author {
             display: flex;
             align-items: center;
-            margin-top: 20px;
         }
         
-        .client-avatar {
+        .author-avatar {
             width: 50px;
             height: 50px;
             border-radius: 50%;
@@ -211,82 +395,192 @@
             margin-right: 15px;
         }
         
-        .client-avatar img {
+        .author-avatar img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
         
+        .author-info h5 {
+            margin: 0;
+            font-size: 1rem;
+        }
+        
+        .author-info p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            padding: 80px 0;
+        }
+        
+        .accordion-item {
+            border: none;
+            margin-bottom: 15px;
+            border-radius: 10px !important;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .accordion-button {
+            background: var(--white);
+            color: var(--primary-dark);
+            font-weight: 600;
+            padding: 20px;
+            border: none;
+            box-shadow: none;
+        }
+        
+        .accordion-button:not(.collapsed) {
+            background: var(--primary);
+            color: var(--white);
+        }
+        
+        .accordion-button::after {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23135E4B'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+        }
+        
+        .accordion-button:not(.collapsed)::after {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+        }
+        
+        .accordion-body {
+            padding: 20px;
+            color: var(--gray);
+        }
+        
         /* CTA Section */
         .cta-section {
-            background: var(--primary);
-            color: white;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--white);
             padding: 80px 0;
             text-align: center;
+            border-radius: 20px;
+            margin: 50px 0;
         }
         
-        /* Footer */
-        .footer {
-            background: var(--dark);
-            color: white;
-            padding: 60px 0 30px;
-        }
-        
-        .footer h5 {
-            color: var(--primary);
+        .cta-title {
+            font-size: 2.5rem;
+            font-weight: 700;
             margin-bottom: 20px;
         }
         
-        .footer-links a {
-            color: #adb5bd;
+        .cta-description {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+        
+        .btn-cta {
+            background: var(--warning);
+            color: var(--primary-dark);
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--primary);
+            color: var(--white);
+            padding: 50px 0 20px;
+            margin-top: 50px;
+        }
+        
+        .footer h4.logo-text {
+            font-weight: bold;
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+        
+        .footer h5 {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .footer p, 
+        .footer a {
+            font-size: 14px;
+            color: #e2e2e2;
             text-decoration: none;
-            display: block;
-            margin-bottom: 10px;
-            transition: color 0.3s;
         }
         
-        .footer-links a:hover {
-            color: white;
+        .footer a:hover {
+            color: var(--white);
+            padding-left: 5px;
+            transition: 0.3s ease;
         }
         
-        .copyright {
-            border-top: 1px solid #444;
-            padding-top: 20px;
-            margin-top: 40px;
-            text-align: center;
-            color: #adb5bd;
-            font-size: 0.9rem;
+        .footer .social-icons a {
+            display: inline-block;
+            margin-right: 10px;
+            font-size: 18px;
+            background: var(--primary-light);
+            color: var(--white);
+            padding: 8px;
+            border-radius: 50%;
+            transition: 0.3s;
         }
         
-        /* Responsive Adjustments */
+        .footer .social-icons a:hover {
+            background: var(--primary-dark);
+            transform: scale(1.1);
+        }
+        
+        /* ===== RESPONSIVE STYLING ===== */
+        @media (max-width: 992px) {
+            .services-hero h1 {
+                font-size: 3rem;
+            }
+            
+            .cta-title {
+                font-size: 2rem;
+            }
+        }
+        
         @media (max-width: 768px) {
+            .services-hero {
+                padding: 80px 0;
+            }
+            
             .services-hero h1 {
                 font-size: 2.5rem;
             }
             
+            .services-content {
+                padding: 60px 0;
+            }
+        }
+        
+        @media (max-width: 576px) {
             .services-hero {
                 padding: 60px 0;
             }
             
-            .services-section, .process-section {
-                padding: 50px 0;
+            .services-hero h1 {
+                font-size: 2rem;
             }
-        }
-        
-        /* Animation */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
+            
+            .services-content {
+                padding: 40px 0;
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+            
+            .cta-title {
+                font-size: 1.8rem;
             }
-        }
-        
-        .animate-fade-in-up {
-            animation: fadeInUp 0.8s ease forwards;
         }
     </style>
 </head>
@@ -297,41 +591,38 @@
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <i class="fas fa-phone me-2"></i> +1 234 567 8900
-                    <i class="fas fa-envelope ms-3 me-2"></i> info@greenstore.com
+                    <i class="fas fa-envelope ms-3 me-2"></i> info@organicapricots.com
                 </div>
                 <div class="col-md-6 text-md-end">
-                    <i class="fas fa-truck me-2"></i> Free Shipping on Orders Over $50
+                    <i class="fas fa-truck me-2"></i> Free Shipping on Orders Over 250 PKR
                 </div>
             </div>
         </div>
     </div>
     
     <!-- Main Header -->
-    <header class="main-header py-3">
+    <header class="main-header">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-4">
-                    <a href="Home.html" class="logo">
-                        <div class="logo-icon">G</div>
-                        <span>GreenStore</span>
+                    <a href="index.html" class="logo">
+                        <div class="logo-icon">OA</div>
+                        <span>Organic Apricots</span>
                     </a>
                 </div>
                 <div class="col-md-5">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search products...">
+                        <input type="text" class="form-control" placeholder="Search services...">
                         <button class="btn btn-outline-success" type="button">
                             <i class="fas fa-search"></i>
                         </button>
                     </div>
                 </div>
                 <div class="col-md-3 text-end">
-                    <div class="d-inline-block me-3">
-                        <i class="fas fa-user me-1"></i> Account
-                    </div>
-                    <div class="d-inline-block">
-                        <a href="../Cart/cart.html" class="text-dark position-relative">
-                            <i class="fas fa-shopping-cart me-1"></i> Cart
-                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">3</span>
+                    <div class="account-section">
+                        <a id="profile" href="login.html" class="account-btn">
+                            <i class="fas fa-user me-1"></i> 
+                            <span>Sign Up / Login</span>
                         </a>
                     </div>
                 </div>
@@ -351,30 +642,30 @@
             <div class="collapse navbar-collapse" id="bottomNavbarContent">
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link" href="Home.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="product.html">Products</a></li>
+                    <li class="nav-item"><a class="nav-link " href="services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="deal.html">Deals</a></li>
+                    <li class="nav-item"><a class="nav-link" href="aboutus.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contactUs.html">Contact</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" 
                             data-bs-toggle="dropdown" aria-expanded="false">
                             Categories
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Electronics</a></li>
-                            <li><a class="dropdown-item" href="#">Clothing</a></li>
-                            <li><a class="dropdown-item" href="#">Home & Kitchen</a></li>
-                            <li><a class="dropdown-item" href="#">Books</a></li>
-                            <li><a class="dropdown-item" href="#">Sports</a></li>
+                            <li><a class="dropdown-item" href="#">Almonds</a></li>
+                            <li><a class="dropdown-item" href="#">Cashews</a></li>
+                            <li><a class="dropdown-item" href="#">Walnuts</a></li>
+                            <li><a class="dropdown-item" href="#">Pistachios</a></li>
+                            <li><a class="dropdown-item" href="#">Raisins</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="product.html">Products</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="#">Services</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Deals</a></li>
-                    <li class="nav-item"><a class="nav-link" href="aboutus.html">About Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
                 </ul>
 
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="../Cart/cart.html">
+                        <a class="nav-link" href="cart.html">
                             <i class="fas fa-shopping-cart me-1"></i>Your Cart
                             <span class="cart-badge badge rounded-pill bg-danger">3</span>
                         </a>
@@ -383,169 +674,216 @@
             </div>
         </div>
     </nav>
-    
-    <!-- Hero Section -->
+
+    <!-- Services Hero Section -->
     <section class="services-hero">
         <div class="container">
             <h1>Our Premium Services</h1>
-            <p>We offer a wide range of services to meet all your needs. From product delivery to after-sales support, we're here for you every step of the way.</p>
-            <a href="#services" class="btn btn-light btn-lg">Explore Services</a>
+            <p>Discover how we go beyond just selling products to provide exceptional value and support for our customers.</p>
+            <button class="btn-service">
+                <i class="fas fa-star me-2"></i> Explore Our Services
+            </button>
         </div>
     </section>
-    
-    <!-- Services Section -->
-    <section class="services-section" id="services">
+
+    <!-- Services Content -->
+    <section class="services-content">
         <div class="container">
-            <div class="row text-center mb-5">
-                <div class="col-md-8 mx-auto">
-                    <h2 class="section-title">What We Offer</h2>
-                    <p class="lead">Our comprehensive services are designed to provide you with the best shopping experience possible.</p>
-                </div>
-            </div>
+            <h2 class="section-title">What We Offer</h2>
             
             <div class="row">
                 <!-- Service 1 -->
                 <div class="col-lg-4 col-md-6">
-                    <div class="service-card p-4 text-center animate-fade-in-up">
+                    <div class="service-card">
                         <div class="service-icon">
-                            <i class="fas fa-shipping-fast"></i>
+                            <i class="fas fa-seedling"></i>
                         </div>
-                        <h3>Fast Delivery</h3>
-                        <p>Get your products delivered to your doorstep within 24 hours. We partner with reliable logistics providers to ensure timely delivery.</p>
-                        <a href="#" class="btn btn-outline-success mt-3">Learn More</a>
+                        <div class="service-info">
+                            <h3 class="service-title">Organic Certification</h3>
+                            <p class="service-description">All our products are certified organic, ensuring you receive the highest quality, chemical-free dry fruits.</p>
+                            <ul class="service-features">
+                                <li>100% Organic Certification</li>
+                                <li>Regular Quality Checks</li>
+                                <li>Transparent Sourcing</li>
+                                <li>Chemical-Free Processing</li>
+                            </ul>
+                            <button class="btn-service">
+                                <i class="fas fa-info-circle me-2"></i> Learn More
+                            </button>
+                        </div>
                     </div>
                 </div>
                 
                 <!-- Service 2 -->
                 <div class="col-lg-4 col-md-6">
-                    <div class="service-card p-4 text-center animate-fade-in-up">
+                    <div class="service-card">
                         <div class="service-icon">
-                            <i class="fas fa-undo-alt"></i>
+                            <i class="fas fa-truck"></i>
                         </div>
-                        <h3>Easy Returns</h3>
-                        <p>Not satisfied with your purchase? Our 30-day return policy makes it easy to return products for a full refund or exchange.</p>
-                        <a href="#" class="btn btn-outline-success mt-3">Learn More</a>
+                        <div class="service-info">
+                            <h3 class="service-title">Fast & Free Delivery</h3>
+                            <p class="service-description">We deliver your orders quickly and safely with our specialized packaging and logistics network.</p>
+                            <ul class="service-features">
+                                <li>Free Shipping Over 250 PKR</li>
+                                <li>Same-Day Delivery in Major Cities</li>
+                                <li>Nationwide Coverage</li>
+                                <li>Real-Time Tracking</li>
+                            </ul>
+                            <button class="btn-service">
+                                <i class="fas fa-info-circle me-2"></i> Learn More
+                            </button>
+                        </div>
                     </div>
                 </div>
                 
                 <!-- Service 3 -->
                 <div class="col-lg-4 col-md-6">
-                    <div class="service-card p-4 text-center animate-fade-in-up">
+                    <div class="service-card">
                         <div class="service-icon">
-                            <i class="fas fa-headset"></i>
+                            <i class="fas fa-gift"></i>
                         </div>
-                        <h3>24/7 Support</h3>
-                        <p>Our customer support team is available round the clock to assist you with any queries or issues you may have.</p>
-                        <a href="#" class="btn btn-outline-success mt-3">Learn More</a>
+                        <div class="service-info">
+                            <h3 class="service-title">Custom Gift Packaging</h3>
+                            <p class="service-description">Create memorable gifts with our custom packaging options for special occasions and corporate gifting.</p>
+                            <ul class="service-features">
+                                <li>Custom Branding Options</li>
+                                <li>Elegant Gift Boxes</li>
+                                <li>Personalized Messages</li>
+                                <li>Bulk Order Discounts</li>
+                            </ul>
+                            <button class="btn-service">
+                                <i class="fas fa-info-circle me-2"></i> Learn More
+                            </button>
+                        </div>
                     </div>
                 </div>
                 
                 <!-- Service 4 -->
                 <div class="col-lg-4 col-md-6">
-                    <div class="service-card p-4 text-center animate-fade-in-up">
+                    <div class="service-card">
                         <div class="service-icon">
-                            <i class="fas fa-shield-alt"></i>
+                            <i class="fas fa-user-check"></i>
                         </div>
-                        <h3>Product Warranty</h3>
-                        <p>All our products come with a manufacturer's warranty. We also offer extended warranty options for your peace of mind.</p>
-                        <a href="#" class="btn btn-outline-success mt-3">Learn More</a>
+                        <div class="service-info">
+                            <h3 class="service-title">Nutrition Consultation</h3>
+                            <p class="service-description">Get personalized advice from our nutrition experts on incorporating dry fruits into your diet.</p>
+                            <ul class="service-features">
+                                <li>Personalized Diet Plans</li>
+                                <li>Health Benefit Guidance</li>
+                                <li>Allergy & Dietary Advice</li>
+                                <li>Recipe Suggestions</li>
+                            </ul>
+                            <button class="btn-service">
+                                <i class="fas fa-info-circle me-2"></i> Learn More
+                            </button>
+                        </div>
                     </div>
                 </div>
                 
                 <!-- Service 5 -->
                 <div class="col-lg-4 col-md-6">
-                    <div class="service-card p-4 text-center animate-fade-in-up">
+                    <div class="service-card">
                         <div class="service-icon">
-                            <i class="fas fa-tools"></i>
+                            <i class="fas fa-box-open"></i>
                         </div>
-                        <h3>Installation Services</h3>
-                        <p>Need help setting up your new purchase? Our professional installation team can help with assembly and setup.</p>
-                        <a href="#" class="btn btn-outline-success mt-3">Learn More</a>
+                        <div class="service-info">
+                            <h3 class="service-title">Bulk Order Solutions</h3>
+                            <p class="service-description">Special pricing and services for restaurants, retailers, and corporate clients ordering in bulk.</p>
+                            <ul class="service-features">
+                                <li>Competitive Bulk Pricing</li>
+                                <li>Custom Packaging Solutions</li>
+                                <li>Regular Supply Agreements</li>
+                                <li>Dedicated Account Manager</li>
+                            </ul>
+                            <button class="btn-service">
+                                <i class="fas fa-info-circle me-2"></i> Learn More
+                            </button>
+                        </div>
                     </div>
                 </div>
                 
                 <!-- Service 6 -->
                 <div class="col-lg-4 col-md-6">
-                    <div class="service-card p-4 text-center animate-fade-in-up">
+                    <div class="service-card">
                         <div class="service-icon">
-                            <i class="fas fa-recycle"></i>
+                            <i class="fas fa-undo"></i>
                         </div>
-                        <h3>Eco-Friendly Options</h3>
-                        <p>We're committed to sustainability. Choose our eco-friendly packaging and recycling services to reduce your environmental impact.</p>
-                        <a href="#" class="btn btn-outline-success mt-3">Learn More</a>
+                        <div class="service-info">
+                            <h3 class="service-title">Easy Returns & Refunds</h3>
+                            <p class="service-description">Not satisfied? Our hassle-free return policy ensures you get what you expect or your money back.</p>
+                            <ul class="service-features">
+                                <li>30-Day Return Policy</li>
+                                <li>No Questions Asked Refunds</li>
+                                <li>Quick Resolution</li>
+                                <li>Free Return Shipping</li>
+                            </ul>
+                            <button class="btn-service">
+                                <i class="fas fa-info-circle me-2"></i> Learn More
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    
+
     <!-- Process Section -->
     <section class="process-section">
         <div class="container">
-            <div class="row text-center mb-5">
-                <div class="col-md-8 mx-auto">
-                    <h2 class="section-title">How It Works</h2>
-                    <p class="lead">Our simple 4-step process ensures you get the best service experience.</p>
-                </div>
-            </div>
+            <h2 class="section-title process-title">How We Ensure Quality</h2>
             
             <div class="row">
                 <div class="col-lg-3 col-md-6">
                     <div class="process-step">
                         <div class="step-number">1</div>
-                        <h4>Browse & Select</h4>
-                        <p>Explore our wide range of products and services</p>
+                        <h3 class="step-title">Sourcing</h3>
+                        <p class="step-description">We carefully select farmers who follow organic practices and sustainable farming methods.</p>
                     </div>
                 </div>
                 
                 <div class="col-lg-3 col-md-6">
                     <div class="process-step">
                         <div class="step-number">2</div>
-                        <h4>Customize</h4>
-                        <p>Choose the service options that fit your needs</p>
+                        <h3 class="step-title">Testing</h3>
+                        <p class="step-description">Every batch undergoes rigorous testing for quality, purity, and organic certification.</p>
                     </div>
                 </div>
                 
                 <div class="col-lg-3 col-md-6">
                     <div class="process-step">
                         <div class="step-number">3</div>
-                        <h4>Confirm & Pay</h4>
-                        <p>Review your selection and complete payment</p>
+                        <h3 class="step-title">Processing</h3>
+                        <p class="step-description">We use state-of-the-art facilities to clean, sort, and package while maintaining nutritional value.</p>
                     </div>
                 </div>
                 
                 <div class="col-lg-3 col-md-6">
                     <div class="process-step">
                         <div class="step-number">4</div>
-                        <h4>Enjoy Service</h4>
-                        <p>Sit back and enjoy our premium services</p>
+                        <h3 class="step-title">Delivery</h3>
+                        <p class="step-description">Specialized packaging and logistics ensure your order reaches you fresh and intact.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    
-    <!-- Testimonials -->
-    <section class="services-section">
+
+    <!-- Testimonials Section -->
+    <section class="testimonial-section">
         <div class="container">
-            <div class="row text-center mb-5">
-                <div class="col-md-8 mx-auto">
-                    <h2 class="section-title">What Our Customers Say</h2>
-                    <p class="lead">Don't just take our word for it. Here's what our customers have to say about our services.</p>
-                </div>
-            </div>
+            <h2 class="section-title">What Our Customers Say</h2>
             
             <div class="row">
                 <div class="col-lg-4 col-md-6">
                     <div class="testimonial-card">
-                        <p>"The delivery was incredibly fast! I ordered in the morning and received my package the same evening. Excellent service!"</p>
-                        <div class="client-info">
-                            <div class="client-avatar">
-                                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client">
+                        <p class="testimonial-text">"The custom gift packaging service was exceptional! My corporate clients were impressed with the quality and presentation."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <img src="https://randomuser.me/api/portraits/women/43.jpg" alt="Sarah Johnson">
                             </div>
-                            <div>
+                            <div class="author-info">
                                 <h5>Sarah Johnson</h5>
-                                <p>New York</p>
+                                <p>Corporate Buyer</p>
                             </div>
                         </div>
                     </div>
@@ -553,29 +891,29 @@
                 
                 <div class="col-lg-4 col-md-6">
                     <div class="testimonial-card">
-                        <p>"I had an issue with a product, and their support team resolved it within hours. Truly 24/7 service as promised!"</p>
-                        <div class="client-info">
-                            <div class="client-avatar">
-                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client">
+                        <p class="testimonial-text">"As a restaurant owner, their bulk ordering system has saved me time and money. The quality is consistently excellent."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Chen">
                             </div>
-                            <div>
+                            <div class="author-info">
                                 <h5>Michael Chen</h5>
-                                <p>California</p>
+                                <p>Restaurant Owner</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="col-lg-4 col-md-6 mx-auto">
+                <div class="col-lg-4 col-md-6">
                     <div class="testimonial-card">
-                        <p>"The installation service was professional and efficient. The technicians knew exactly what they were doing."</p>
-                        <div class="client-info">
-                            <div class="client-avatar">
-                                <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Client">
+                        <p class="testimonial-text">"The nutrition consultation helped me incorporate dry fruits into my diet properly. I've noticed significant health improvements!"</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Emma Wilson">
                             </div>
-                            <div>
+                            <div class="author-info">
                                 <h5>Emma Wilson</h5>
-                                <p>Texas</p>
+                                <p>Regular Customer</p>
                             </div>
                         </div>
                     </div>
@@ -583,92 +921,153 @@
             </div>
         </div>
     </section>
-    
-    <!-- CTA Section -->
-    <section class="cta-section">
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-8 mx-auto text-center">
-                    <h2>Ready to Experience Our Services?</h2>
-                    <p class="lead mb-4">Join thousands of satisfied customers who trust us for their needs.</p>
-                    <a href="contact.html" class="btn btn-light btn-lg me-3">Contact Us</a>
-                    <a href="product.html" class="btn btn-outline-light btn-lg">Shop Now</a>
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            
+            <div class="accordion" id="servicesAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            How do I place a bulk order for my business?
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#servicesAccordion">
+                        <div class="accordion-body">
+                            For bulk orders, please contact our dedicated business sales team at bulk@organicapricots.com or call +1 234 567 8901. We'll assign a dedicated account manager to handle your requirements, provide custom pricing, and ensure timely delivery according to your schedule.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            What is your return policy?
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#servicesAccordion">
+                        <div class="accordion-body">
+                            We offer a 30-day hassle-free return policy. If you're not satisfied with your purchase for any reason, you can return the products within 30 days of delivery for a full refund or exchange. We provide free return shipping and process refunds within 3-5 business days of receiving the returned items.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Do you offer international shipping?
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#servicesAccordion">
+                        <div class="accordion-body">
+                            Currently, we ship primarily within Pakistan with free shipping on orders over 250 PKR. For international orders, we're working on expanding our services. Please contact us at international@organicapricots.com for specific inquiries about international shipping to your location, and we'll do our best to accommodate your request.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFour">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            How can I schedule a nutrition consultation?
+                        </button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#servicesAccordion">
+                        <div class="accordion-body">
+                            You can schedule a free nutrition consultation by calling our customer service at +1 234 567 8900 or by filling out the consultation request form on our website. Our certified nutritionists are available for phone consultations Monday through Friday, 9 AM to 6 PM. Initial consultations typically last 30 minutes and include personalized recommendations.
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-    
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="cta-title">Ready to Experience Our Services?</h2>
+            <p class="cta-description">Join thousands of satisfied customers who trust Organic Apricots for premium quality products and exceptional service.</p>
+            <button class="btn-cta">
+                <i class="fas fa-phone-alt me-2"></i> Contact Us Today
+            </button>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <h5>GreenStore</h5>
-                    <p>Your one-stop shop for all your needs. We're committed to providing quality products and excellent service.</p>
-                    <div class="social-icons mt-3">
-                        <a href="#" class="text-white me-2"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="text-white me-2"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="text-white me-2"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="text-white"><i class="fab fa-linkedin-in"></i></a>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <h4 class="logo-text">Organic Apricots</h4>
+                    <p>We provide the finest quality organic dry fruits, nuts, and apricots sourced directly from trusted farmers.</p>
+                    <div class="social-icons mt-4">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
                 
-                <div class="col-lg-3 col-md-6 mb-4">
+                <div class="col-lg-2 col-md-6 mb-4">
                     <h5>Quick Links</h5>
-                    <div class="footer-links">
-                        <a href="Home.html">Home</a>
-                        <a href="aboutus.html">About Us</a>
-                        <a href="product.html">Products</a>
-                        <a href="#">Services</a>
-                        <a href="blog.html">Blog</a>
-                    </div>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="index.html">Home</a></li>
+                        <li class="mb-2"><a href="products.html">Products</a></li>
+                        <li class="mb-2"><a href="services.html">Services</a></li>
+                        <li class="mb-2"><a href="deals.html">Deals</a></li>
+                        <li class="mb-2"><a href="about.html">About Us</a></li>
+                        <li class="mb-2"><a href="contact.html">Contact</a></li>
+                    </ul>
                 </div>
                 
                 <div class="col-lg-3 col-md-6 mb-4">
                     <h5>Customer Service</h5>
-                    <div class="footer-links">
-                        <a href="#">Contact Us</a>
-                        <a href="#">Shipping Policy</a>
-                        <a href="#">Return Policy</a>
-                        <a href="#">FAQ</a>
-                        <a href="#">Privacy Policy</a>
-                    </div>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#">Shipping Policy</a></li>
+                        <li class="mb-2"><a href="#">Return Policy</a></li>
+                        <li class="mb-2"><a href="#">Privacy Policy</a></li>
+                        <li class="mb-2"><a href="#">Terms & Conditions</a></li>
+                        <li class="mb-2"><a href="#">FAQs</a></li>
+                    </ul>
                 </div>
                 
                 <div class="col-lg-3 col-md-6 mb-4">
                     <h5>Contact Info</h5>
-                    <p><i class="fas fa-map-marker-alt me-2"></i> 123 Green Street, Eco City</p>
-                    <p><i class="fas fa-phone me-2"></i> +1 234 567 8900</p>
-                    <p><i class="fas fa-envelope me-2"></i> info@greenstore.com</p>
-                    <p><i class="fas fa-clock me-2"></i> Mon-Sun: 9:00 AM - 8:00 PM</p>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> 123 Organic Street, Karachi, Pakistan</li>
+                        <li class="mb-2"><i class="fas fa-phone me-2"></i> +1 234 567 8900</li>
+                        <li class="mb-2"><i class="fas fa-envelope me-2"></i> info@organicapricots.com</li>
+                        <li class="mb-2"><i class="fas fa-clock me-2"></i> Mon-Sat: 9AM - 6PM</li>
+                    </ul>
                 </div>
             </div>
             
-            <div class="copyright">
-                <p>&copy; 2023 GreenStore. All Rights Reserved.</p>
+            <div class="text-center pt-4 mt-4 border-top">
+                <p>&copy; 2024 Organic Apricots. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Simple animation on scroll
-        document.addEventListener('DOMContentLoaded', function() {
-            const animatedElements = document.querySelectorAll('.animate-fade-in-up');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.animationDelay = '0.2s';
-                        entry.target.classList.add('animate-fade-in-up');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.1 });
-            
-            animatedElements.forEach(el => {
-                observer.observe(el);
+        // Service card interaction
+        document.querySelectorAll('.btn-service').forEach(button => {
+            button.addEventListener('click', function() {
+                const card = this.closest('.service-card');
+                const title = card.querySelector('.service-title').textContent;
+                
+                alert(`Thank you for your interest in our ${title} service! Our team will contact you shortly with more information.`);
             });
+        });
+        
+        // CTA button interaction
+        document.querySelector('.btn-cta').addEventListener('click', function() {
+            alert('Redirecting to our contact page...');
+            // In a real implementation, this would redirect to the contact page
+            // window.location.href = 'contact.html';
         });
     </script>
 </body>

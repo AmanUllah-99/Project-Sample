@@ -3,482 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GreenStore - Header Redesign</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #198754;
-            --primary-dark: #146c43;
-            --light: #f8f9fa;
-            --dark: #212529;
-            --gray: #6c757d;
-            --transition: all 0.3s ease;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-        
-        .demo-container {
-            width: 100%;
-            max-width: 1200px;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-        }
-        
-        .demo-header {
-            padding: 20px;
-            background: #f8f9fa;
-            border-bottom: 1px solid #e9ecef;
-            text-align: center;
-        }
-        
-        .demo-header h1 {
-            color: var(--primary);
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-        }
-        
-        .demo-header p {
-            color: var(--gray);
-            font-size: 1rem;
-        }
-        
-        /* Main Header Styles */
-        .main-header {
-            background: white;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
-            padding: 15px 0;
-            position: relative;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            color: var(--primary);
-            font-weight: 700;
-            font-size: 1.8rem;
-            transition: var(--transition);
-        }
-        
-        .logo:hover {
-            transform: translateY(-2px);
-            color: var(--primary-dark);
-        }
-        
-        .logo-icon {
-            background: var(--primary);
-            color: white;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 12px;
-            font-size: 1.5rem;
-            transition: var(--transition);
-        }
-        
-        .logo:hover .logo-icon {
-            background: var(--primary-dark);
-            transform: rotate(10deg);
-        }
-        
-        .input-group {
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            border-radius: 8px;
-            overflow: hidden;
-        }
-        
-        .form-control {
-            border: 1px solid #e0e0e0;
-            border-right: none;
-            padding: 10px 15px;
-            font-size: 0.95rem;
-            transition: var(--transition);
-        }
-        
-        .form-control:focus {
-            box-shadow: none;
-            border-color: var(--primary);
-        }
-        
-        .btn-outline-success {
-            border-color: var(--primary);
-            color: var(--primary);
-            padding: 10px 20px;
-            transition: var(--transition);
-        }
-        
-        .btn-outline-success:hover {
-            background: var(--primary);
-            border-color: var(--primary);
-            transform: scale(1.05);
-        }
-        
-        /* Enhanced Account/Signup Section */
-        .account-section {
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-        }
-        
-        .account-btn {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            color: var(--dark);
-            font-weight: 500;
-            padding: 10px 20px;
-            border-radius: 50px;
-            background: #f8f9fa;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-        }
-        
-        .account-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-            transition: left 0.7s;
-        }
-        
-        .account-btn:hover::before {
-            left: 100%;
-        }
-        
-        .account-btn:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(25, 135, 84, 0.3);
-        }
-        
-        .account-btn i {
-            font-size: 1.1rem;
-            margin-right: 8px;
-            transition: var(--transition);
-        }
-        
-        .account-btn:hover i {
-            transform: scale(1.2) rotate(5deg);
-        }
-        
-        /* Dropdown menu for account */
-        .account-dropdown {
-            position: absolute;
-            top: 100%;
-            right: 0;
-            width: 220px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-            padding: 15px 0;
-            z-index: 1000;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(10px);
-            transition: var(--transition);
-        }
-        
-        .account-section:hover .account-dropdown {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-        
-        .account-dropdown a {
-            display: flex;
-            align-items: center;
-            padding: 12px 20px;
-            text-decoration: none;
-            color: var(--dark);
-            transition: var(--transition);
-            border-left: 3px solid transparent;
-        }
-        
-        .account-dropdown a:hover {
-            background: #f8f9fa;
-            color: var(--primary);
-            border-left-color: var(--primary);
-            padding-left: 25px;
-        }
-        
-        .account-dropdown a i {
-            width: 20px;
-            margin-right: 10px;
-            text-align: center;
-        }
-        
-        .dropdown-divider {
-            margin: 10px 0;
-            border-top: 1px solid #e9ecef;
-        }
-        
-        /* User status indicator */
-        .user-status {
-            display: inline-block;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: #28a745;
-            margin-left: 8px;
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.3); opacity: 0.7; }
-            100% { transform: scale(1); opacity: 1; }
-        }
-        
-        /* Code display section */
-        .code-container {
-            background: #2d2d2d;
-            border-radius: 10px;
-            overflow: hidden;
-            margin-top: 30px;
-        }
-        
-        .code-header {
-            background: #1e1e1e;
-            color: #ccc;
-            padding: 12px 20px;
-            font-size: 0.9rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .code-content {
-            padding: 20px;
-            color: #f8f8f2;
-            font-family: 'Courier New', monospace;
-            font-size: 0.9rem;
-            line-height: 1.5;
-            overflow-x: auto;
-        }
-        
-        .code-content .tag {
-            color: #569cd6;
-        }
-        
-        .code-content .attr {
-            color: #9cdcfe;
-        }
-        
-        .code-content .value {
-            color: #ce9178;
-        }
-        
-        .btn-copy {
-            background: #3c3c3c;
-            color: #ccc;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-        
-        .btn-copy:hover {
-            background: #4c4c4c;
-            color: white;
-        }
-        
-        /* Responsive adjustments */
-        @media (max-width: 992px) {
-            .logo {
-                font-size: 1.5rem;
-            }
-            
-            .logo-icon {
-                width: 40px;
-                height: 40px;
-                font-size: 1.3rem;
-            }
-            
-            .account-btn {
-                padding: 8px 15px;
-                font-size: 0.9rem;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .account-section {
-                justify-content: center;
-                margin-top: 15px;
-            }
-            
-            .account-dropdown {
-                right: auto;
-                left: 50%;
-                transform: translateX(-50%) translateY(10px);
-            }
-            
-            .account-section:hover .account-dropdown {
-                transform: translateX(-50%) translateY(0);
-            }
-        }
-    </style>
+    <title>Organic Apricots - Premium Dry Fruits</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <link rel="stylesheet" href="Home.css">
 </head>
 <body>
-    <div class="demo-container">
-        <div class="demo-header">
-            <h1>Enhanced Header with Signup/Login</h1>
-            <p>Cart removed and replaced with advanced account section with hover effects</p>
-        </div>
-        
-        <!-- Main Header -->
-        <header class="main-header">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-md-4">
-                        <a href="Home.html" class="logo">
-                            <div class="logo-icon">G</div>
-                            <span>GreenStore</span>
-                        </a>
-                    </div>
-                    <div class="col-md-5">
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search products...">
-                            <button class="btn btn-outline-success" type="button">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="col-md-3 text-end">
-                        <div class="account-section">
-                            <a id="profile" href="../login/signup.html" class="account-btn">
-                                <i class="fas fa-user me-1"></i> 
-                                <span>Sign Up / Login</span>
-                                <span class="user-status"></span>
-                            </a>
-                            
-                            <!-- Account Dropdown Menu -->
-                            <div class="account-dropdown">
-                                <a href="../login/signup.html?action=login">
-                                    <i class="fas fa-sign-in-alt"></i> Login
-                                </a>
-                                <a href="../login/signup.html?action=register">
-                                    <i class="fas fa-user-plus"></i> Create Account
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a href="#">
-                                    <i class="fas fa-question-circle"></i> Help Center
-                                </a>
-                                <a href="#">
-                                    <i class="fas fa-cog"></i> Account Settings
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
-        
-        <!-- Code Display Section -->
-        <div class="code-container">
-            <div class="code-header">
-                <span>header.html</span>
-                <button class="btn-copy" onclick="copyCode()">Copy Code</button>
-            </div>
-            <div class="code-content">
-                <pre><code>&lt;header class="main-header"&gt;
-    &lt;div class="container"&gt;
-        &lt;div class="row align-items-center"&gt;
-            &lt;div class="col-md-4"&gt;
-                &lt;a href="Home.html" class="logo"&gt;
-                    &lt;div class="logo-icon"&gt;G&lt;/div&gt;
-                    &lt;span&gt;GreenStore&lt;/span&gt;
-                &lt;/a&gt;
-            &lt;/div&gt;
-            &lt;div class="col-md-5"&gt;
-                &lt;div class="input-group"&gt;
-                    &lt;input type="text" class="form-control" placeholder="Search products..."&gt;
-                    &lt;button class="btn btn-outline-success" type="button"&gt;
-                        &lt;i class="fas fa-search"&gt;&lt;/i&gt;
-                    &lt;/button&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-            &lt;div class="col-md-3 text-end"&gt;
-                &lt;div class="account-section"&gt;
-                    &lt;a id="profile" href="../login/signup.html" class="account-btn"&gt;
-                        &lt;i class="fas fa-user me-1"&gt;&lt;/i&gt; 
-                        &lt;span&gt;Sign Up / Login&lt;/span&gt;
-                        &lt;span class="user-status"&gt;&lt;/span&gt;
-                    &lt;/a&gt;
-                    
-                    &lt;!-- Account Dropdown Menu --&gt;
-                    &lt;div class="account-dropdown"&gt;
-                        &lt;a href="../login/signup.html?action=login"&gt;
-                            &lt;i class="fas fa-sign-in-alt"&gt;&lt;/i&gt; Login
-                        &lt;/a&gt;
-                        &lt;a href="../login/signup.html?action=register"&gt;
-                            &lt;i class="fas fa-user-plus"&gt;&lt;/i&gt; Create Account
-                        &lt;/a&gt;
-                        &lt;div class="dropdown-divider"&gt;&lt;/div&gt;
-                        &lt;a href="#"&gt;
-                            &lt;i class="fas fa-question-circle"&gt;&lt;/i&gt; Help Center
-                        &lt;/a&gt;
-                        &lt;a href="#"&gt;
-                            &lt;i class="fas fa-cog"&gt;&lt;/i&gt; Account Settings
-                        &lt;/a&gt;
-                    &lt;/div&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/header&gt;</code></pre>
-            </div>
-        </div>
+  
+    <!-- Rest of your homepage content remains the same -->
+    <!-- Hero Carousel -->
+    <div id="dryfruitCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+        <!-- Your existing carousel content -->
     </div>
 
+    <!-- Products Section -->
+    <section class="container my-5">
+        <!-- Your existing products content -->
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <!-- Your existing footer content -->
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Admin Access Management -->
+    <script src="admin-access.js"></script>
+
+    <!-- Custom Script -->
     <script>
-        function copyCode() {
-            const codeElement = document.querySelector('.code-content code');
-            const textArea = document.createElement('textarea');
-            textArea.value = codeElement.textContent;
-            document.body.appendChild(textArea);
-            textArea.select();
-            document.execCommand('copy');
-            document.body.removeChild(textArea);
+        // Update account display based on login status
+        function updateAccountDisplay() {
+            const accountText = document.getElementById('accountText');
+            const accountDropdown = document.querySelector('.account-dropdown');
             
-            // Visual feedback
-            const button = document.querySelector('.btn-copy');
-            const originalText = button.textContent;
-            button.textContent = 'Copied!';
-            button.style.background = '#28a745';
-            
-            setTimeout(() => {
-                button.textContent = originalText;
-                button.style.background = '#3c3c3c';
-            }, 2000);
+            if (adminAuth.currentUser) {
+                accountText.textContent = adminAuth.currentUser.name;
+                
+                // Update dropdown for logged-in user
+                accountDropdown.innerHTML = `
+                    <a href="#">
+                        <i class="fas fa-user me-2"></i>${adminAuth.currentUser.name}
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#">
+                        <i class="fas fa-shopping-bag me-2"></i>My Orders
+                    </a>
+                    <a href="#">
+                        <i class="fas fa-heart me-2"></i>Wishlist
+                    </a>
+                    <a href="#">
+                        <i class="fas fa-cog me-2"></i>Account Settings
+                    </a>
+                    ${adminAuth.isAdmin() ? `
+                    <div class="dropdown-divider"></div>
+                    <a href="admin.html" style="color: #ffd700 !important;">
+                        <i class="fas fa-cog me-2"></i>Admin Panel
+                    </a>
+                    ` : ''}
+                    <div class="dropdown-divider"></div>
+                    <a href="#" onclick="adminAuth.logout()">
+                        <i class="fas fa-sign-out-alt me-2"></i>Logout
+                    </a>
+                `;
+            }
         }
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            updateAccountDisplay();
+            
+            // Your existing cart and navbar functionality
+            const bottomNavbar = document.querySelector(".bottom-navbar");
+            
+            window.addEventListener("scroll", function () {
+                if (window.scrollY > 150) {
+                    bottomNavbar.classList.add("fixed-top");
+                } else {
+                    bottomNavbar.classList.remove("fixed-top");
+                }
+            });
+
+            // Your existing cart manager code...
+        });
     </script>
 </body>
 </html>
