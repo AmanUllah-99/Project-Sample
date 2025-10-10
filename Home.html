@@ -125,13 +125,35 @@
         </div>
     </nav>
 
-    <!-- Hero Carousel -->
-    <div id="dryfruitCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#dryfruitCarousel" data-bs-slide-to="0" class="active"></button>
-            <button type="button" data-bs-target="#dryfruitCarousel" data-bs-slide-to="1"></button>
-            <button type="button" data-bs-target="#dryfruitCarousel" data-bs-slide-to="2"></button>
-        </div>
+  <!-- PRODUCT OFFCANVAS -->
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasProducts">
+    <div class="offcanvas-header">
+      <h5><i class="fa fa-box-open me-2"></i>Our Products</h5>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body">
+      <form class="d-flex mb-3">
+        <input class="form-control me-2" type="search" placeholder="Search products...">
+        <button class="btn btn-success" type="submit"><i class="fa fa-search"></i></button>
+      </form>
+      <div class="list-group">
+        <a href="#" class="list-group-item">Almonds</a>
+        <a href="#" class="list-group-item">Cashews</a>
+        <a href="#" class="list-group-item">Walnuts</a>
+        <a href="#" class="list-group-item">Pistachios</a>
+        <a href="#" class="list-group-item">Raisins</a>
+        <a href="#" class="list-group-item">Mixed Dry Fruits</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDER -->
+  <div id="dryfruitCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#dryfruitCarousel" data-bs-slide-to="0" class="active"></button>
+      <button type="button" data-bs-target="#dryfruitCarousel" data-bs-slide-to="1"></button>
+      <button type="button" data-bs-target="#dryfruitCarousel" data-bs-slide-to="2"></button>
+    </div>
 
         <div class="carousel-inner">
             <div class="carousel-item active">
