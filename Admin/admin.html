@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard - Organic Apricots</title>
-    
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    
+
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    
+
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
+
     <style>
         :root {
             --primary: #135E4B;
@@ -29,29 +30,29 @@
             --success: #28a745;
             --info: #17a2b8;
         }
-        
+
         .admin-sidebar {
             background: var(--primary);
             color: var(--white);
             min-height: 100vh;
             padding: 0;
         }
-        
+
         .sidebar-header {
             padding: 20px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
-        
+
         .admin-menu {
             list-style: none;
             padding: 0;
             margin: 0;
         }
-        
+
         .admin-menu li {
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
-        
+
         .admin-menu a {
             color: var(--white);
             text-decoration: none;
@@ -59,31 +60,32 @@
             display: block;
             transition: all 0.3s ease;
         }
-        
-        .admin-menu a:hover, .admin-menu a.active {
-            background: rgba(255,255,255,0.1);
+
+        .admin-menu a:hover,
+        .admin-menu a.active {
+            background: rgba(255, 255, 255, 0.1);
             border-left: 4px solid var(--light);
         }
-        
+
         .admin-menu i {
             width: 20px;
             margin-right: 10px;
         }
-        
+
         .stat-card {
             background: var(--white);
             border-radius: 10px;
             padding: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
         }
-        
+
         .stat-number {
             font-size: 2rem;
             font-weight: bold;
             color: var(--primary);
         }
-        
+
         @media (max-width: 768px) {
             .admin-sidebar {
                 min-height: auto;
@@ -91,6 +93,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container-fluid">
         <div class="row">
@@ -111,7 +114,7 @@
                     <li><a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
                 </ul>
             </div>
-            
+
             <!-- Main Content -->
             <div class="col-md-9 col-lg-10">
                 <div class="container-fluid py-4">
@@ -129,7 +132,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Stats Cards -->
                     <div class="row">
                         <div class="col-md-3">
@@ -161,7 +164,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Quick Actions -->
                     <div class="row mt-4">
                         <div class="col-12">
@@ -172,17 +175,20 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-md-3 mb-3">
-                                            <button class="btn btn-primary w-100" onclick="location.href='../AddProduct/addproduct.html'">
+                                            <button class="btn btn-primary w-100"
+                                                onclick="location.href='../AddProduct/addproduct.html'">
                                                 <i class="fas fa-plus me-2"></i>Add Product
                                             </button>
                                         </div>
                                         <div class="col-md-3 mb-3">
-                                            <button class="btn btn-success w-100" onclick="location.href='../CreateDeal/createdeal.html'">
+                                            <button class="btn btn-success w-100"
+                                                onclick="location.href='../CreateDeal/createdeal.html'">
                                                 <i class="fas fa-tags me-2"></i>Create Deal
                                             </button>
                                         </div>
                                         <div class="col-md-3 mb-3">
-                                            <button class="btn btn-info w-100" onclick="location.href='../ManageUsers/manageusers.html'">
+                                            <button class="btn btn-info w-100"
+                                                onclick="location.href='../ManageUsers/manageusers.html'">
                                                 <i class="fas fa-users me-2"></i>Manage Users
                                             </button>
                                         </div>
@@ -203,7 +209,7 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    
+
     <!-- Admin Access Management -->
     <script src="../Admin/admin.js"></script>
 
@@ -221,10 +227,11 @@
         }
 
         // Simple chart for demonstration
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // You can add Chart.js charts here for better visualization
             console.log('Admin panel loaded successfully');
         });
     </script>
 </body>
+
 </html>
